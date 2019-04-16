@@ -16,7 +16,7 @@ include_once("includes/head.php");
         <div class="content__module">
             <div class="row">
                 <div class="col-12 col-tab-12 content__error">
-                    <?php echo $excepcion ?>
+                    ERROR: <?php echo $excepcion ?>
                 </div>
             </div>
         </div>
