@@ -39,7 +39,7 @@ include_once("includes/head.php");
                 <div class="col-12 col-tab-12">
                     <div class="module-title">
                         <h1><?php echo $participante["NOMBRE"] . " " . $participante["APELLIDOS"]; ?></h1>
-                        <form action="controladores/controladorParticipantes.php" method="POST">
+                        <form action="controllers/controlParticipantes.php" method="POST">
                             <input type="hidden" name="dni" value="<?php echo $participante["DNI"] ?>">
                             <a class="btn primary" href="nuevoParticipante.php?edit=true&oid_part=<?php echo $participante["OID_PART"]; ?>">Editar</a>
                             <button class="btn cancel" type="submit" name="submit" value="delete">Eliminar</button>
@@ -199,13 +199,11 @@ include_once("includes/head.php");
                     <?php
                     foreach ($recibos as $rec) { ?>
                         <tr>
-                            <form>
-                                <td><?php echo $rec["ESTADO"] ?></td>
-                                <td><?php echo $rec["FECHAEMISION"] ?></td>
-                                <td><?php echo $rec["FECHAVENCIMIENTO"] ?></td>
-                                <td><?php echo $rec["IMPORTE"] . "€"?></td>
-                                <td class="acciones"><a href="actualizarRecibo.php?oid_part=<?php echo $_GET["oid_part"] ?>&oid_rec=<?php echo $rec["OID_REC"] ?>" class="btn secondary">Editar</a></td>
-                            </form>
+                            <td><?php echo $rec["ESTADO"] ?></td>
+                            <td><?php echo $rec["FECHAEMISION"] ?></td>
+                            <td><?php echo $rec["FECHAVENCIMIENTO"] ?></td>
+                            <td><?php echo $rec["IMPORTE"] . "€"?></td>
+                            <td class="acciones"><a href="actualizarRecibo.php?oid_part=<?php echo $_GET["oid_part"] ?>&oid_rec=<?php echo $rec["OID_REC"] ?>" class="btn secondary">Editar</a></td>
                         </tr>
                     <?php } ?>
                 <?php } else { ?>

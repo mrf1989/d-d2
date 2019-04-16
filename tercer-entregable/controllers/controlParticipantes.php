@@ -5,9 +5,8 @@ if (!$_SESSION["admin"]) {
     Header("Location: index.php");
 }
 
-include_once("../includes/gestionBD.php");
-include_once("../includes/gestionParticipantes.php");
-include_once("../includes/functions.php");
+include_once("../models/gestionBD.php");
+include_once("../models/gestionParticipantes.php");
 include_once("../includes/functions.php");
 
 if ($_REQUEST["submit"] == "insert") {
