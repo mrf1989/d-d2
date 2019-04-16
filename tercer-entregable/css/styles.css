@@ -1,0 +1,248 @@
+@import 'header.css';
+@import 'footer.css';
+@import 'layout.css';
+
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: #333;
+    height: 100vh;
+}
+
+.content__logo,
+.content__copy,
+.content__error {
+    text-align: center;
+}
+
+.content__logo,
+.content__form {
+    padding-top: 52px;
+}
+
+.content__error {
+    color: red;
+}
+
+.content__copy {
+    padding-top: 32px;
+}
+
+.content__copy h1 {
+    font-weight: 300;
+}
+
+fieldset {
+    border-radius: 10px;
+    border-color: #eee;
+}
+
+.content__form {
+    width: 350px;
+    margin: auto;
+}
+
+.content__module {
+    margin-top: 2em;
+    width: 100%;
+}
+.content__module a:hover {
+    color: #333;
+}
+
+.module-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    width: 120px;
+}
+
+.form-login {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-login input,
+.form-login button {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 1em;
+    margin: 5px;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.form-login input {
+    border: 1px solid #777;
+}
+
+.form-login button {
+    background: #0098f7;
+    color: whitesmoke;
+    border: 0;
+}
+.form-row {
+    display: flex;  
+}
+
+.form-row label {
+    width: 100%;
+}
+.form-row input,
+.form-row select {
+    width: 100%;
+    margin: 5px;
+    font-size: 1.001em;
+    padding: 5px;
+    border-radius: 5px;
+    border-style: solid;
+    border: 1px solid #777;
+}
+.form-row.right {
+    justify-content: flex-end;
+}
+.form-label {
+    flex-grow: 2;
+    margin-left: 5px;
+}
+.form .btn {
+    margin: 5px;
+}
+.form textarea {
+    width: 100%;
+    font-size: 1rem;
+    padding: 5px;
+    margin: 5px 0;
+    border-radius: 5px;
+    resize: none;
+}
+#pag_size {
+    margin-left: 5px;
+    margin-right: 5px;
+    border-radius: 5px;
+    border-style: solid;
+    border: 1px solid #777;
+    padding: 5px;
+}
+/*BOTON*/
+button {
+    font-size: 1rem;
+}
+.btn {
+    padding: 10px;
+    border-radius: 5px;
+    border: 0;
+    text-decoration: none;
+}
+.btn.primary {
+    background: #0098f7;
+    color: whitesmoke;
+}
+.btn.secondary {
+    font-size: 0.9rem;
+    color: whitesmoke;
+    background: #0098f7;
+    padding: 5px 10px;
+    margin-bottom: 5px;
+}
+.btn.cancel {
+    background: #ff4646;
+    color: whitesmoke;
+}
+
+input:focus {
+    outline: none;
+}
+
+.tab {
+    width: 100%;
+    border-collapse: collapse;
+}
+.tab a {
+    color: #777;
+    text-decoration: none;
+}
+
+.tab.vertical th {
+    background: #95d2f8;
+    color: #333;
+    border-right: 2px solid #0098f7;
+}
+
+.tab-vertical tr:first-child,
+tr:nth-child(odd) {
+    background: #ddd;
+}
+tr:nth-child(even) {
+    background: #eee;
+}
+.tab.horizontal tr:first-child {
+    background: #95d2f8;
+    color: #333;
+}
+td, th {
+    text-align: left;
+    padding: 10px;
+}
+.tab.horizontal th {
+    border-bottom: 2px solid #0098f7;
+}
+td {
+    color: #555;
+}
+
+.acciones {
+    text-align: right;
+}
+
+@media(max-width: 500px) {
+    .container {
+        width: 85%;
+    }
+
+    .content__logo img {
+        width: 85%;
+    }
+
+    .logo {
+        width: 150px;
+    }
+
+    .form-row {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .form-row input,
+    .form-row select {
+        width: inherit;
+    }
+    .form-row.right {
+        flex-direction: row;
+    }
+}
+
+@media(min-width: 501px) {
+    .container {
+        width: 70%;
+    }
+
+    .content__logo img {
+        width: 90%;
+        max-width: 300px;
+    }
+}
+
+@media(min-width: 1200px) {
+    .container {
+        width: 80%;
+        max-width: 1000px;
+    }
+
+    .logo {
+        width: 300px;
+    }
+}
