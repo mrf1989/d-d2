@@ -1,0 +1,28 @@
+header a {
+    text-decoration: none;
+    color: #333;
+}
+
+header a:hover {
+    color: #0098f7;
+}
+
+.content-header {
+    padding: 45px 60px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-bottom: 1px solid #ddd;
+}
+
+.navbar {
+    width: 50%;
+    max-width: 750px;
+}
+
+.nav-items {
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
