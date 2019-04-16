@@ -44,3 +44,58 @@ EXEC Registrar_Voluntario('18378738J', 'Carlota', 'Molina Rubio', '29/06/1991', 
 EXEC Registrar_Voluntario('32412109A', 'Cristina', 'Reyes Mora', '04/02/1990', 'C/ San Andrés, 14, 4ºB', 'Sevilla', 'Sevilla', '41003', 'cris04rm@gmail.com', '622490388', 'Crmora04');
 EXEC Registrar_Voluntario('74483068Y', 'Esteban', 'Medina Ortiz', '30/01/1994', 'C/ Cuatro Esquinas, 30, 2ºC', 'Madrid', 'Madrid', '28038', 'esteban.medina94@gmail.com', '611519217', 'Emortiz30');
 
+
+-- INSCRIPCIONES DE VOLUNTARIOS
+
+EXEC Inscribir_Voluntario('13536072C', 1);
+EXEC Inscribir_Voluntario('93645338X', 1);
+EXEC Inscribir_Voluntario('86976758G', 1);
+EXEC Inscribir_Voluntario('22907649V', 1);
+EXEC Inscribir_Voluntario('32412109A', 1);
+EXEC Inscribir_Voluntario('13536072C', 2);
+EXEC Inscribir_Voluntario('93645338X', 2);
+EXEC Inscribir_Voluntario('86976758G', 2);
+EXEC Inscribir_Voluntario('22907649V', 2);
+EXEC Inscribir_Voluntario('32412109A', 2);
+
+EXEC Inscribir_Voluntario('32412109A', 18);
+EXEC Inscribir_Voluntario('93645338X', 18);
+EXEC Inscribir_Voluntario('13536072C', 18);
+EXEC Inscribir_Voluntario('54786321L', 3);
+EXEC Inscribir_Voluntario('60356609D', 3);
+EXEC Inscribir_Voluntario('53914875T', 3);
+EXEC Inscribir_Voluntario('45354145P', 3);
+EXEC Inscribir_Voluntario('44065022N', 4);
+EXEC Inscribir_Voluntario('49833268L', 4);
+EXEC Inscribir_Voluntario('91564155M', 4);
+
+EXEC Inscribir_Voluntario('18378738J', 4);
+EXEC Inscribir_Voluntario('92417527P', 10);
+EXEC Inscribir_Voluntario('44065022N', 10);
+EXEC Inscribir_Voluntario('45354145P', 13);
+EXEC Inscribir_Voluntario('44065022N', 13);
+EXEC Inscribir_Voluntario('60356609D', 16);
+EXEC Inscribir_Voluntario('91564155M', 16);
+EXEC Inscribir_Voluntario('27949209T', 17);
+EXEC Inscribir_Voluntario('73639982P', 17);
+EXEC Inscribir_Voluntario('73639982P', 12);
+
+EXEC Inscribir_Voluntario('52794613E', 9);
+EXEC Inscribir_Voluntario('25385282K', 9);
+EXEC Inscribir_Voluntario('52794613E', 11);
+EXEC Inscribir_Voluntario('65249536P', 11);
+EXEC Inscribir_Voluntario('25385282K', 11);
+EXEC Inscribir_Voluntario('21038062P', 6);
+EXEC Inscribir_Voluntario('89093705P', 6);
+EXEC Inscribir_Voluntario('53632035Z', 7);
+EXEC Inscribir_Voluntario('67118131Z', 7);
+EXEC Inscribir_Voluntario('39661938W', 7);
+
+EXEC Inscribir_Voluntario('89093705P', 20);
+EXEC Inscribir_Voluntario('39661938W', 20);
+EXEC Inscribir_Voluntario('67118131Z', 20);
+EXEC Inscribir_Voluntario('53632035Z', 20);
+EXEC Inscribir_Voluntario('21038062P', 20);
+
+
+
