@@ -59,7 +59,7 @@ include_once("includes/head.php");
                         </tr>
                         <tr>
                             <th>Fecha nacimiento</th>
-                            <td><?php echo getFechaBD($participante["FECHANACIMIENTO"]) ?></td>
+                            <td><?php echo $participante["FECHANACIMIENTO"] ?></td>
                         </tr>
                         <tr>
                             <th>Discapacidad</th>

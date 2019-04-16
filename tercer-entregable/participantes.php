@@ -80,7 +80,7 @@ include_once("includes/head.php");
                             <input type="hidden" name="dni" value="<?php echo $part["DNI"] ?>">
                             <td><?php echo $part["DNI"] ?></td>
                             <td><a href="perfilParticipante.php?oid_part=<?php echo $part["OID_PART"]; ?>"><?php echo $part["NOMBRE"] . " " . $part["APELLIDOS"] ?></a></td>
-                            <td><?php echo getFechaBD($part["FECHANACIMIENTO"]) ?></td>
+                            <td><?php echo $part["FECHANACIMIENTO"] ?></td>
                             <td class="acciones">
                                 <a href="nuevoParticipante.php?edit=true&oid_part=<?php echo $part["OID_PART"]; ?>" class="btn secondary">Editar</a>
                                 <button class="btn secondary" type="submit" name="submit" value="delete">Borrar</button>

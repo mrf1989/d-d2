@@ -12,16 +12,14 @@ if (isset($_POST["submit"])) {
     // consulta de credenciales
     $conexion = crearConexionBD();
     $consulta = consultarUsuario($conexion, $dni, $pass);
-    cerrarConexionBD($conexion);
             
     if ($consulta != 0) {
         // Credenciales OK
         $_SESSION["login"] = $dni;
         $_SESSION["admin"] = 0;
         // consulta si es un administrador (coordinador deportivo)
-        $conexion = crearConexionBD();
+        //$conexion = crearConexionBD();
         $consulta = consultarTipoUsuario($conexion, $dni);
-        cerrarConexionBD($conexion);
         if ($consulta != 0) {
             // vista para coordinador
             $_SESSION["admin"] = 1;
@@ -33,6 +31,8 @@ if (isset($_POST["submit"])) {
     } else {
         $login = "Error de inicio de sesión";
     }
+    
+    cerrarConexionBD($conexion);
 }
 ?>
 <?php $page_title = "Acceso"; ?>
