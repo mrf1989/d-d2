@@ -13,7 +13,7 @@ include_once("includes/functions.php");
 // si viene a la vista para editar datos de un participante registrado
 if (isset($_GET["edit"]) && isset($_GET["oid_part"])) {
     $conexion = crearConexionBD();
-    $participante = getParticipante($conexion, $_GET["oid_part"]);
+    $participante = getParticipante($conexion, $_REQUEST["oid_part"]);
     cerrarConexionBD($conexion);
 } else {
     $participante["NOMBRE"] = "";
@@ -64,15 +64,19 @@ include_once("includes/head.php");
                             <div class="form-row">
                                 <input type="text" name="nombre" value="<?php echo $participante["NOMBRE"] ?>" placeholder="Nombre" autofocus="autofocus" />
                                 <input type="text" name="apellidos" value="<?php echo $participante["APELLIDOS"] ?>" placeholder="Apellidos" />
-                                <input type="text" name="dni" value="<?php echo $participante["DNI"] ?>" placeholder="DNI" <?php if (isset($_GET["edit"])) echo "disabled" ?>>
+                                <input type="text" name="dni" value="<?php echo $participante["DNI"] ?>" placeholder="DNI" <?php if (isset($_GET["edit"])) echo "readonly" ?>>
                             </div>
                             <div class="form-row">
                                 <div class="form-label">Fecha nacimiento:</div>
                                 <input type="date" name="fechaNacimiento" value="<?php if (isset($_GET["edit"])) echo getFechaForm($participante["FECHANACIMIENTO"]) ?>" placeholder="Fecha nacimiento" />
-                                <input type="text" name="discapacidad" value="<?php if (isset($_GET["edit"])) echo "0" . $participante["GRADODISCAPACIDAD"] ?>" placeholder="Grado discapacidad" <?php if (isset($_GET["edit"])) echo "disabled" ?>>
+                                <input type="text" name="discapacidad" value="<?php if (isset($_GET["edit"])) echo "0" . $participante["GRADODISCAPACIDAD"] ?>" placeholder="Grado discapacidad" <?php if (isset($_GET["edit"])) echo "readonly" ?>>
                             </div>
                             <div class="form-row">
-                                <input type="email" name="email" value="<?php echo $participante["EMAIL"] ?>" placeholder="Email" />
+                                <?php if ($participante["EMAIL"] != "") { ?>
+                                    <input type="email" name="email" value="<?php echo $participante["EMAIL"] ?>" placeholder="Email" />
+                                <?php } else { ?>
+                                    <input type="email" name="email" placeholder="Email" />
+                                <?php } ?>
                                 <input type="text" name="telefono" value="<?php echo $participante["TELEFONO"] ?>" placeholder="Teléfono" />
                             </div>
                             <div class="form-row">
@@ -93,7 +97,7 @@ include_once("includes/head.php");
                             <?php if (!isset($_GET["edit"])) { ?>
                                 <button type="reset" class="btn cancel">Cancelar</button>
                             <?php } ?>
-                                <button type="submit" class="btn primary" name="submit" value="<?php echo isset($_GET["edit"]) ? "edit" : "insert";?>" placeholder="submit">Guardar</button>
+                                <button type="submit" class="btn primary" name="submit" value="<?php echo isset($_GET["edit"]) ? "edit" : "insert";?>">Guardar</button>
                             </div>
                         </form>
                     </fieldset>

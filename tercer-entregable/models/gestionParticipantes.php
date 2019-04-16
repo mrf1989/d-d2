@@ -108,7 +108,7 @@ function insertarParticipante($conexion, $part) {
 
 function actualizarParticipante($conexion, $part) {
     try {
-        $stmt = $conexion->prepare("CALL ACT_PERSONA(:dni, :nombre, :apellidos, :fechaNacimiento, :direccion, :localidad, :provincia, :cp, :email, :telefono, '123456')");
+        $stmt = $conexion->prepare("CALL ACT_PERSON(:dni, :nombre, :apellidos, :fechaNacimiento, :direccion, :localidad, :provincia, :cp, :email, :telefono, '123456')");
         $stmt->bindParam(':dni', $part["dni"]);
         $stmt->bindParam(':nombre', $part["nombre"]);
         $stmt->bindParam(':apellidos', $part["apellidos"]);
