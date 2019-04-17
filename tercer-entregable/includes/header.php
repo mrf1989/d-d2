@@ -7,7 +7,7 @@
             <nav>
                 <ul class="nav-items">
                     <li><a href="/participantes.php">Participantes</a></li>
-                    <li><a href="#">Tutores</a></li>
+                    <li><a href="/tutores.php">Tutores</a></li>
                     <li><a href="#">Voluntarios</a></li>
                     <li><a href="/proyectos.php">Proyectos</a></li>
                     <li><a href="#">Patrocinadores</a></li>

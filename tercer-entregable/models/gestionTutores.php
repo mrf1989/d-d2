@@ -11,6 +11,11 @@ function getTutores($conexion) {
     }
 }
 
+function getAllTutores() {
+    $query = "SELECT * FROM TUTORES TUT LEFT JOIN PERSONAS PER ON TUT.DNI = PER.DNI";
+    return $query;
+}
+
 function getTutor($conexion, $oid_tut) {
     try {
         $consulta = "SELECT * FROM TUTORESLEGALES TUT LEFT JOIN PERSONAS PER ON TUT.DNI = PER.DNI WHERE TUT.OID_TUT =:oid_tut";
