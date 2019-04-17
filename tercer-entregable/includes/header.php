@@ -9,7 +9,7 @@
                     <li><a href="/participantes.php">Participantes</a></li>
                     <li><a href="#">Tutores</a></li>
                     <li><a href="#">Voluntarios</a></li>
-                    <li><a href="#">Proyectos</a></li>
+                    <li><a href="/proyectos.php">Proyectos</a></li>
                     <li><a href="#">Patrocinadores</a></li>
                 <?php if (isset($_SESSION["login"])) { ?>
                     <li><a href="logout.php">Cerrar sesión</a></li>

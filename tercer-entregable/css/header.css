@@ -21,6 +21,7 @@ header a:hover {
 }
 
 .nav-items {
+    padding: 0;
     list-style-type: none;
     display: flex;
     flex-direction: row;
