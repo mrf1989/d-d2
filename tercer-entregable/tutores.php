@@ -71,18 +71,18 @@ include_once("includes/head.php");
                     <tr>
                         <th>DNI</th>
                         <th>Tutor</th>
-                        <th>Fecha nacimiento</th>
+                        <th>Email</th>
                         <th></th>
                     </tr>
                 <?php foreach ($tutores as $tut) { ?>
                     <tr>
-                        <form action="controllers/controlParticipantes.php" method="POST">
+                        <form action="controllers/controlTutores.php" method="POST">
                             <input type="hidden" name="dni" value="<?php echo $tut["DNI"] ?>">
                             <td><?php echo $tut["DNI"] ?></td>
-                            <td><a href="perfilParticipante.php?oid_part=<?php echo $tut["OID_PART"]; ?>"><?php echo $tut["NOMBRE"] . " " . $tut["APELLIDOS"] ?></a></td>
-                            <td><?php echo $tut["FECHANACIMIENTO"] ?></td>
+                            <td><a href="perfilTutor.php?oid_tut=<?php echo $tut["OID_TUT"]; ?>"><?php echo $tut["NOMBRE"] . " " . $tut["APELLIDOS"] ?></a></td>
+                            <td><?php echo $tut["EMAIL"] ?></td>
                             <td class="acciones">
-                                <a href="nuevoParticipante.php?edit=true&oid_part=<?php echo $tut["OID_PART"]; ?>" class="btn secondary">Editar</a>
+                                <a href="nuevoParticipante.php?edit=true&oid_part=<?php echo $tut["OID_TUT"]; ?>" class="btn secondary">Editar</a>
                                 <button class="btn secondary" type="submit" name="submit" value="delete">Borrar</button>
                             </td>
                         </form>
