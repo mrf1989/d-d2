@@ -29,4 +29,17 @@ function getTutor($conexion, $oid_tut) {
     }
 }
 
+function getPartTut($conexion, $oid_tut) {
+    try {
+        $consulta = "SELECT * FROM TUTORESLEGALES TUT LEFT JOIN PARTICIPANTES PART ON TUT.OID_tut= PART.OID_tut LEFT JOIN PERSONAS P ON PART.dni= P.dni";
+        $stmt = $conexion->prepare($consulta);
+        $stmt->bindParam(':oid_tut', $oid_tut);
+        $stmt->execute();
+        return $stmt->fetch();
+    } catch (PDOException $e) {
+        $_SESSION["excepcion"] = $e->GetMessage();
+        Header("Location: ../excepcion.php");
+    }
+}
+
 ?>
