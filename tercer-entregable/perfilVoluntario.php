@@ -29,7 +29,7 @@ include_once("includes/head.php");
                 <div class="col-12 col-tab-12">
                     <div class="module-title">
                         <h1><?php echo $voluntario["NOMBRE"] . " " . $voluntario["APELLIDOS"]; ?></h1>
-                        <form>
+                        <form action="controllers/controlVoluntarios.php" method="POST">
                             <input type="hidden" name="dni" value="<?php echo $voluntario["DNI"] ?>">
                             <a class="btn primary" href="nuevoVoluntario.php?edit=true&oid_vol=<?php echo $voluntario["OID_VOL"]; ?>">Editar</a>
                             <button class="btn cancel" type="submit" name="submit" value="delete">Eliminar</button>
