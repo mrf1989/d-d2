@@ -50,7 +50,9 @@ include_once("includes/head.php");
                         <!-- TODO mostrar errores de validación -->
                         <form action="controllers/controlTutores.php" method="POST">
                             <!-- input hidden para el oid_tut que identifica al tutor a editar -->
+                            <?php if (isset($_GET["edit"]) && isset($_GET["oid_tut"])){ ?>
                             <input type="hidden" name="oid_tut" value="<?php echo $tutor["OID_TUT"] ?>">
+                        	<?php } <?
                             <div class="form-row">
                                 <input type="text" name="nombre" value="<?php echo $tutor["NOMBRE"] ?>" placeholder="Nombre" autofocus="autofocus" />
                                 <input type="text" name="apellidos" value="<?php echo $tutor["APELLIDOS"] ?>" placeholder="Apellidos" />
