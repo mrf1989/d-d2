@@ -81,6 +81,8 @@ include_once("includes/head.php");
                     <?php } ?>
                     </table>
                 </div>
+                <?php if ($participante["OID_TUT"]==$tutor["OID_TUT"]){
+                ?>
                 <div class="col-6 col-tab-12">
                     <div class="module-title">
                         <h2>Participante</h2>
@@ -104,6 +106,7 @@ include_once("includes/head.php");
                         </tr>
                     </table>
                 </div>
+                <?php } ?>
             </div>
         </div> <!--end module-->
     </main>
