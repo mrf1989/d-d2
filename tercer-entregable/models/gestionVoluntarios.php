@@ -37,3 +37,15 @@ function getHistorialColaboracion($conexion, $oid_vol){
         Header("Location: ../excepcion.php");
 	}
 }
+function getEliminarVoluntario($conexion, $dni){
+	try{
+		$consulta="CALL ELIMINAR_PERSONA(:dni)";
+		$stmt= $conexion->prepare($consulta);
+		$stmt->bindParam(':dni', $dni);
+		$stmt->execute();
+		return true;
+	}catch (PDOException $e) {
+ 		$_SESSION["excepcion"] = $e->GetMessage();
+        Header("Location: ../excepcion.php");
+	}
+}
