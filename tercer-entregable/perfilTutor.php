@@ -31,7 +31,7 @@ include_once("includes/head.php");
                 <div class="col-12 col-tab-12">
                     <div class="module-title">
                         <h1><?php echo $tutor["NOMBRE"] . " " . $tutor["APELLIDOS"]; ?></h1>
-                        <form action="controllers/controlParticipantes.php" method="POST">
+                        <form action="controllers/controlTutores.php" method="POST">
                             <input type="hidden" name="dni" value="<?php echo $tutor["DNI"] ?>">
                             <a class="btn primary" href="nuevoParticipante.php?edit=true&oid_part=<?php echo $participante["OID_PART"]; ?>">Editar</a>
                             <button class="btn cancel" type="submit" name="submit" value="delete">Eliminar</button>
