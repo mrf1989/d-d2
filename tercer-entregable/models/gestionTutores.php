@@ -7,7 +7,7 @@ function getTutores($conexion) {
         return $stmt;
     } catch (PDOException $e) {
         $_SESSION["excepcion"] = $e->GetMessage();
-        Header("Location: excepcion.php");
+        Header("Location: ../excepcion.php");
     }
 }
 
@@ -25,13 +25,13 @@ function getTutor($conexion, $oid_tut) {
         return $stmt->fetch();
     } catch (PDOException $e) {
         $_SESSION["excepcion"] = $e->GetMessage();
-        Header("Location: excepcion.php");
+        Header("Location: ../excepcion.php");
     }
 }
 
 function getPartTut($conexion, $oid_tut) {
     try {
-        $consulta = "SELECT * FROM TUTORESLEGALES TUT LEFT JOIN PARTICIPANTES PART ON TUT.OID_tut= PART.OID_tut LEFT JOIN PERSONAS P ON PART.dni= P.dni";
+        $consulta = "SELECT * FROM PARTICIPANTES PART LEFT JOIN PERSONAS PER ON PART.DNI = PER.DNI WHERE PART.OID_TUT =:oid_tut";
         $stmt = $conexion->prepare($consulta);
         $stmt->bindParam(':oid_tut', $oid_tut);
         $stmt->execute();
