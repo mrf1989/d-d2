@@ -63,6 +63,27 @@ function insertarTutor($conexion, $tut) {
     }
 }
 
+function actualizarTutor($conexion, $tut) {
+    try {
+        $stmt = $conexion->prepare("CALL ACT_PERSONA(:dni, :nombre, :apellidos, :fechaNacimiento, :direccion, :localidad, :provincia, :cp, :email, :telefono, '123456')");
+        $stmt->bindParam(':dni', $tut["dni"]);
+        $stmt->bindParam(':nombre', $tut["nombre"]);
+        $stmt->bindParam(':apellidos', $tut["apellidos"]);
+        $stmt->bindParam(':fechaNacimiento', $tut["fechaNacimiento"]);
+        $stmt->bindParam(':direccion', $tut["direccion"]);
+        $stmt->bindParam(':localidad', $tut["localidad"]);
+        $stmt->bindParam(':provincia', $tut["provincia"]);
+        $stmt->bindParam(':cp', $tut["cp"]);
+        $stmt->bindParam(':email', $tut["email"]);
+        $stmt->bindParam(':telefono', $tut["telefono"]);
+        $stmt->execute();
+        return true;
+    } catch (PDOException $e) {
+        $_SESSION["excepcion"] = $e->GetMessage();
+        Header("Location: ../excepcion.php");
+    }
+}
+
 function eliminarTutor($conexion, $dni) {
     try {
         $consulta="CALL ELIMINAR_PERSONA(:dni)";

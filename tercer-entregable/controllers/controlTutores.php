@@ -30,6 +30,22 @@ if ($_REQUEST["submit"] == "insert") {
     eliminarTutor($conexion, $_REQUEST["dni"]);
     cerrarConexionBD($conexion);
     Header("Location: ../tutores.php");
+} else if ($_REQUEST["submit"] == 'edit') {
+    $tutor["nombre"] = $_REQUEST["nombre"];
+    $tutor["apellidos"] = $_REQUEST["apellidos"];
+    $tutor["dni"] = $_REQUEST["dni"];
+    $tutor["fechaNacimiento"] = getFechaBD($_REQUEST["fechaNacimiento"]);
+    $tutor["email"] = $_REQUEST["email"];
+    $tutor["telefono"] = $_REQUEST["telefono"];
+    $tutor["direccion"] = $_REQUEST["direccion"];
+    $tutor["localidad"] = $_REQUEST["localidad"];
+    $tutor["provincia"] = $_REQUEST["provincia"];
+    $tutor["cp"] = $_REQUEST["cp"];
+
+    $conexion = crearConexionBD();
+    actualizarTutor($conexion, $tutor);
+    cerrarConexionBD($conexion);
+    Header("Location: ../perfilTutor.php?oid_tut=" . $_REQUEST["oid_tut"]);
 }
 
 /*
