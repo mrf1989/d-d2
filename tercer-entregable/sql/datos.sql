@@ -1,6 +1,6 @@
 -- Coordinadores
-EXEC Registrar_Coordinador('45678934Y', 'María', 'Pérez López', '05/11/1991', 'C/ Tajo, 20, 5ºA', 'Madrid', 'Madrid', '28023', 'maperpez@gmail.com', '665453789','marpl45');
-EXEC Registrar_Coordinador('23526642H', 'Daniel', 'Fernández Blanco', '03/06/1985', 'C/ Naranjo, 10, 3ºB', 'Madrid', 'Madrid', '28022', 'daniherbla85@gmail.com', '675990143','danielherbl5');
+EXEC Registrar_Coordinador('45678934Y', 'María', 'Pérez López', '05/11/1991', 'C/ Tajo, 20, 5ºA', 'Madrid', 'Madrid', '28023', 'maperpez@gmail.com', '665453789','Admin123');
+EXEC Registrar_Coordinador('23526642H', 'Daniel', 'Fernández Blanco', '03/06/1985', 'C/ Naranjo, 10, 3ºB', 'Madrid', 'Madrid', '28022', 'daniherbla85@gmail.com', '675990143','Admin123');
 -- Proyectos
 EXEC Registrar_Proyecto('45678934Y', 'Deportes de Raqueta', 'Sevilla Gym Center', 0, 1);
 EXEC Registrar_Proyecto('23526642H', 'Descubre Madrid', 'Madrid', 1, 0);
