@@ -95,3 +95,31 @@ function getActualizarVoluntario($conexion, $vol){
         Header("Location: ../excepcion.php");
 	}
 }
+function validarAltaVoluntario($voluntario){
+	//validación del dni
+	if($voluntario["dni"]==""){
+		$errores[] = "<p>El DNI debe completarse</p>";
+	}else if(!preg_match("/^[0-9]{8}[A-Z]$/", $voluntario["dni"])){
+		$errores[] = "<p>El DNI debe contener 8 números y una letra mayúscula: " . $voluntario["dni"] . "</p>";
+	}
+	//validación del nombre
+	if ($voluntario["nombre"]=="") {
+		$errores[] = "<p>El nombre debe completarse</p>";
+	}
+	//validación de la fecha de nacimiento
+	if ($voluntario["fechaNacimiento"]=="") {
+		$errores[] = "<p>La fecha de nacimiento debe completarse</p>";
+	}
+	//validación del email
+	if($voluntario["email"]==""){ 
+		$errores[] = "<p>El email debe completarse</p>";
+	}else if(!filter_var($voluntario["email"], FILTER_VALIDATE_EMAIL)){
+		$errores[] = "<p>El email es incorrecto: " . $voluntario["email"]. "</p>";
+	}
+	//validación del número de teléfono
+	if ($voluntario["telefono"]=="") {
+		$errores[] = "<p>El número de teléfono debe completarse</p>";
+	}elseif (!preg_match("/^[0-9]{9}$/", $voluntario["telefono"])) {
+		$errores[] = "<p>El telefono debe contener 9 números: ". $voluntario["telefono"] ."</p>";
+	}
+}
