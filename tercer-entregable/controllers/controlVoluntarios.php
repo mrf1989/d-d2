@@ -28,9 +28,16 @@ elseif ($_REQUEST["submit"]=="insert") {
     $nuevoVoluntario["cp"] = $_REQUEST["cp"];
 
     $conexion = crearConexionBD();
-    getInsertarVoluntario($conexion, $nuevoVoluntario);
-    cerrarConexionBD($conexion);
-    Header("Location: ../voluntarios.php");
+    $errores = validarAltaVoluntario($nuevoVoluntario);
+    if (count($errores) > 0) {
+        $_SESSION["errores"] = $errores;
+        Header("Location: nuevoVoluntario.php");
+    } else {
+        getInsertarVoluntario($conexion, $nuevoVoluntario);
+        cerrarConexionBD($conexion);
+        Header("Location: ../voluntarios.php");
+    }
+    
 }
 elseif ($_REQUEST["submit"]=="edit") {
 	$voluntario["nombre"] = $_REQUEST["nombre"];
@@ -45,8 +52,14 @@ elseif ($_REQUEST["submit"]=="edit") {
     $voluntario["cp"] = $_REQUEST["cp"];
 
     $conexion = crearConexionBD();
-    getActualizarVoluntario($conexion, $voluntario);
-    cerrarConexionBD($conexion);
-    Header("Location: ../perfilVoluntario.php?oid_vol=" . $_REQUEST["oid_vol"]);
+    $errores = validarAltaVoluntario($voluntario);
+    if (count($errores) > 0) {
+        $_SESSION["errores"] = $errores;
+        Header("Location: nuevoVoluntario.php");
+    } else {
+        getActualizarVoluntario($conexion, $voluntario);
+        cerrarConexionBD($conexion);
+        Header("Location: ../perfilVoluntario.php?oid_vol=" . $_REQUEST["oid_vol"]);
+    }
 }
 ?>
