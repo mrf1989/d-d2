@@ -22,9 +22,15 @@ if ($_REQUEST["submit"] == "insert") {
     $nuevoTutor["cp"] = $_REQUEST["cp"];
 
     $conexion = crearConexionBD();
-    insertarTutor($conexion, $nuevoTutor);
-    cerrarConexionBD($conexion);
-    Header("Location: ../tutores.php");
+    $errores = validarAltaTutor($nuevoTutor);
+    if (count($errores) > 0) {
+        $_SESSION["errores"] = $errores;
+        Header("Location: ../nuevoTutor.php");
+    } else {
+        insertarTutor($conexion, $nuevoTutor);
+        cerrarConexionBD($conexion);
+        Header("Location: ../tutores.php");
+    }
 } else if ($_REQUEST["submit"] == 'delete') {
     $conexion = crearConexionBD();
     eliminarTutor($conexion, $_REQUEST["dni"]);
@@ -43,9 +49,15 @@ if ($_REQUEST["submit"] == "insert") {
     $tutor["cp"] = $_REQUEST["cp"];
 
     $conexion = crearConexionBD();
-    actualizarTutor($conexion, $tutor);
-    cerrarConexionBD($conexion);
-    Header("Location: ../perfilTutor.php?oid_tut=" . $_REQUEST["oid_tut"]);
+    $errores = validarAltaTutor($Tutor);
+    if (count($errores) > 0) {
+        $_SESSION["errores"] = $errores;
+        Header("Location: ../nuevoTutor.php");
+    } else {
+        actualizarTutor($conexion, $tutor);
+        cerrarConexionBD($conexion);
+        Header("Location: ../perfilTutor.php?oid_tut=" . $_REQUEST["oid_tut"]);
+    }
 }
 
 /*

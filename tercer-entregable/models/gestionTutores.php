@@ -97,4 +97,38 @@ function eliminarTutor($conexion, $dni) {
     }
 }
 
+function validarAltaTutor($tutor){
+    //validación del dni
+    if($tutor["dni"]==""){
+        $errores[] = "<p>El DNI debe completarse</p>";
+    }else if(!preg_match("/^[0-9]{8}[A-Z]$/", $tutor["dni"])){
+        $errores[] = "<p>El DNI debe contener 8 números y una letra mayúscula: " . $tutor["dni"] . "</p>";
+    }
+    //validación del nombre
+    if ($tutor["nombre"]=="") {
+        $errores[] = "<p>El nombre debe completarse</p>";
+    }
+    //validación de la fecha de nacimiento
+    if ($tutor["fechaNacimiento"]=="") {
+        $errores[] = "<p>La fecha de nacimiento debe completarse</p>";
+    }
+    //validación del email
+    if($tutor["email"]==""){ 
+        $errores[] = "<p>El email debe completarse</p>";
+    }else if(!filter_var($tutor["email"], FILTER_VALIDATE_EMAIL)){
+        $tutor[] = "<p>El email es incorrecto: " . $tutor["email"]. "</p>";
+    }
+    //validación del número de teléfono
+    if ($tutor["telefono"]=="") {
+        $errores[] = "<p>El número de teléfono debe completarse</p>";
+    }elseif (!preg_match("/^[0-9]{9}$/", $tutor["telefono"])) {
+        $errores[] = "<p>El telefono debe contener 9 números: ". $tutor["telefono"] ."</p>";
+    }
+     //validación del código postal
+    if (!preg_match("/^[0-9]{5}$/", $tutor["cp"])) {
+        $errores[] = "<p>El código postal debe contener 5 números: ". $tutor["cp"] ."</p>";
+    }
+    return $errores;
+}
+
 ?>
