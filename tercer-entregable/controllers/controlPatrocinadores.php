@@ -20,9 +20,15 @@ if ($_REQUEST["submit"] == "insert") {
     $nuevoPatrocinador["cp"] = $_REQUEST["cp"];
 
     $conexion = crearConexionBD();
-    insertarPatrocinador($conexion, $nuevoPatrocinador);
-    cerrarConexionBD($conexion);
-    Header("Location: ../patrocinadores.php");
+    $errores= validarAltaPatrocinador($nuevoPatrocinador);
+    if (count($errores) > 0) {
+        $_SESSION["errores"] = $errores;
+        Header("Location: ../nuevoPatrocinador.php");
+    }else{
+        insertarPatrocinador($conexion, $nuevoPatrocinador);
+        cerrarConexionBD($conexion);
+        Header("Location: ../patrocinadores.php");
+    }
 } else if ($_REQUEST["submit"] == 'delete') {
     $conexion = crearConexionBD();
     eliminarPatrocinador($conexion, $_REQUEST["cif"]);
@@ -39,19 +45,14 @@ if ($_REQUEST["submit"] == "insert") {
     $patrocinador["cp"] = $_REQUEST["cp"];
 
     $conexion = crearConexionBD();
-    actualizarPatrocinador($conexion, $patrocinador);
-    cerrarConexionBD($conexion);
-    Header("Location: ../perfilPatrocinador.php?cif=" . $_REQUEST["cif"]);
+    $errores= validarAltaPatrocinador($patrocinador);
+    if (count($errores) > 0) {
+        $_SESSION["errores"] = $errores;
+        Header("Location: ../nuevoPatrocinador.php");
+    }else{
+        actualizarPatrocinador($conexion, $patrocinador);
+        cerrarConexionBD($conexion);
+        Header("Location: ../perfilPatrocinador.php?cif=" . $_REQUEST["cif"]);
+    }
 }
-
-/*
-$errores = validarAltaPatrocinador($nuevoPatrocinador);
-
-if (count($errores) > 0) {
-    $_SESSION["errores"] = $errores;
-    Header("Location: nuevoPatrocinador.php");
-} else {
-    // todo OK, accion de inserción
-}
-*/
 ?>

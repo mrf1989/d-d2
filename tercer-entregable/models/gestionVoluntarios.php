@@ -122,4 +122,10 @@ function validarAltaVoluntario($voluntario){
 	}elseif (!preg_match("/^[0-9]{9}$/", $voluntario["telefono"])) {
 		$errores[] = "<p>El telefono debe contener 9 números: ". $voluntario["telefono"] ."</p>";
 	}
+	 //validación del código postal
+    if (!preg_match("/^[0-9]{5}$/", $voluntario["cp"])) {
+        $errores[] = "<p>El código postal debe contener 5 números: ". $voluntario["cp"] ."</p>";
+    }
+	return $errores;
 }
+?>

@@ -78,4 +78,33 @@ function eliminarPatrocinador($conexion, $cif) {
         Header("Location: ../excepcion.php");
     }
 }
+function validarAltaPatrocinador($patrocinador){
+    //validación del dni
+    if($patrocinador["cif"]==""){
+        $errores[] = "<p>El CIF debe completarse</p>";
+    }else if(!preg_match("/^[A-Z][0-9]{8}$/", $patrocinador["cif"])){
+        $errores[] = "<p>El CIF debe contener una letra mayúscula y 8 números: " . $patrocinador["cif"] . "</p>";
+    }
+    //validación del nombre
+    if ($patrocinador["nombre"]=="") {
+        $errores[] = "<p>El nombre debe completarse</p>";
+    }
+    //validación del email
+    if($patrocinador["email"]==""){ 
+        $errores[] = "<p>El email debe completarse</p>";
+    }else if(!filter_var($patrocinador["email"], FILTER_VALIDATE_EMAIL)){
+        $errores[] = "<p>El email es incorrecto: " . $patrocinador["email"]. "</p>";
+    }
+    //validación del número de teléfono
+    if ($patrocinador["telefono"]=="") {
+        $errores[] = "<p>El número de teléfono debe completarse</p>";
+    }elseif (!preg_match("/^[0-9]{9}$/", $patrocinador["telefono"])) {
+        $errores[] = "<p>El telefono debe contener 9 números: ". $patrocinador["telefono"] ."</p>";
+    }
+    //validación del código postal
+    if (!preg_match("/^[0-9]{5}$/", $patrocinador["cp"])){
+        $errores[] = "<p>El código postal debe contener 5 números: ". $patrocinador["cp"] ."</p>";
+    }
+    return $errores;
+}
 ?>
