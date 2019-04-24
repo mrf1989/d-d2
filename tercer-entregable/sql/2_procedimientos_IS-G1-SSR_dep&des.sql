@@ -280,12 +280,30 @@ CREATE OR REPLACE PROCEDURE Registrar_Proyecto (w_dni IN PERSONAS.dni%TYPE, w_no
     w_OID_Coord INTEGER;
     w_OID_Proj INTEGER;
 BEGIN
+    SELECT OID_Coord INTO w_OID_Coord FROM COORDINADORES WHERE dni=w_dni;
     INSERT INTO PROYECTOS(nombre, ubicacion, esEvento, esProgDep) VALUES (w_nombre, w_ubicacion, w_esEvento, w_esProgDep);
     w_OID_Proj := SEC_Proj.CURRVAL;
-    w_OID_Coord := SEC_Coord.CURRVAL;
     INSERT INTO ENCARGADOS(OID_Proj, OID_Coord) VALUES (w_OID_Proj, w_OID_Coord);
     COMMIT WORK;
 END Registrar_Proyecto;
+/
+
+-- Actualizar PROYECTO en el sistema de información
+CREATE OR REPLACE PROCEDURE Act_Proyecto (w_OID_Proj IN PROYECTOS.OID_Proj%TYPE, w_nombre IN PROYECTOS.nombre%TYPE,
+    w_ubicacion IN PROYECTOS.ubicacion%TYPE, w_esEvento IN PROYECTOS.esEvento%TYPE, w_esProgDep IN PROYECTOS.esProgDep%TYPE) IS
+BEGIN
+    UPDATE PROYECTOS SET nombre=w_nombre, ubicacion=w_ubicacion, esevento=w_esEvento, esprogdep=esProgDep
+    WHERE OID_Proj=w_OID_Proj;
+    COMMIT WORK;
+END Act_Proyecto;
+/
+
+-- Eliminar PROYECTO en el sistema de información
+CREATE OR REPLACE PROCEDURE Eliminar_Proyecto (w_OID_Proj IN PROYECTOS.OID_Proj%TYPE) IS
+BEGIN
+    DELETE FROM PROYECTOS WHERE OID_Proj=w_OID_Proj;
+    COMMIT WORK;
+END Eliminar_Proyecto;
 /
 
 -- AÑADIR ACTIVIDAD a PROYECTO en el sistema de información
@@ -299,6 +317,18 @@ BEGIN
     VALUES (w_OID_Proj, w_nombre, w_objetivo, w_fechaInicio, w_fechaFin, w_numeroPlazas, 0, w_tipo, w_costeTotal, w_costeInscripcion);
     COMMIT WORK;
 END Add_Actividad;
+/
+
+-- Actualizar ACTIVIDAD en el sistema de información
+CREATE OR REPLACE PROCEDURE Act_Actividad (w_OID_Act IN ACTIVIDADES.OID_Act%TYPE, w_nombre IN ACTIVIDADES.nombre%TYPE,
+    w_objetivo IN ACTIVIDADES.objetivo%TYPE, w_fechaInicio IN ACTIVIDADES.fechaInicio%TYPE, w_fechaFin IN ACTIVIDADES.fechaFin%TYPE,
+    w_numeroPlazas IN ACTIVIDADES.numeroPlazas%TYPE, w_tipo IN ACTIVIDADES.tipo%TYPE, w_costeTotal IN ACTIVIDADES.costeTotal%TYPE)IS
+BEGIN
+    UPDATE ACTIVIDADES SET nombre=w_nombre, objetivo=w_objetivo, fechainicio=w_fechainicio, fechafin=w_fechafin,
+        numeroplazas=w_numeroplazas, tipo=w_tipo, costetotal=w_costetotal
+    WHERE OID_Act=w_OID_Act;
+    COMMIT WORK;
+END Act_Actividad;
 /
 
 -------------------------------------------------------------------------------

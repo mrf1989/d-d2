@@ -60,7 +60,7 @@ include_once("includes/head.php");
                     <?php } ?>
                 <?php } ?>
                     </div>
-                    <form method="get">
+                    <form method="GET">
                         <input type="hidden" id="pag_num" name="pag_num" value="<?php echo $pag_selected; ?>" />
                         Mostrando
                         <input type="number" id="pag_size" name="pag_size" min="1" max="<?php echo $total_registros; ?>" value="<?php echo $pag_size; ?>" autofocus="autofocus" /> entradas de un total de <?php echo $total_registros ?>
