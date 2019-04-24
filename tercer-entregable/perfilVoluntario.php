@@ -3,6 +3,7 @@ session_start();
 
 require_once("models/gestionVoluntarios.php");
 require_once("models/gestionBD.php");
+require_once("includes/functions.php");
 
 if(!$_SESSION["admin"]){
 	header("Location: index.php");
