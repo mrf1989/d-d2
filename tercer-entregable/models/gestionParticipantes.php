@@ -16,6 +16,17 @@ function getAllParticipantes() {
     return $query;
 }
 
+function searchParticipantes($conexion, $str) {
+    $participantes = getParticipantes($conexion);
+    $res = "";
+    foreach ($participantes as $part) {
+        if (strpos(strtolower($part["APELLIDOS"]), $str) !== false) {
+            $res[] = $part;
+        }
+    }
+    return $res;
+}
+
 function getParticipante($conexion, $oid_part) {
     try {
         $consulta = "SELECT * FROM PARTICIPANTES PART LEFT JOIN PERSONAS PER ON PART.DNI = PER.DNI WHERE PART.OID_PART =:oid_part";

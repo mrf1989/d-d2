@@ -11,6 +11,17 @@ function getVoluntarios($conexion){
 	}
 }
 
+function searchVoluntarios($conexion, $str) {
+    $voluntarios = getVoluntarios($conexion);
+    $res = "";
+    foreach ($voluntarios as $vol) {
+        if (strpos(strtolower($vol["APELLIDOS"]), $str) !== false) {
+            $res[] = $vol;
+        }
+    }
+    return $res;
+}
+
 function getVoluntario($conexion, $oid_vol){
 	try{
 		$consulta= "SELECT * FROM VOLUNTARIOS VOL LEFT JOIN PERSONAS PER ON VOL.DNI = PER.DNI WHERE VOL.OID_VOL= :oid_vol";

@@ -51,3 +51,5 @@ if ($_REQUEST["submit"] == "insert") {
         Header("Location: ../excepcion.php");
     }
 }
+
+?>
