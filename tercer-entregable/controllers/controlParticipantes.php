@@ -24,9 +24,15 @@ if ($_REQUEST["submit"] == "insert") {
     $nuevoParticipante["tutor"] = $_REQUEST["tutor"];
 
     $conexion = crearConexionBD();
-    insertarParticipante($conexion, $nuevoParticipante);
-    cerrarConexionBD($conexion);
-    Header("Location: ../participantes.php");
+    $errores= validarAltaParticipante($nuevoParticipante);
+    if (count($errores)>0) {
+        $_SESSION["errores"] = $errores;
+        Header("Location: ../nuevoParticipante.php");
+    }else{
+        insertarParticipante($conexion, $nuevoParticipante);
+        cerrarConexionBD($conexion);
+        Header("Location: ../participantes.php");
+    }
 } else if ($_REQUEST["submit"] == 'delete') {
     $conexion = crearConexionBD();
     eliminarParticipante($conexion, $_REQUEST["dni"]);
@@ -45,9 +51,15 @@ if ($_REQUEST["submit"] == "insert") {
     $participante["cp"] = $_REQUEST["cp"];
 
     $conexion = crearConexionBD();
-    actualizarParticipante($conexion, $participante);
-    cerrarConexionBD($conexion);
-    Header("Location: ../perfilParticipante.php?oid_part=" . $_REQUEST["oid_part"]);
+    $errores= validarAltaParticipante($participante);
+    if (count($errores)>0) {
+        $_SESSION["errores"]=$errores;
+        Header("Location: ../nuevoParticipante.php");
+    }else{
+        actualizarParticipante($conexion, $participante);
+        cerrarConexionBD($conexion);
+        Header("Location: ../perfilParticipante.php?oid_part=" . $_REQUEST["oid_part"]);
+    }
 } else if ($_REQUEST["submit"] == 'informe') {
     $inf["oid_part"] = $_REQUEST["oid_part"];
     $inf["descripcion"] = $_REQUEST["descripcion"];
@@ -67,7 +79,7 @@ if ($_REQUEST["submit"] == "insert") {
     cerrarConexionBD($conexion);
     Header("Location: ../perfilParticipante.php?oid_part=" . $_REQUEST["oid_part"]);
 }
-
+   
 /*
 $errores = validarAltaParticipante($nuevoParticipante);
 
