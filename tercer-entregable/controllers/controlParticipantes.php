@@ -54,7 +54,7 @@ if ($_REQUEST["submit"] == "insert") {
     $errores= validarAltaParticipante($participante);
     if (count($errores)>0) {
         $_SESSION["errores"]=$errores;
-        Header("Location: ../nuevoParticipante.php");
+        Header("Location: ../nuevoParticipante.php?edit=true&oid_part=" . $_REQUEST["oid_part"]);
     }else{
         actualizarParticipante($conexion, $participante);
         cerrarConexionBD($conexion);

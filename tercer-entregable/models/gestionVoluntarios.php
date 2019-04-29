@@ -117,6 +117,10 @@ function validarAltaVoluntario($voluntario){
 	if ($voluntario["nombre"]=="") {
 		$errores[] = "<p>El nombre debe completarse</p>";
 	}
+	//validación de los apellidos
+	if ($voluntario["apellidos"]=="") {
+		$errores[] = "<p>Los apellidos deben completarse</p>";
+	}
 	//validación de la fecha de nacimiento
 	if ($voluntario["fechaNacimiento"]=="") {
 		$errores[] = "<p>La fecha de nacimiento debe completarse</p>";

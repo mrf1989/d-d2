@@ -178,4 +178,50 @@ function actualizarRecibo($conexion, $rec) {
     }
 }
 
+function validarAltaParticipante($participante){
+	//validación del dni
+	if($participante["dni"]==""){
+		$errores[] = "<p>El DNI debe completarse</p>";
+	}else if(!preg_match("/^[0-9]{8}[A-Z]$/", $participante["dni"])){
+		$errores[] = "<p>El DNI debe contener 8 números y una letra mayúscula: " . $participante["dni"] . "</p>";
+	}
+	//validación del nombre
+	if ($participante["nombre"]=="") {
+		$errores[] = "<p>El nombre debe completarse</p>";
+    }
+    //validación de los apellidos
+	if ($participante["apellidos"]=="") {
+		$errores[] = "<p>Los apellidos deben completarse</p>";
+    }
+    //validación del grado de discapacidad
+	// if ($participante["discapacidad"]=="") {
+    //     $errores[] = "<p>El grado de discapacidad debe completarse</p>";
+    // }else if(!preg_match("/^[0],[0-9]{2}$/", $participante["discapacidad"])){
+	// 	$errores[] = "<p>El grado de discapacidad debe ser un número decimal entre 0 y 1: " . $participante["discapacidad"] . "</p>";
+	// }
+	//validación de la fecha de nacimiento
+	if ($participante["fechaNacimiento"]=="") {
+		$errores[] = "<p>La fecha de nacimiento debe completarse</p>";
+	}
+	//validación del email
+	if ($participante["email"] != "") {
+        if(!filter_var($participante["email"], FILTER_VALIDATE_EMAIL)){
+		$errores[] = "<p>El email es incorrecto: " . $participante["email"]. "</p>";
+	    }
+    }
+        
+	//validación del número de teléfono
+	if ($participante["telefono"]=="") {
+		$errores[] = "<p>El número de teléfono debe completarse</p>";
+	}elseif (!preg_match("/^[0-9]{9}$/", $participante["telefono"])) {
+		$errores[] = "<p>El telefono debe contener 9 números: ". $participante["telefono"] ."</p>";
+	}
+	 //validación del código postal
+    if (!preg_match("/^[0-9]{5}$/", $participante["cp"])) {
+        $errores[] = "<p>El código postal debe contener 5 números: ". $participante["cp"] ."</p>";
+    }
+	return $errores;
+}
+
+
 ?>

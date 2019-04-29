@@ -50,6 +50,15 @@ include_once("includes/head.php");
     <main class="container">
         <div class="content">
             <div class="content__module">
+                <?php 
+                    // Mostrar los erroes de validación (Si los hay)
+                    if (isset($errores) && count($errores)>0) { ?>
+                    <div id="div_errores" class="content__error">
+                    <h4> Errores en el formulario:</h4>
+                    <?php foreach($errores as $error) echo $error; ?>
+                    </div>
+                <?php }
+                ?>
                 <div class="module-title">
                     <!-- Si vista de edición, muestra Editar participante, si no, Nuevo participante -->
                     <h1><?php echo isset($_GET["edit"]) ? "Editar" : "Nuevo" ?> participante</h1>
