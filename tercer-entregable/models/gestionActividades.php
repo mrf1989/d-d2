@@ -88,4 +88,18 @@ function inscribirVoluntario($conexion, $inscripcion) {
     }
 }
 
+function addPatrocinio($conexion, $patrocinio) {
+    try {
+        $stmt = $conexion->prepare("CALL ADD_PATROCINIO(:cif, :oid_act, :cantidad)");
+        $stmt->bindParam(':cif', $patrocinio["cif"]);
+        $stmt->bindParam(':oid_act', $patrocinio["oid_act"]);
+        $stmt->bindParam(':cantidad', $patrocinio["cantidad"]);
+        $stmt->execute();
+        return true;
+    } catch (PDOException $e) {
+        $_SESSION["excepcion"] = $e->getMessage();
+        Header("Location: ../execepion.php");
+    }
+}
+
 ?>
