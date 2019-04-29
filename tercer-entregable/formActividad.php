@@ -49,9 +49,7 @@ include_once("includes/head.php");
                         <legend>Datos de la actividad</legend>
                         <!-- TODO mostrar errores de validación -->
                         <form action="controllers/controlActividad.php" method="POST">
-                        <?php if (!$_GET["edit"]) { ?>
                             <input type="hidden" name="oid_proj" value="<?php echo $_REQUEST["oid_proj"] ?>">
-                        <?php } ?>
                             <input type="hidden" name="oid_act" value="<?php echo $actividad["OID_ACT"] ?>">
                             <div class="form-row">
                                 <input type="text" name="nombre" value="<?php echo $actividad["NOMBRE"] ?>" placeholder="Nombre de la actividad" autofocus="autofocus" />
