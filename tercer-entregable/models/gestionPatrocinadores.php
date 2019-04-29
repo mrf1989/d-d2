@@ -16,6 +16,17 @@ function getAllPatrocinadores() {
     return $query;
 }
 
+function searchPatrocinadores($conexion, $str) {
+    $patrocinadores = getPatrocinadores($conexion);
+    $res = "";
+    foreach ($patrocinadores as $patr) {
+        if (strpos(strtolower($patr["NOMBRE"]), $str) !== false) {
+            $res[] = $patr;
+        }
+    }
+    return $res;
+}
+
 function getPatrocinador($conexion, $cif) {
     try {
         $consulta = "SELECT * FROM INSTITUCIONES WHERE espatrocinador = 1 AND CIF =:cif";

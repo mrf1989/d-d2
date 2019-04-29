@@ -127,7 +127,7 @@ include_once("includes/head.php");
                 <div class="col-12 col-tab-12">
                     <div class="module-title">
                         <h2>Patrocinios</h2>
-                        <a class="btn primary" href="formInscripcion.php">Añadir patrocinio</a>
+                        <a class="btn primary" href="formPatrocinio.php?oid_act=<?php echo $actividad["OID_ACT"] ?>">Añadir patrocinio</a>
                     </div>
                 <?php if (count($patrocinios) > 0) { ?>
                     <table class="tab horizontal">
