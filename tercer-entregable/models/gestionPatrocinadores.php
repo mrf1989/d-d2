@@ -113,9 +113,11 @@ function validarAltaPatrocinador($patrocinador){
         $errores[] = "<p>El telefono debe contener 9 números: ". $patrocinador["telefono"] ."</p>";
     }
     //validación del código postal
-    if (!preg_match("/^[0-9]{5}$/", $patrocinador["cp"])){
-        $errores[] = "<p>El código postal debe contener 5 números: ". $patrocinador["cp"] ."</p>";
-    }
+    if ($participante["cp"] != "") {
+		if (!preg_match("/^[0-9]{5}$/", $participante["cp"])) {
+        $errores[] = "<p>El código postal debe contener 5 números: ". $participante["cp"] ."</p>";
+    	}
+	}
     return $errores;
 }
 ?>
