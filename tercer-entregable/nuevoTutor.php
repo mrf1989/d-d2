@@ -64,7 +64,7 @@ include_once("includes/head.php");
                         <?php } ?>
                             <div class="form-row">
                                 <input type="text" name="nombre" value="<?php echo $tutor["NOMBRE"] ?>" placeholder="Nombre" autofocus="autofocus" required />
-                                <input type="text" name="apellidos" value="<?php echo $tutor["APELLIDOS"] ?>" placeholder="Apellidos" />
+                                <input type="text" name="apellidos" value="<?php echo $tutor["APELLIDOS"] ?>" placeholder="Apellidos" required/>
                                 <input type="text" name="dni" value="<?php echo $tutor["DNI"] ?>" placeholder="DNI" pattern="^[0-9]{8}[A-Z]" <?php if (isset($_GET["edit"])) echo "readonly" ?> required>
                             </div>
                             <div class="form-row">

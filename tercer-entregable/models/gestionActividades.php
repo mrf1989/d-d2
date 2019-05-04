@@ -71,7 +71,7 @@ function inscribirParticipante($conexion, $inscripcion) {
         return true;
     } catch (PDOException $e) {
         $_SESSION["excepcion"] = $e->getMessage();
-        Header("Location: ../execepion.php");
+        Header("Location: ../excepcion.php");
     }
 }
 
@@ -84,7 +84,7 @@ function inscribirVoluntario($conexion, $inscripcion) {
         return true;
     } catch (PDOException $e) {
         $_SESSION["excepcion"] = $e->getMessage();
-        Header("Location: ../execepion.php");
+        Header("Location: ../excepcion.php");
     }
 }
 
@@ -98,8 +98,29 @@ function addPatrocinio($conexion, $patrocinio) {
         return true;
     } catch (PDOException $e) {
         $_SESSION["excepcion"] = $e->getMessage();
-        Header("Location: ../execepion.php");
+        Header("Location: ../excepcion.php");
     }
 }
 
+function getColaboradores($conexion, $oid_act){
+    try {
+        $consulta = "SELECT DNI FROM VOLUNTARIOS VOL JOIN COLABORACIONES COLA ON vol.oid_vol=COLA.oid_vol where oid_act =: oid_act";
+        $stmt = $conexion->query($consulta);
+        return $stmt;
+    } catch (PDOException $e) {
+        $_SESSION["excepcion"] = $e->getMessage();
+        Header("Location: ../excepcion.php");
+    }
+}
+
+function validarVoluntariado($inscripcion, $colaboradores){
+    if(count($colaboradores) > 0){
+        foreach ($colaboradores as $cola) {
+            if($inscripcion["dni"] == $cola){
+                $errores[] = "<p>El voluntario ya está inscrito</p>";
+            }
+        }
+    }
+    return $errores;
+}
 ?>
