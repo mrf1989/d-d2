@@ -52,7 +52,7 @@ if ($_REQUEST["submit"] == "insert") {
 
 
     $conexion = crearConexionBD();
-    $errores= validarAltaParticipante($participante);
+    $errores = validarAltaParticipante($participante);
     if (count($errores)>0) {
         $_SESSION["errores"]=$errores;
         Header("Location: ../nuevoParticipante.php?edit=true&oid_part=" . $_REQUEST["oid_part"]);
@@ -66,9 +66,17 @@ if ($_REQUEST["submit"] == "insert") {
     $inf["descripcion"] = $_REQUEST["descripcion"];
 
     $conexion = crearConexionBD();
-    insertarInforme($conexion, $inf);
-    cerrarConexionBD($conexion);
-    Header("Location: ../perfilParticipante.php?oid_part=" . $inf["oid_part"]);
+    $errores = validarAltaInforme($inf);
+    if (count($errores)>0) {
+        $_SESSION["errores"]=$errores;
+        Header("Location: ../nuevoInforme.php?oid_part=" . $_REQUEST["oid_part"]);
+    }else{
+        insertarInforme($conexion, $inf);
+        cerrarConexionBD($conexion);
+        Header("Location: ../perfilParticipante.php?oid_part=" . $_REQUEST["oid_part"]);
+    }
+
+    
 } else if ($_REQUEST["submit"] == 'recibo') {
     $rec["oid_rec"] = $_REQUEST["oid_rec"];
     $rec["vencimiento"] = $_REQUEST["vencimiento"];
@@ -76,19 +84,19 @@ if ($_REQUEST["submit"] == "insert") {
     $rec["estado"] = $_REQUEST["estado"];
 
     $conexion = crearConexionBD();
-    actualizarRecibo($conexion, $rec);
-    cerrarConexionBD($conexion);
-    Header("Location: ../perfilParticipante.php?oid_part=" . $_REQUEST["oid_part"]);
+    $errores = validarAltaRecibo($rec);
+    if (count($errores)>0) {
+        $_SESSION["errores"]=$errores;
+    Header("Location: ../actualizarRecibo.php?oid_part=" . $_REQUEST["oid_part"] . "&oid_rec=" . $_REQUEST["oid_rec"]);
+    }else{ 
+        actualizarRecibo($conexion, $rec);
+        cerrarConexionBD($conexion);
+        Header("Location: ../perfilParticipante.php?oid_part=" . $_REQUEST["oid_part"]);
+    }
+
+
+    
 }
    
-/*
-$errores = validarAltaParticipante($nuevoParticipante);
 
-if (count($errores) > 0) {
-    $_SESSION["errores"] = $errores;
-    Header("Location: nuevoParticipante.php");
-} else {
-    // todo OK, accion de inserción
-}
-*/
 ?>

@@ -158,7 +158,7 @@ function insertarInforme($conexion, $inf) {
         $stmt->execute();
         return true;
     } catch (PDOException $e) {
-        $_SESSION["excepcion"] = $e->GetMessega();
+        $_SESSION["excepcion"] = $e->GetMessage();
         Header("Location: ../excepcion.php");
     }
 }
@@ -173,7 +173,7 @@ function actualizarRecibo($conexion, $rec) {
         $stmt->execute();
         return true;
     } catch (PDOException $e) {
-        $_SESSION["excepcion"] = $e->GetMessega();
+        $_SESSION["excepcion"] = $e->GetMessage();
         Header("Location: ../excepcion.php");
     }
 }
@@ -201,7 +201,6 @@ function validarAltaParticipante($participante){
 		    $errores[] = "<p>El grado de discapacidad debe ser un número decimal entre 0 y 1: " . $participante["discapacidad"] . "</p>";
 	    }
     }
-	
 	//validación de la fecha de nacimiento
 	if ($participante["fechaNacimiento"]=="") {
 		$errores[] = "<p>La fecha de nacimiento debe completarse</p>";
@@ -227,5 +226,26 @@ function validarAltaParticipante($participante){
 	return $errores;
 }
 
+function validarAltaInforme($inf) {
+
+    //validación de la descripción
+    if ($inf["descripcion"]=="") {
+		$errores[] = "<p>La descripción debe completarse</p>";
+    }
+    //validación del oid del participante
+    // if ($inf["oid_part"]=="") {
+	// 	$errores[] = "<p>El participante no existe</p>";
+    // }
+
+    return $errores;
+}
+
+function validarAltaRecibo($rec) {
+    
+    //validación del estado del recibo
+    if ($rec["estado"] != "pagado" && $rec["estado"] != "pendiente" && $rec["estado"] != "anulado") {
+        $errores[] = "<p>El estado del recibo debe ser \"pagado\", \"pendiente\" o \"anulado\"</p>";
+    }
+}
 
 ?>
