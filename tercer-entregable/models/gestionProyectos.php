@@ -125,5 +125,20 @@ function actualizarActividad($conexion, $actividad) {
         Header("Location: ../execepion.php");
     }
 }
+function validarAltaProyecto($proyecto){
+    //validación del nombre
+    if ($proyecto["nombre"]=="") {
+        $errores[] = "<p>El nombre del proyecto debe completarse</p>";
+    }
+    //validación de la localización
+    if($proyecto["ubicacion"]==""){
+        $errores[] = "<p>La ubicación debe completarse</p>";
+    }
+    //Validación del tipo
+    if($proyecto["esevento"] == 0 && $proyecto["esprogdep"] == 0){
+        $errores[] = "<p>El tipo debe completarse correctamente, es obligatorio seleccionar o evento o programa deportivo.</p>";
+    }
+    return $errores;
+}
 
 ?>
