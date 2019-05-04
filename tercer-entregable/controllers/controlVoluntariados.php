@@ -13,8 +13,17 @@ if ($_REQUEST["submit"]) {
     $inscripcion["oid_act"] = $_REQUEST["oid_act"];
 
     $conexion = crearConexionBD();
-    inscribirVoluntario($conexion, $inscripcion);
-    cerrarConexionBD($conexion);
+    $colaboradores = getColaboradores($conexion, $_REQUEST["oid_act"]);
+    $errores = validarVoluntariado($inscripcion, $colaboradores);
+    if ($errores > 0) {
+    	$_SESSION["errores"] = $errores;
+    	Header("Location: ../formVoluntariado.php?oid_act=" . $_REQUEST["oid_act"]);
+    } else {
+    	inscribirVoluntario($conexion, $inscripcion);
+    	cerrarConexionBD($conexion);
+        Header("Location: ../perfilActividad.php?oid_act=" . $_REQUEST["oid_act"]);
+    }
+    
 }
 
 Header("Location: ../perfilActividad.php?oid_act=" . $inscripcion["oid_act"]);

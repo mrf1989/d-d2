@@ -49,10 +49,10 @@ if ($_REQUEST["submit"] == "insert") {
     $tutor["cp"] = $_REQUEST["cp"];
 
     $conexion = crearConexionBD();
-    $errores = validarAltaTutor($Tutor);
+    $errores = validarAltaTutor($tutor);
     if (count($errores) > 0) {
         $_SESSION["errores"] = $errores;
-        Header("Location: ../nuevoTutor.php");
+        Header("Location: ../nuevoTutor.php?edit=true&oid_tut=" . $_REQUEST["oid_tut"]);
     } else {
         actualizarTutor($conexion, $tutor);
         cerrarConexionBD($conexion);

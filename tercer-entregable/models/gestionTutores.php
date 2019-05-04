@@ -108,6 +108,10 @@ function validarAltaTutor($tutor){
     if ($tutor["nombre"]=="") {
         $errores[] = "<p>El nombre debe completarse</p>";
     }
+    //validación de apellidos
+   if ($tutor["apellidos"]=="") {
+        $errores[] = "<p>Los apellidos deben completarse</p>";
+    }
     //validación de la fecha de nacimiento
     if ($tutor["fechaNacimiento"]=="") {
         $errores[] = "<p>La fecha de nacimiento debe completarse</p>";

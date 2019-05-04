@@ -41,7 +41,7 @@ include_once("includes/head.php");
                             <div class="row">
                                 <div class="col-6 col-tab-12">
                                     <div class="form-row">
-                                        <input type="text" name="search" id="search" placeholder="Apellidos..." autofocus="autofocus" autocomplete="off">
+                                        <input type="text" name="search" id="search" placeholder="Apellidos..." autofocus="autofocus" autocomplete="off" required>
                                         <input type="hidden" name="oid_act" value="<?php echo $_GET["oid_act"] ?>">
                                     </div>
                                     <div class="form-row">
