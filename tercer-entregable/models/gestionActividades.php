@@ -37,8 +37,8 @@ function getInscripciones($conexion, $oid_act) {
 }
 
 function getColaboraciones($conexion, $oid_act) {
+    $consulta = "SELECT * FROM PERSONAS P JOIN VOLUNTARIOS VOL ON P.dni=VOL.dni JOIN COLABORACIONES COLAB ON VOL.OID_Vol=COLAB.OID_Vol WHERE COLAB.OID_Act=:oid_act";
     try {
-        $consulta = "SELECT * FROM PERSONAS P JOIN VOLUNTARIOS VOL ON P.dni=VOL.dni JOIN COLABORACIONES COLAB ON VOL.OID_Vol=COLAB.OID_Vol WHERE COLAB.OID_Act=:oid_act";
         $stmt = $conexion->prepare($consulta);
         $stmt->bindParam(':oid_act', $oid_act);
         $stmt->execute();
@@ -102,25 +102,43 @@ function addPatrocinio($conexion, $patrocinio) {
     }
 }
 
-function getColaboradores($conexion, $oid_act){
-    try {
-        $consulta = "SELECT DNI FROM VOLUNTARIOS VOL JOIN COLABORACIONES COLA ON vol.oid_vol=COLA.oid_vol where oid_act =: oid_act";
-        $stmt = $conexion->query($consulta);
-        return $stmt;
-    } catch (PDOException $e) {
-        $_SESSION["excepcion"] = $e->getMessage();
-        Header("Location: ../excepcion.php");
-    }
-}
 
-function validarVoluntariado($inscripcion, $colaboradores){
+function validarVoluntariado($colaboracion, $colaboradores){
     if(count($colaboradores) > 0){
-        foreach ($colaboradores as $cola) {
-            if($inscripcion["dni"] == $cola){
-                $errores[] = "<p>El voluntario ya está inscrito</p>";
+        foreach ($colaboradores as $col) {
+            if($colaboracion["dni"] == $col["DNI"]){
+                $errores[] = "<p>El voluntario con dni " . $col["DNI"] ." ya está inscrito</p>";
             }
         }
     }
+
     return $errores;
 }
+
+function validarInscripcion($inscripcion, $inscritos){
+    if(count($inscritos) > 0){
+        foreach ($inscritos as $ins) {
+            if($inscripcion["dni"] == $ins["DNI"]){
+                $errores[] = "<p>El participante con dni " . $ins["DNI"] ." ya está inscrito</p>";
+            }
+        }
+    }
+
+    return $errores;
+}
+
+function validarPatrocinio($patrocinio, $patrocinadores){
+    if(count($patrocinadores) > 0){
+        foreach ($patrocinadores as $pat) {
+            if($patrocinio["cif"] == $pat["CIF"]){
+                $errores[] = "<p>El patrocinador con cif " . $pat["CIF"] ." ya está inscrito</p>";
+            }
+        }
+    }
+    $errores[] = "<p>El patrocinador con cif " . $pat["CIF"] ." ya está inscrito</p>";
+
+    return $errores;
+}
+
+
 ?>

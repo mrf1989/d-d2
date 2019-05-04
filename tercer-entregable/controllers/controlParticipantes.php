@@ -86,7 +86,7 @@ if ($_REQUEST["submit"] == "insert") {
     $errores = validarAltaRecibo($rec);
     if (count($errores)>0) {
         $_SESSION["errores"]=$errores;
-    Header("Location: ../actualizarRecibo.php?oid_part=" . $_REQUEST["oid_part"] . "&oid_rec=" . $_REQUEST["oid_rec"]);
+        Header("Location: ../actualizarRecibo.php?oid_part=" . $_REQUEST["oid_part"] . "&oid_rec=" . $_REQUEST["oid_rec"]);
     }else{ 
         actualizarRecibo($conexion, $rec);
         cerrarConexionBD($conexion);
