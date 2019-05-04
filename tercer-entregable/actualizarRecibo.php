@@ -8,6 +8,12 @@ if (!$_SESSION["admin"] && !isset($_GET["oid_rec"])) {
 include_once("models/gestionBD.php");
 include_once("models/gestionParticipantes.php");
 
+// TODO hay que recoger algo de vuelta de la validacion
+if (isset($_SESSION["errores"])) {
+    $errores = $_SESSION["errores"];
+    unset($_SESSION["errores"]);
+}
+
 $conexion = crearConexionBD();
 $recibo = getRecibo($conexion, $_GET["oid_rec"]);
 cerrarConexionBD($conexion);
@@ -20,6 +26,15 @@ include_once("includes/head.php");
     <?php include_once("includes/header.php"); ?>
     <main class="container">
         <div class="content__module">
+        <?php 
+                    // Mostrar los erroes de validación (Si los hay)
+                    if (isset($errores) && count($errores)>0) { ?>
+                    <div id="div_errores" class="content__error">
+                    <h4> Errores en el formulario:</h4>
+                    <?php foreach($errores as $error) echo $error; ?>
+                    </div>
+                <?php }
+                ?>
             <div class="row">
                 <div class="col-12 col-tab-12">
                     <div class="module-title">
