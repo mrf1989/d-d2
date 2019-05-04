@@ -36,6 +36,15 @@ include_once("includes/head.php");
     <main class="container">
         <div class="content">
             <div class="content__module">
+            	<?php 
+                    // Mostrar los erroes de validación (Si los hay)
+                    if (isset($errores) && count($errores)>0) { ?>
+                    <div id="div_errores" class="content__error">
+                    <h4> Errores en el formulario:</h4>
+                    <?php foreach($errores as $error) echo $error; ?>
+                    </div>
+                <?php }
+                ?>
                 <div class="module-title">
                     <!-- Si vista de edición, muestra Editar proyecto, si no, Nuevo proyecto -->
                     <h1><?php echo isset($_GET["edit"]) ? "Editar" : "Nuevo" ?> proyecto</h1>
@@ -48,8 +57,8 @@ include_once("includes/head.php");
                             <!-- input hidden para le oid_proj que identifica al proyecto a editar -->
                             <input type="hidden" name="oid_proj" value="<?php echo $proyecto["OID_PROJ"] ?>">
                             <div class="form-row">
-                                <input type="text" name="nombre" value="<?php echo $proyecto["NOMBRE"] ?>" placeholder="Nombre del proyecto" autofocus="autofocus" />
-                                <input type="text" name="ubicacion" value="<?php echo $proyecto["UBICACION"] ?>" placeholder="Localización" />
+                                <input type="text" name="nombre" value="<?php echo $proyecto["NOMBRE"] ?>" placeholder="Nombre del proyecto" autofocus="autofocus" required/>
+                                <input type="text" name="ubicacion" value="<?php echo $proyecto["UBICACION"] ?>" placeholder="Localización" required/>
                             </div>
                             <p>Tipo:</p>
                             <div class="form-row">

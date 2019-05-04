@@ -22,9 +22,15 @@ if ($_REQUEST["submit"] == "insert") {
     }
 
     $conexion = crearConexionBD();
-    insertarProyecto($conexion, $nuevoProyecto);
-    cerrarConexionBD($conexion);
-    Header("Location: ../proyectos.php");
+    $errores= validarAltaProyecto($nuevoProyecto);
+    if (count($errores)>0) {
+        $_SESSION["errores"] = $errores;
+        Header("Location: ../formProyecto.php");
+    }else{
+        insertarProyecto($conexion, $nuevoProyecto);
+        cerrarConexionBD($conexion);
+        Header("Location: ../proyectos.php");
+    }
 } else if ($_REQUEST["submit"] == 'delete') {
     $conexion = crearConexionBD();
     eliminarProyecto($conexion, $_REQUEST["oid_proj"]);
@@ -43,7 +49,14 @@ if ($_REQUEST["submit"] == "insert") {
     }
 
     $conexion = crearConexionBD();
-    actualizarProyecto($conexion, $proyecto);
-    cerrarConexionBD($conexion);
-    Header("Location: ../perfilProyecto.php?oid_proj=" . $proyecto["oid_proj"]);
+    $errores= validarAltaProyecto($proyecto);
+    if (count($errores)>0) {
+        $_SESSION["errores"]=$errores;
+        Header("Location: ../formProyecto.php?edit=true&oid_proj=" . $_REQUEST["oid_proj"]);
+    }else{
+        actualizarProyecto($conexion, $proyecto);
+        cerrarConexionBD($conexion);
+        Header("Location: ../perfilProyecto.php?oid_proj=" . $proyecto["oid_proj"]);
+    }
+    
 }
