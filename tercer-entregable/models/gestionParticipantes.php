@@ -194,11 +194,14 @@ function validarAltaParticipante($participante){
 		$errores[] = "<p>Los apellidos deben completarse</p>";
     }
     //validación del grado de discapacidad
-	// if ($participante["discapacidad"]=="") {
-    //     $errores[] = "<p>El grado de discapacidad debe completarse</p>";
-    // }else if(!preg_match("/^[0],[0-9]{2}$/", $participante["discapacidad"])){
-	// 	$errores[] = "<p>El grado de discapacidad debe ser un número decimal entre 0 y 1: " . $participante["discapacidad"] . "</p>";
-	// }
+    if (!$_REQUEST["submit"] == 'edit') {
+        if ($participante["discapacidad"]=="") {
+            $errores[] = "<p>El grado de discapacidad debe completarse</p>";
+        }else if(!preg_match("/^0[,]{0,1}[0-9]{0,2}$/", $participante["discapacidad"] || $participante["discapacidad"] != "1") ){
+		    $errores[] = "<p>El grado de discapacidad debe ser un número decimal entre 0 y 1: " . $participante["discapacidad"] . "</p>";
+	    }
+    }
+	
 	//validación de la fecha de nacimiento
 	if ($participante["fechaNacimiento"]=="") {
 		$errores[] = "<p>La fecha de nacimiento debe completarse</p>";
@@ -209,7 +212,6 @@ function validarAltaParticipante($participante){
 		$errores[] = "<p>El email es incorrecto: " . $participante["email"]. "</p>";
 	    }
     }
-        
 	//validación del número de teléfono
 	if ($participante["telefono"]=="") {
 		$errores[] = "<p>El número de teléfono debe completarse</p>";
@@ -217,9 +219,11 @@ function validarAltaParticipante($participante){
 		$errores[] = "<p>El telefono debe contener 9 números: ". $participante["telefono"] ."</p>";
 	}
 	 //validación del código postal
-    if (!preg_match("/^[0-9]{5}$/", $participante["cp"])) {
+     if ($participante["cp"] != "") {
+		if (!preg_match("/^[0-9]{5}$/", $participante["cp"])) {
         $errores[] = "<p>El código postal debe contener 5 números: ". $participante["cp"] ."</p>";
-    }
+    	}
+	}
 	return $errores;
 }
 

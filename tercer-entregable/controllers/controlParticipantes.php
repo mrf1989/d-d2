@@ -50,6 +50,7 @@ if ($_REQUEST["submit"] == "insert") {
     $participante["provincia"] = $_REQUEST["provincia"];
     $participante["cp"] = $_REQUEST["cp"];
 
+
     $conexion = crearConexionBD();
     $errores= validarAltaParticipante($participante);
     if (count($errores)>0) {
