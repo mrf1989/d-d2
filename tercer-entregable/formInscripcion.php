@@ -19,6 +19,11 @@ $actividad = getActividad($conexion, $_GET["oid_act"]);
 
 cerrarConexionBD($conexion);
 
+if (isset($_SESSION["errores"])) {
+    $errores = $_SESSION["errores"];
+    unset($_SESSION["errores"]);
+}
+
 $page_title = "Nueva inscripción: " . $actividad["NOMBRE"];
 include_once("includes/head.php");
 ?>
@@ -26,6 +31,15 @@ include_once("includes/head.php");
     <?php include_once("includes/header.php"); ?>
     <main class="container">
         <div class="content__module">
+        <?php 
+                    // Mostrar los errores de validación (Si los hay)
+                    if (isset($errores) && count($errores)>0) { ?>
+                    <div id="div_errores" class="content__error">
+                    <h4> Errores en el formulario:</h4>
+                    <?php foreach($errores as $error) echo $error; ?>
+                    </div>
+                <?php }
+                ?>
             <div class="row">
                 <div class="col-12 col-tab-12">
                     <div class="module-title">

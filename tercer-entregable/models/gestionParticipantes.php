@@ -246,6 +246,7 @@ function validarAltaRecibo($rec) {
     if ($rec["estado"] != "pagado" && $rec["estado"] != "pendiente" && $rec["estado"] != "anulado") {
         $errores[] = "<p>El estado del recibo debe ser \"pagado\", \"pendiente\" o \"anulado\"</p>";
     }
+    return $errores;
 }
 
 ?>
