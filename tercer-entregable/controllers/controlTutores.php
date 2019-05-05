@@ -60,14 +60,4 @@ if ($_REQUEST["submit"] == "insert") {
     }
 }
 
-/*
-$errores = validarAltaParticipante($nuevoTutor);
-
-if (count($errores) > 0) {
-    $_SESSION["errores"] = $errores;
-    Header("Location: nuevoParticipante.php");
-} else {
-    // todo OK, accion de inserción
-}
-*/
 ?>

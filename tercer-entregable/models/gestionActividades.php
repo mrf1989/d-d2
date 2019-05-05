@@ -119,20 +119,30 @@ function validarAltaActividad($actividad){
         $errores[]="<p>El tipo de actividad: ". $actividad["tipo"] . " no es correcto</p>";
     }
 
+   
+
+    $fechaActual = strtotime("now");
+    $fechaInicio = strtotime($actividad["fechainicio"]);
+    $fechaFin = strtotime($actividad["fechafin"]);
+
     //validar fecha inicio
     if ($actividad["fechainicio"]=="") {
         $errores[]="<p>La fecha de inicio debe completarse</p>";
-    }elseif (!(preg_match("/^(0[1-9]|[1-2][0-9]|3[0-1])[\/](0[1-9]|1[0-2])[\/](199[8-9]|20[0-1][0-9])$/",
-        $actividad["fechainicio"]))){
-        $errores[]="<p>La fecha: ". $actividad["fechainicio"]. " no está entre 1998-2019</p>";
+    } elseif ($fechaActual > $fechaInicio){ 
+        $errores[]="<p>La fecha: ". $actividad["fechainicio"]. " no puede ser anterior a la fecha actual</p>";
     }
     //validar fecha fin
     if ($actividad["fechafin"]=="") {
         $errores[]="<p>La fecha de fin debe completarse</p>";
-    }elseif (!(preg_match("/^(0[1-9]|[1-2][0-9]|3[0-1])[\/](0[1-9]|1[0-2])[\/](199[8-9]|20[0-1][0-9])$/",
-        $actividad["fechafin"]))){
-        $errores[]="<p>La fecha de fin: ". $actividad["fechafin"]. " no está entre 1998-2019</p>";
-    }//Comprobar si fecha inicio es anterior que fecha fin
+    }elseif ($fechaActual > $fechaFin){
+        $errores[]="<p>La fecha de fin: ". $actividad["fechafin"]. " no puede ser anterior a la fecha actual</p>";
+    }
+    //Comprobar si fecha inicio es anterior que fecha fin
+    if ($fechaInicio > $fechaFin) {
+        $errores[]="<p>La fecha de inicio no puede ser posterior a la fecha de fin</p>";
+    }
+
+
     //Validar coste total
     if ($actividad["costetotal"]=="") {
         $errores[]="<p>El coste total debe indicarse</p>";

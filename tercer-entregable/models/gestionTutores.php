@@ -113,8 +113,12 @@ function validarAltaTutor($tutor){
         $errores[] = "<p>Los apellidos deben completarse</p>";
     }
     //validación de la fecha de nacimiento
-    if ($tutor["fechaNacimiento"]=="") {
-        $errores[] = "<p>La fecha de nacimiento debe completarse</p>";
+    $fechaMin = strtotime("now -18 year");
+    $fechaNac = strtotime($tutor["fechaNacimiento"]);
+	if ($tutor["fechaNacimiento"]=="") {
+		$errores[] = "<p>La fecha de nacimiento debe completarse</p>";
+	}elseif ($fechaNac > $fechaMin) {
+        $errores[] = "<p>El tutor debe tener al menos 18 años</p>";
     }
     //validación del email
     if($tutor["email"]==""){ 

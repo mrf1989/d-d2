@@ -62,7 +62,7 @@ include_once("includes/head.php");
                             </div>
                             <p>Tipo:</p>
                             <div class="form-row">
-                                <label><input type="radio" name="tipoProj" value="evento" <?php echo ($proyecto["ESEVENTO"]) ? "checked" : "" ?>>Evento</label>
+                                <label><input type="radio" name="tipoProj" value="evento" <?php echo ($proyecto["ESEVENTO"]) ? "checked" : "" ?> required>Evento</label>
                                 <label><input type="radio" name="tipoProj" value="progdep" <?php echo ($proyecto["ESPROGDEP"]) ? "checked" : "" ?>>Programa deportivo</label>
                             </div>
                             <div class="form-row right">
