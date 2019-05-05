@@ -26,6 +26,4 @@ if ($_REQUEST["submit"] == 'inscribir') {
     
 }
 
-Header("Location: ../perfilActividad.php?oid_act=" . $patrocinio["oid_act"]);
-
 ?>

@@ -101,7 +101,50 @@ function addPatrocinio($conexion, $patrocinio) {
         Header("Location: ../excepcion.php");
     }
 }
+function validarAltaActividad($actividad){
+    //validar nombre 
+    if ($actividad["nombre"]=="") {
+        $errores[] = "<p>El nombre de la actividad debe completarse</p>";
+    }
+    //validar número de plazas
+    if ($actividad["numeroplazas"]=="") {
+        $errores[]="<p>El numero de plazas debe indicarse</p>";
+    }elseif (is_int($actividad["numeroplazas"])) {
+        $errores[]="<p>El numero de plazas :". $actividad["numeroplazas"] ." debe ser un entero</p>";
+    }
+    //validar tipo actividad
+    if ($actividad["tipo"]=="") {
+        $errores[]="<p>El tipo de actividad debe completarse";
+    }elseif (!($actividad["tipo"] == "deportiva" || $actividad["tipo"] == "formativa" || $actividad["tipo"] = "social")) {
+        $errores[]="<p>El tipo de actividad: ". $actividad["tipo"] . " no es correcto</p>";
+    }
 
+    //validar fecha inicio
+    if ($actividad["fechainicio"]=="") {
+        $errores[]="<p>La fecha de inicio debe completarse</p>";
+    }elseif (!(preg_match("/^(0[1-9]|[1-2][0-9]|3[0-1])[\/](0[1-9]|1[0-2])[\/](199[8-9]|20[0-1][0-9])$/",
+        $actividad["fechainicio"]))){
+        $errores[]="<p>La fecha: ". $actividad["fechainicio"]. " no está entre 1998-2019</p>";
+    }
+    //validar fecha fin
+    if ($actividad["fechafin"]=="") {
+        $errores[]="<p>La fecha de fin debe completarse</p>";
+    }elseif (!(preg_match("/^(0[1-9]|[1-2][0-9]|3[0-1])[\/](0[1-9]|1[0-2])[\/](199[8-9]|20[0-1][0-9])$/",
+        $actividad["fechafin"]))){
+        $errores[]="<p>La fecha de fin: ". $actividad["fechafin"]. " no está entre 1998-2019</p>";
+    }//Comprobar si fecha inicio es anterior que fecha fin
+    //Validar coste total
+    if ($actividad["costetotal"]=="") {
+        $errores[]="<p>El coste total debe indicarse</p>";
+    }elseif (is_int($actividad["costetotal"])) {
+        $errores[]="<p>El coste total :". $actividad["costetotal"] ." debe ser un entero</p>";
+    }
+    //Validar objetivo
+    if ($actividad["objetivo"]=="") {
+        $errores[]="<p>El objetivo de la actividad debe completarse</p>";
+    }
+    return $errores;
+}
 
 function validarVoluntariado($colaboracion, $colaboradores){
     if(count($colaboradores) > 0){
@@ -135,7 +178,6 @@ function validarPatrocinio($patrocinio, $patrocinadores){
             }
         }
     }
-    $errores[] = "<p>El patrocinador con cif " . $pat["CIF"] ." ya está inscrito</p>";
 
     return $errores;
 }

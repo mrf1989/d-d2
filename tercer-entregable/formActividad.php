@@ -40,6 +40,15 @@ include_once("includes/head.php");
     <main class="container">
         <div class="content">
             <div class="content__module">
+            	<?php 
+                    // Mostrar los erroes de validación (Si los hay)
+                    if (isset($errores) && count($errores)>0) { ?>
+                    <div id="div_errores" class="content__error">
+                    <h4> Errores en el formulario:</h4>
+                    <?php foreach($errores as $error) echo $error; ?>
+                    </div>
+                <?php }
+                ?>
                 <div class="module-title">
                     <!-- Si vista de edición, muestra Editar actividad, si no, Nuevo actividad -->
                     <h1><?php echo isset($_GET["edit"]) ? "Editar" : "Nueva" ?> actividad</h1>
@@ -52,10 +61,10 @@ include_once("includes/head.php");
                             <input type="hidden" name="oid_proj" value="<?php echo $_REQUEST["oid_proj"] ?>">
                             <input type="hidden" name="oid_act" value="<?php echo $actividad["OID_ACT"] ?>">
                             <div class="form-row">
-                                <input type="text" name="nombre" value="<?php echo $actividad["NOMBRE"] ?>" placeholder="Nombre de la actividad" autofocus="autofocus" />
+                                <input type="text" name="nombre" value="<?php echo $actividad["NOMBRE"] ?>" placeholder="Nombre de la actividad" autofocus="autofocus" required/>
                                 Nº plazas:
-                                <input type="number" name="numeroplazas" value="<?php echo $actividad["NUMEROPLAZAS"] ?>" placeholder="Nº plazas" />
-                                <select name="tipo">
+                                <input type="number" name="numeroplazas" value="<?php echo $actividad["NUMEROPLAZAS"] ?>" placeholder="Nº plazas" required/>
+                                <select name="tipo" required>
                                     <option value="">Tipo de actividad</option>
                                     <option value="deportiva">Deportiva</option>
                                     <option value="formativa">Formativa</option>
@@ -64,14 +73,14 @@ include_once("includes/head.php");
                             </div>
                             <div class="form-row">
                                 <div class="form-label">Fecha inicio:</div>
-                                <input type="date" name="fechainicio" value="<?php if (isset($_GET["edit"])) echo getFechaForm($actividad["FECHAINICIO"]) ?>" placeholder="Fecha inicio" />
+                                <input type="date" name="fechainicio" value="<?php if (isset($_GET["edit"])) echo getFechaForm($actividad["FECHAINICIO"]) ?>" placeholder="Fecha inicio" required/>
                                 <div class="form-label">Fecha finalización:</div>
-                                <input type="date" name="fechafin" value="<?php if (isset($_GET["edit"])) echo getFechaForm($actividad["FECHAFIN"]) ?>" placeholder="Fecha finalización" />
-                                <input type="number" name="costetotal" value="<?php echo $actividad["COSTETOTAL"] ?>" placeholder="Coste total" />
+                                <input type="date" name="fechafin" value="<?php if (isset($_GET["edit"])) echo getFechaForm($actividad["FECHAFIN"]) ?>" placeholder="Fecha finalización" required/>
+                                <input type="number" name="costetotal" value="<?php echo $actividad["COSTETOTAL"] ?>" placeholder="Coste total" required/>
                             </div>
                             <div class="form-row">
                                 <p>Objetivos de la actividad:</p>
-                                <textarea name="objetivo" id="" cols="30" rows="10"><?php echo $actividad["OBJETIVO"] ?></textarea>
+                                <textarea name="objetivo" id="" cols="30" rows="10" required><?php echo $actividad["OBJETIVO"] ?></textarea>
                             </div>
                             <div class="form-row right">
                             <?php if (!isset($_GET["edit"])) { ?>
