@@ -96,8 +96,8 @@ include_once("includes/head.php");
                                 <input type="text" name="cp" value="<?php echo $participante["CODIGOPOSTAL"] ?>" placeholder="Código postal" pattern="^[0-9]{5}"/>
                             </div>
                             <div class="form-row">
-                                <select name="tutor" id="tutor" <?php if (isset($_GET["edit"])) echo "disabled" ?> >
-                                    <option value="null">-- Seleccionar un tutor legal --</option>
+                                <select name="tutor" id="tutor" <?php if (isset($_GET["edit"])) echo "disabled" ?> required>
+                                    <option value="" >-- Seleccionar un tutor legal --</option>
                                 <?php foreach ($tutores as $tut) { ?>
                                     <option value="<?php echo $tut["DNI"]; ?>" <?php echo isset($participante["OID_TUT"]) && ($tut["OID_TUT"] == $participante["OID_TUT"]) ? "selected=\"selected\"" : "" ?>><?php echo $tut["DNI"] . " - " . $tut["NOMBRE"] . " " . $tut["APELLIDOS"]; ?></option>
                                 <?php } ?>

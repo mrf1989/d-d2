@@ -201,10 +201,14 @@ function validarAltaParticipante($participante){
 		    $errores[] = "<p>El grado de discapacidad debe ser un número decimal entre 0 y 1: " . $participante["discapacidad"] . "</p>";
 	    }
     }
-	//validación de la fecha de nacimiento
+    //validación de la fecha de nacimiento
+    $fechaMin = strtotime("now -5 year");
+    $fechaNac = strtotime($participante["fechaNacimiento"]);
 	if ($participante["fechaNacimiento"]=="") {
 		$errores[] = "<p>La fecha de nacimiento debe completarse</p>";
-	}
+	}elseif ($fechaNac > $fechaMin) {
+        $errores[] = "<p>El participante debe tener al menos 5 años</p>";
+    }
 	//validación del email
 	if ($participante["email"] != "") {
         if(!filter_var($participante["email"], FILTER_VALIDATE_EMAIL)){
@@ -217,10 +221,10 @@ function validarAltaParticipante($participante){
 	}elseif (!preg_match("/^[0-9]{9}$/", $participante["telefono"])) {
 		$errores[] = "<p>El telefono debe contener 9 números: ". $participante["telefono"] ."</p>";
 	}
-	 //validación del código postal
-     if ($participante["cp"] != "") {
-		if (!preg_match("/^[0-9]{5}$/", $participante["cp"])) {
-        $errores[] = "<p>El código postal debe contener 5 números: ". $participante["cp"] ."</p>";
+	//validación del código postal
+    if ($participante["cp"] != "") {
+	    if (!preg_match("/^[0-9]{5}$/", $participante["cp"])) {
+            $errores[] = "<p>El código postal debe contener 5 números: ". $participante["cp"] ."</p>";
     	}
 	}
 	return $errores;
@@ -232,10 +236,6 @@ function validarAltaInforme($inf) {
     if ($inf["descripcion"]=="") {
 		$errores[] = "<p>La descripción debe completarse</p>";
     }
-    //validación del oid del participante
-    // if ($inf["oid_part"]=="") {
-	// 	$errores[] = "<p>El participante no existe</p>";
-    // }
 
     return $errores;
 }

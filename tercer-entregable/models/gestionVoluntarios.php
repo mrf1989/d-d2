@@ -122,9 +122,13 @@ function validarAltaVoluntario($voluntario){
 		$errores[] = "<p>Los apellidos deben completarse</p>";
 	}
 	//validación de la fecha de nacimiento
+	$fechaMin = strtotime("now -18 year");
+    $fechaNac = strtotime($voluntario["fechaNacimiento"]);
 	if ($voluntario["fechaNacimiento"]=="") {
 		$errores[] = "<p>La fecha de nacimiento debe completarse</p>";
-	}
+	}elseif ($fechaNac > $fechaMin) {
+        $errores[] = "<p>El voluntario debe tener al menos 18 años</p>";
+    }
 	//validación del email
 	if($voluntario["email"]==""){ 
 		$errores[] = "<p>El email debe completarse</p>";
