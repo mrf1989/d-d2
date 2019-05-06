@@ -95,7 +95,7 @@ include_once("includes/head.php");
                     foreach ($actividades as $act) { ?>
                         <tr>
                             <form>
-                                <td><a href="#"><?php echo $act["ACT_NOMBRE"] ?></a></td>
+                                <td><a href="perfilActividad.php?oid_act=<?php echo $act["OID_ACT"] ?>"><?php echo $act["ACT_NOMBRE"] ?></a></td>
                                 <td><?php echo $act["PROJ_LUGAR"] ?></td>
                                 <td><?php echo $act["ACT_FECHAINICIO"] ?></td>
                             </form>
