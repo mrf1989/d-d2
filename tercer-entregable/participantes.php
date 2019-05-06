@@ -67,28 +67,30 @@ include_once("includes/head.php");
                         <button type="submit" class="btn secondary">Actualizar</button>
                     </form>
                 </nav>
-                <table class="tab horizontal">
-                    <tr>
-                        <th>DNI</th>
-                        <th>Participante</th>
-                        <th>Fecha nacimiento</th>
-                        <th></th>
-                    </tr>
-                <?php foreach ($participantes as $part) { ?>
-                    <tr>
-                        <form action="controllers/controlParticipantes.php" method="POST">
-                            <input type="hidden" name="dni" value="<?php echo $part["DNI"] ?>">
-                            <td><?php echo $part["DNI"] ?></td>
-                            <td><a href="perfilParticipante.php?oid_part=<?php echo $part["OID_PART"]; ?>"><?php echo $part["NOMBRE"] . " " . $part["APELLIDOS"] ?></a></td>
-                            <td><?php echo $part["FECHANACIMIENTO"] ?></td>
-                            <td class="acciones">
-                                <a href="nuevoParticipante.php?edit=true&oid_part=<?php echo $part["OID_PART"]; ?>" class="btn secondary">Editar</a>
-                                <button class="btn secondary" type="submit" name="submit" value="delete">Borrar</button>
-                            </td>
-                        </form>
-                    </tr>
-                <?php } ?>
-                </table>
+                <div class="content-tab">
+                    <table class="tab horizontal">
+                        <tr>
+                            <th>DNI</th>
+                            <th>Participante</th>
+                            <th>Fecha nacimiento</th>
+                            <th></th>
+                        </tr>
+                    <?php foreach ($participantes as $part) { ?>
+                        <tr>
+                            <form action="controllers/controlParticipantes.php" method="POST">
+                                <input type="hidden" name="dni" value="<?php echo $part["DNI"] ?>">
+                                <td><?php echo $part["DNI"] ?></td>
+                                <td><a href="perfilParticipante.php?oid_part=<?php echo $part["OID_PART"]; ?>"><?php echo $part["NOMBRE"] . " " . $part["APELLIDOS"] ?></a></td>
+                                <td><?php echo $part["FECHANACIMIENTO"] ?></td>
+                                <td class="acciones">
+                                    <a href="nuevoParticipante.php?edit=true&oid_part=<?php echo $part["OID_PART"]; ?>" class="btn secondary">Editar</a>
+                                    <button class="btn secondary" type="submit" name="submit" value="delete">Borrar</button>
+                                </td>
+                            </form>
+                        </tr>
+                    <?php } ?>
+                    </table>
+                </div>
             </div>
         </main>
     </div>

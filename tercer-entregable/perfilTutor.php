@@ -44,69 +44,72 @@ include_once("includes/head.php");
                     <div class="module-title">
                         <h2>Datos personales</h2>
                     </div>
-                    <table class="tab vertical">
+                    <div class="content-tab">
+                        <table class="tab vertical">
+                            <tr>
+                                <th>DNI</th>
+                                <td><?php echo $tutor["DNI"]; ?></td>
+                            </tr>
+                            <tr>
+                                <th>Fecha nacimiento</th>
+                                <td><?php echo $tutor["FECHANACIMIENTO"] ?></td>
+                            </tr>
                         <tr>
-                            <th>DNI</th>
-                            <td><?php echo $tutor["DNI"]; ?></td>
-                        </tr>
-                        <tr>
-                            <th>Fecha nacimiento</th>
-                            <td><?php echo $tutor["FECHANACIMIENTO"] ?></td>
-                        </tr>
-                       <tr>
-                            <th>Dirección</th>
-                            <td><?php echo $tutor["DIRECCION"]; ?></td>
-                        </tr>
-                        <tr>
-                            <th>Código postal</th>
-                            <td><?php echo $tutor["CODIGOPOSTAL"]; ?></td>
-                        </tr>
-                        <tr>
-                            <th>Localidad</th>
-                            <td><?php echo $tutor["LOCALIDAD"]; ?></td>
-                        </tr>
-                        <tr>
-                            <th>Provincia</th>
-                            <td><?php echo $tutor["PROVINCIA"]; ?></td>
-                        </tr>
-                        <tr>
-                            <th>Teléfono</th>
-                            <td><?php echo $tutor["TELEFONO"]; ?></td>
-                        </tr>
-                   	<?php if (isset($tutor["EMAIL"])) { ?>
-                        <tr>
-                            <th>Email</th>
-                            <td><?php echo $tutor["EMAIL"]; ?></td>
-                        </tr>
-                    <?php } ?>
-                    </table>
+                                <th>Dirección</th>
+                                <td><?php echo $tutor["DIRECCION"]; ?></td>
+                            </tr>
+                            <tr>
+                                <th>Código postal</th>
+                                <td><?php echo $tutor["CODIGOPOSTAL"]; ?></td>
+                            </tr>
+                            <tr>
+                                <th>Localidad</th>
+                                <td><?php echo $tutor["LOCALIDAD"]; ?></td>
+                            </tr>
+                            <tr>
+                                <th>Provincia</th>
+                                <td><?php echo $tutor["PROVINCIA"]; ?></td>
+                            </tr>
+                            <tr>
+                                <th>Teléfono</th>
+                                <td><?php echo $tutor["TELEFONO"]; ?></td>
+                            </tr>
+                        <?php if (isset($tutor["EMAIL"])) { ?>
+                            <tr>
+                                <th>Email</th>
+                                <td><?php echo $tutor["EMAIL"]; ?></td>
+                            </tr>
+                        <?php } ?>
+                        </table>
+                    </div>
                 </div>
-                <?php if ($participante["OID_TUT"]==$tutor["OID_TUT"]){
-                ?>
+            <?php if ($participante["OID_TUT"]==$tutor["OID_TUT"]) { ?>
                 <div class="col-6 col-tab-12">
                     <div class="module-title">
                         <h2>Participante</h2>
                     </div>
-                    <table class="tab vertical">
-                        <tr>
-                            <th>DNI</th>
-                            <td><?php echo $participante["DNI"]; ?></td>
-                        </tr>
-                        <tr>
-                            <th>Nombre</th>
-                            <td><?php echo $participante["NOMBRE"] . " " . $participante["APELLIDOS"]; ?></td>
-                        </tr>
-                        <tr>
-                            <th>Teléfono</th>
-                            <td><?php echo $participante["TELEFONO"]; ?></td>
-                        </tr>
-                        <tr>
-                            <th>Email</th>
-                            <td><?php echo $participante["EMAIL"]; ?></td>
-                        </tr>
-                    </table>
+                    <div class="content-tab">
+                        <table class="tab vertical">
+                            <tr>
+                                <th>DNI</th>
+                                <td><?php echo $participante["DNI"]; ?></td>
+                            </tr>
+                            <tr>
+                                <th>Nombre</th>
+                                <td><?php echo $participante["NOMBRE"] . " " . $participante["APELLIDOS"]; ?></td>
+                            </tr>
+                            <tr>
+                                <th>Teléfono</th>
+                                <td><?php echo $participante["TELEFONO"]; ?></td>
+                            </tr>
+                            <tr>
+                                <th>Email</th>
+                                <td><?php echo $participante["EMAIL"]; ?></td>
+                            </tr>
+                        </table>
+                    </div>
                 </div>
-                <?php } ?>
+            <?php } ?>
             </div>
         </div> <!--end module-->
     </main>

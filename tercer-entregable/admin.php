@@ -30,7 +30,7 @@ include_once("includes/head.php");
                     $oid_act = $act["OID_ACT"];
                     // esta forma de insertar HTML es válida, pero NO RECOMENDABLE
                     echo "<tr>";
-                        echo "<td><a href=\"actividad.php?oid_act=$oid_act\">" . $act["NOMBRE"] . "</a></td>";
+                        echo "<td><a href=\"perfilActividad.php?oid_act=$oid_act\">" . $act["NOMBRE"] . "</a></td>";
                         echo "<td>" . $act["PROJ_LUGAR"] . "</td>";
                         echo "<td>" . $act["FECHAINICIO"] . "</td>";
                     echo "</tr>";
