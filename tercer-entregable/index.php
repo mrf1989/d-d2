@@ -6,7 +6,7 @@ if ( isset( $_SESSION['login'] ) ) {
     if ($_SESSION["admin"]) {
         Header('Location: admin.php');
     } else {
-        // si no, redireccina a árbol user
+        // si no, redireccina a página principal user
         Header('Location: user.php');
     }
 } else {

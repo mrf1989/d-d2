@@ -81,6 +81,19 @@ function getHistorialParticipacion($conexion, $oid_part) {
     }
 }
 
+function getProximasActPart($conexion, $oid_part) {
+    try {
+        $consulta = "SELECT INS.*, ACT.*, PROJ.UBICACION FROM INSCRIPCIONES INS LEFT JOIN ACTIVIDADES ACT ON INS.OID_ACT=ACT.OID_ACT LEFT JOIN PROYECTOS PROJ ON ACT.OID_PROJ=PROJ.OID_PROJ WHERE INS.OID_PART=:oid_part AND ACT.FECHAINICIO >= (SYSDATE+5) ORDER BY ACT.FECHAINICIO ASC";
+        $stmt = $conexion->prepare($consulta);
+        $stmt->bindParam(':oid_part', $oid_part);
+        $stmt->execute();
+        return $stmt->fetchAll();
+    } catch (PDOException $e) {
+        $_SESSION["excepcion"] = $e->GetMessage();
+        Header("Location: ../excepcion.php");
+    }
+}
+
 function getRecibos($conexion, $oid_part) {
     try {
         $consulta = "SELECT * FROM RECIBOS WHERE OID_Part =:oid_part";

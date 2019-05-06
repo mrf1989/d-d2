@@ -1,5 +1,10 @@
 <?php
 session_start();
+
+if (!$_SESSION["admin"]) {
+    Header("Location: index.php");
+}
+
 include_once("models/gestionBD.php");
 include_once("models/gestionActividades.php");
 $page_title = "Página principal";
@@ -28,7 +33,6 @@ include_once("includes/head.php");
                 cerrarConexionBD($conexion);
                 foreach ($actividades as $act) {
                     $oid_act = $act["OID_ACT"];
-                    // esta forma de insertar HTML es válida, pero NO RECOMENDABLE
                     echo "<tr>";
                         echo "<td><a href=\"perfilActividad.php?oid_act=$oid_act\">" . $act["NOMBRE"] . "</a></td>";
                         echo "<td>" . $act["PROJ_LUGAR"] . "</td>";

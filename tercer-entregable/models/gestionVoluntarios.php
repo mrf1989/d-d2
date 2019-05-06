@@ -48,6 +48,20 @@ function getHistorialColaboracion($conexion, $oid_vol){
         Header("Location: ../excepcion.php");
 	}
 }
+
+function getProximasActVol($conexion, $oid_vol) {
+    try {
+        $consulta = "SELECT COLAB.*, ACT.*, PROJ.UBICACION FROM COLABORACIONES COLAB LEFT JOIN ACTIVIDADES ACT ON COLAB.OID_ACT=ACT.OID_ACT LEFT JOIN PROYECTOS PROJ ON ACT.OID_PROJ=PROJ.OID_PROJ WHERE COLAB.OID_VOL=:oid_vol AND ACT.FECHAINICIO >= (SYSDATE+5) ORDER BY ACT.FECHAINICIO ASC";
+        $stmt = $conexion->prepare($consulta);
+        $stmt->bindParam(':oid_vol', $oid_vol);
+        $stmt->execute();
+        return $stmt->fetchAll();
+    } catch (PDOException $e) {
+        $_SESSION["excepcion"] = $e->GetMessage();
+        Header("Location: ../excepcion.php");
+    }
+}
+
 function getAllVoluntarios(){
 	 $query = "SELECT * FROM VOLUNTARIOS VOL LEFT JOIN PERSONAS PER ON VOL.DNI = PER.DNI";
     return $query;
