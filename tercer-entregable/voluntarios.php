@@ -65,29 +65,31 @@ include_once("includes/head.php");
                         <button type="submit" class="btn secondary">Actualizar</button>
                     </form>
                 </nav>
-                <table class="tab horizontal">
-                    <tr>
-                        <th>DNI</th>
-                        <th>Voluntario</th>
-                        <th>Email</th>
-                        <th></th>
-                    </tr>
-                <?php foreach ($voluntarios as $vol) { ?>
-                    <tr>
-                        <form action="controllers/controlVoluntarios.php" method="POST">
-                            <input type="hidden" name="dni" value="<?php echo $vol["DNI"] ?>">
-                            <td><?php echo $vol["DNI"] ?></td>
-                            <!-- Puesto que el nombre es un enlace al perfil del voluntario, mandamos en su url el oid del voluntario y por lo tanto el método sería GET, ese oid lo utilizamos para conseguir los datos del voluntario exacto -->
-                            <td><a href="perfilVoluntario.php?oid_vol=<?php echo $vol["OID_VOL"]; ?>"><?php echo $vol["NOMBRE"] . " " . $vol["APELLIDOS"] ?></a></td>
-                            <td><?php echo $vol["EMAIL"] ?></td>
-                            <td class="acciones">
-                                <a href="nuevoVoluntario.php?edit=true&oid_vol=<?php echo $vol["OID_VOL"]; ?>" class="btn secondary">Editar</a>
-                                <button class="btn secondary" type="submit" name="submit" value="delete">Borrar</button>
-                            </td>
-                        </form>
-                    </tr>
-                <?php } ?>
-                </table>
+                <div class="content-tab">
+                    <table class="tab horizontal">
+                        <tr>
+                            <th>DNI</th>
+                            <th>Voluntario</th>
+                            <th>Email</th>
+                            <th></th>
+                        </tr>
+                    <?php foreach ($voluntarios as $vol) { ?>
+                        <tr>
+                            <form action="controllers/controlVoluntarios.php" method="POST">
+                                <input type="hidden" name="dni" value="<?php echo $vol["DNI"] ?>">
+                                <td><?php echo $vol["DNI"] ?></td>
+                                <!-- Puesto que el nombre es un enlace al perfil del voluntario, mandamos en su url el oid del voluntario y por lo tanto el método sería GET, ese oid lo utilizamos para conseguir los datos del voluntario exacto -->
+                                <td><a href="perfilVoluntario.php?oid_vol=<?php echo $vol["OID_VOL"]; ?>"><?php echo $vol["NOMBRE"] . " " . $vol["APELLIDOS"] ?></a></td>
+                                <td><?php echo $vol["EMAIL"] ?></td>
+                                <td class="acciones">
+                                    <a href="nuevoVoluntario.php?edit=true&oid_vol=<?php echo $vol["OID_VOL"]; ?>" class="btn secondary">Editar</a>
+                                    <button class="btn secondary" type="submit" name="submit" value="delete">Borrar</button>
+                                </td>
+                            </form>
+                        </tr>
+                    <?php } ?>
+                    </table>
+                </div>
             </div>
         </main>
     </div>

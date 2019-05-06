@@ -67,28 +67,30 @@ include_once("includes/head.php");
                         <button type="submit" class="btn secondary">Actualizar</button>
                     </form>
                 </nav>
-                <table class="tab horizontal">
-                    <tr>
-                        <th>Proyecto</th>
-                        <th>Localización</th>
-                        <th>Tipo</th>
-                        <th></th>
-                    </tr>
-                <?php foreach ($proyectos as $proj) { ?>
-                    <tr>
-                        <form action="controllers/controlProyectos.php" method="POST">
-                            <input type="hidden" name="oid_proj" value="<?php echo $proj["OID_PROJ"] ?>">
-                            <td><a href="perfilProyecto.php?oid_proj=<?php echo $proj["OID_PROJ"]; ?>"><?php echo $proj["P_NOMBRE"] ?></a></td>
-                            <td><?php echo $proj["UBICACION"] ?></td>
-                            <td><?php echo ($proj["ESEVENTO"]) ? "Evento" : "Programa deportivo" ?></td>
-                            <td class="acciones">
-                                <a href="formProyecto.php?edit=true&oid_proj=<?php echo $proj["OID_PROJ"]; ?>" class="btn secondary">Editar</a>
-                                <button class="btn secondary" type="submit" name="submit" value="delete">Borrar</button>
-                            </td>
-                        </form>
-                    </tr>
-                <?php } ?>
-                </table>
+                <div class="content-tab">
+                    <table class="tab horizontal">
+                        <tr>
+                            <th>Proyecto</th>
+                            <th>Localización</th>
+                            <th>Tipo</th>
+                            <th></th>
+                        </tr>
+                    <?php foreach ($proyectos as $proj) { ?>
+                        <tr>
+                            <form action="controllers/controlProyectos.php" method="POST">
+                                <input type="hidden" name="oid_proj" value="<?php echo $proj["OID_PROJ"] ?>">
+                                <td><a href="perfilProyecto.php?oid_proj=<?php echo $proj["OID_PROJ"]; ?>"><?php echo $proj["P_NOMBRE"] ?></a></td>
+                                <td><?php echo $proj["UBICACION"] ?></td>
+                                <td><?php echo ($proj["ESEVENTO"]) ? "Evento" : "Programa deportivo" ?></td>
+                                <td class="acciones">
+                                    <a href="formProyecto.php?edit=true&oid_proj=<?php echo $proj["OID_PROJ"]; ?>" class="btn secondary">Editar</a>
+                                    <button class="btn secondary" type="submit" name="submit" value="delete">Borrar</button>
+                                </td>
+                            </form>
+                        </tr>
+                    <?php } ?>
+                    </table>
+                </div>
             </div>
         </main>
     </div>

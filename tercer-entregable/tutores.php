@@ -67,28 +67,30 @@ include_once("includes/head.php");
                         <button type="submit" class="btn secondary">Actualizar</button>
                     </form>
                 </nav>
-                <table class="tab horizontal">
-                    <tr>
-                        <th>DNI</th>
-                        <th>Tutor</th>
-                        <th>Email</th>
-                        <th></th>
-                    </tr>
-                <?php foreach ($tutores as $tut) { ?>
-                    <tr>
-                        <form action="controllers/controlTutores.php" method="POST">
-                            <input type="hidden" name="dni" value="<?php echo $tut["DNI"] ?>">
-                            <td><?php echo $tut["DNI"] ?></td>
-                            <td><a href="perfilTutor.php?oid_tut=<?php echo $tut["OID_TUT"]; ?>"><?php echo $tut["NOMBRE"] . " " . $tut["APELLIDOS"] ?></a></td>
-                            <td><?php echo $tut["EMAIL"] ?></td>
-                            <td class="acciones">
-                                <a href="nuevoTutor.php?edit=true&oid_tut=<?php echo $tut["OID_TUT"]; ?>" class="btn secondary">Editar</a>
-                                <button class="btn secondary" type="submit" name="submit" value="delete">Borrar</button>
-                            </td>
-                        </form>
-                    </tr>
-                <?php } ?>
-                </table>
+                <div class="content-tab">
+                    <table class="tab horizontal">
+                        <tr>
+                            <th>DNI</th>
+                            <th>Tutor</th>
+                            <th>Email</th>
+                            <th></th>
+                        </tr>
+                    <?php foreach ($tutores as $tut) { ?>
+                        <tr>
+                            <form action="controllers/controlTutores.php" method="POST">
+                                <input type="hidden" name="dni" value="<?php echo $tut["DNI"] ?>">
+                                <td><?php echo $tut["DNI"] ?></td>
+                                <td><a href="perfilTutor.php?oid_tut=<?php echo $tut["OID_TUT"]; ?>"><?php echo $tut["NOMBRE"] . " " . $tut["APELLIDOS"] ?></a></td>
+                                <td><?php echo $tut["EMAIL"] ?></td>
+                                <td class="acciones">
+                                    <a href="nuevoTutor.php?edit=true&oid_tut=<?php echo $tut["OID_TUT"]; ?>" class="btn secondary">Editar</a>
+                                    <button class="btn secondary" type="submit" name="submit" value="delete">Borrar</button>
+                                </td>
+                            </form>
+                        </tr>
+                    <?php } ?>
+                    </table>
+                </div>    
             </div>
         </main>
     </div>

@@ -43,68 +43,72 @@ include_once("includes/head.php");
                     <div class="module-title">
                         <h2>Datos personales</h2>
                     </div>
-                    <table class="tab vertical">
-                        <tr>
-                            <th>DNI</th>
-                            <td><?php echo $voluntario["DNI"]; ?></td>
-                        </tr>
-                        <tr>
-                            <th>Fecha nacimiento</th>
-                            <td><?php echo $voluntario["FECHANACIMIENTO"] ?></td>
-                        </tr>
-                        <tr>
-                            <th>Dirección</th>
-                            <td><?php echo $voluntario["DIRECCION"]; ?></td>
-                        </tr>
-                        <tr>
-                            <th>Código postal</th>
-                            <td><?php echo $voluntario["CODIGOPOSTAL"]; ?></td>
-                        </tr>
-                        <tr>
-                            <th>Localidad</th>
-                            <td><?php echo $voluntario["LOCALIDAD"]; ?></td>
-                        </tr>
-                        <tr>
-                            <th>Provincia</th>
-                            <td><?php echo $voluntario["PROVINCIA"]; ?></td>
-                        </tr>
-                        <tr>
-                            <th>Teléfono</th>
-                            <td><?php echo $voluntario["TELEFONO"]; ?></td>
-                        </tr>
-                    <?php if (isset($voluntario["EMAIL"])) { ?>
-                        <tr>
-                            <th>Email</th>
-                            <td><?php echo $voluntario["EMAIL"]; ?></td>
-                        </tr>
-                    <?php } ?>
-                    </table>
+                    <div class="content-tab">
+                        <table class="tab vertical">
+                            <tr>
+                                <th>DNI</th>
+                                <td><?php echo $voluntario["DNI"]; ?></td>
+                            </tr>
+                            <tr>
+                                <th>Fecha nacimiento</th>
+                                <td><?php echo $voluntario["FECHANACIMIENTO"] ?></td>
+                            </tr>
+                            <tr>
+                                <th>Dirección</th>
+                                <td><?php echo $voluntario["DIRECCION"]; ?></td>
+                            </tr>
+                            <tr>
+                                <th>Código postal</th>
+                                <td><?php echo $voluntario["CODIGOPOSTAL"]; ?></td>
+                            </tr>
+                            <tr>
+                                <th>Localidad</th>
+                                <td><?php echo $voluntario["LOCALIDAD"]; ?></td>
+                            </tr>
+                            <tr>
+                                <th>Provincia</th>
+                                <td><?php echo $voluntario["PROVINCIA"]; ?></td>
+                            </tr>
+                            <tr>
+                                <th>Teléfono</th>
+                                <td><?php echo $voluntario["TELEFONO"]; ?></td>
+                            </tr>
+                        <?php if (isset($voluntario["EMAIL"])) { ?>
+                            <tr>
+                                <th>Email</th>
+                                <td><?php echo $voluntario["EMAIL"]; ?></td>
+                            </tr>
+                        <?php } ?>
+                        </table>
+                    </div>
                 </div>
                 <div class="col-6 col-tab-12">
                 	<div class="module-title">
                 		<h2>Historial de colaboración</h2>
                 	</div>
-                	<?php if (count($actividades) > 0) { ?>
-                    <table class="tab horizontal">
-                        <tr>
-                            <th>Actividad</th>
-                            <th>Localización</th>
-                            <th>Fecha</th>
-                        </tr>
-                    <?php
-                    foreach ($actividades as $act) { ?>
-                        <tr>
-                            <form>
-                                <td><a href="perfilActividad.php?oid_act=<?php echo $act["OID_ACT"] ?>"><?php echo $act["ACT_NOMBRE"] ?></a></td>
-                                <td><?php echo $act["PROJ_LUGAR"] ?></td>
-                                <td><?php echo $act["ACT_FECHAINICIO"] ?></td>
-                            </form>
-                        </tr>
-                    <?php } ?>
+                <?php if (count($actividades) > 0) { ?>
+                    <div class="content-tab">
+                        <table class="tab horizontal">
+                            <tr>
+                                <th>Actividad</th>
+                                <th>Localización</th>
+                                <th>Fecha</th>
+                            </tr>
+                        <?php
+                        foreach ($actividades as $act) { ?>
+                            <tr>
+                                <form>
+                                    <td><a href="perfilActividad.php?oid_act=<?php echo $act["OID_ACT"] ?>"><?php echo $act["ACT_NOMBRE"] ?></a></td>
+                                    <td><?php echo $act["PROJ_LUGAR"] ?></td>
+                                    <td><?php echo $act["ACT_FECHAINICIO"] ?></td>
+                                </form>
+                            </tr>
+                        <?php } ?>
+                        </table>
+                    </div>
                 <?php } else { ?>
                     <p><?php echo $voluntario["NOMBRE"]; ?> no ha participado aún en actividades.</p>
                 <?php } ?>
-                    </table>
                 </div>
             </div>
         </div>

@@ -50,35 +50,37 @@ include_once("includes/head.php");
                         <a class="btn primary" href="formActividad.php?oid_proj=<?php echo $proyecto["OID_PROJ"]; ?>">Nueva actividad</a>
                     </div>
                 <?php if (count($actividades) > 0) { ?>
-                    <table class="tab horizontal">
-                        <tr>
-                            <th>Actividad</th>
-                            <th>Fecha inicio</th>
-                            <th>Fecha fin</th>
-                            <th>Plazas</th>
-                            <th>Coste total</th>
-                            <th>Coste inscripción</th>
-                            <th></th>
-                        </tr>
-                    <?php foreach ($actividades as $act) { ?>
-                        <tr>
-                            <form action="controllers/controlActividad.php" method="POST">
-                                <input type="hidden" name="oid_proj" value="<?php echo $proyecto["OID_PROJ"] ?>">
-                                <input type="hidden" name="oid_act" value="<?php echo $act["OID_ACT"] ?>">
-                                <td><a href="perfilActividad.php?oid_act=<?php echo $act["OID_ACT"] ?>"><?php echo $act["NOMBRE"] ?></a></td>
-                                <td><?php echo $act["FECHAINICIO"] ?></td>
-                                <td><?php echo $act["FECHAFIN"] ?></td>
-                                <td><?php echo $act["NUMEROPLAZAS"] ?></td>
-                                <td><?php echo $act["COSTETOTAL"] ?> €</td>
-                                <td><?php echo $act["COSTEINSCRIPCION"] ?> €</td>
-                                <td class="acciones">
-                                    <a href="formActividad.php?edit=true&oid_act=<?php echo $act["OID_ACT"]; ?>" class="btn secondary">Editar</a>
-                                    <button class="btn secondary" type="submit" name="submit" value="delete">Borrar</button>
-                                </td>
-                            </form>
-                        </tr>
-                    <?php } ?>
-                    </table>
+                    <div class="content-tab">
+                        <table class="tab horizontal">
+                            <tr>
+                                <th>Actividad</th>
+                                <th>Fecha inicio</th>
+                                <th>Fecha fin</th>
+                                <th>Plazas</th>
+                                <th>Coste total</th>
+                                <th>Coste inscripción</th>
+                                <th></th>
+                            </tr>
+                        <?php foreach ($actividades as $act) { ?>
+                            <tr>
+                                <form action="controllers/controlActividad.php" method="POST">
+                                    <input type="hidden" name="oid_proj" value="<?php echo $proyecto["OID_PROJ"] ?>">
+                                    <input type="hidden" name="oid_act" value="<?php echo $act["OID_ACT"] ?>">
+                                    <td><a href="perfilActividad.php?oid_act=<?php echo $act["OID_ACT"] ?>"><?php echo $act["NOMBRE"] ?></a></td>
+                                    <td><?php echo $act["FECHAINICIO"] ?></td>
+                                    <td><?php echo $act["FECHAFIN"] ?></td>
+                                    <td><?php echo $act["NUMEROPLAZAS"] ?></td>
+                                    <td><?php echo $act["COSTETOTAL"] ?> €</td>
+                                    <td><?php echo $act["COSTEINSCRIPCION"] ?> €</td>
+                                    <td class="acciones">
+                                        <a href="formActividad.php?edit=true&oid_act=<?php echo $act["OID_ACT"]; ?>" class="btn secondary">Editar</a>
+                                        <button class="btn secondary" type="submit" name="submit" value="delete">Borrar</button>
+                                    </td>
+                                </form>
+                            </tr>
+                        <?php } ?>
+                        </table>
+                    </div>
                 <?php } else { ?>
                     <p>Aún no hay actividades registradas en el sistema para este proyecto.</p>
                 <?php } ?>

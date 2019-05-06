@@ -44,42 +44,44 @@ include_once("includes/head.php");
                     <div class="module-title">
                         <h2>Datos del patrocinador</h2>
                     </div>
-                    <table class="tab vertical">
-                        <tr>
-                            <th>CIF</th>
-                            <td><?php echo $patrocinador["CIF"]; ?></td>
-                        </tr>
-                        <tr>
-                            <th>Tipo</th>
-                            <td><?php echo $patrocinador["TIPO"]; ?></td>
-                        </tr>
-                        <tr>
-                            <th>Dirección</th>
-                            <td><?php echo $patrocinador["DIRECCION"]; ?></td>
-                        </tr>
-                        <tr>
-                            <th>Código postal</th>
-                            <td><?php echo $patrocinador["CODIGOPOSTAL"]; ?></td>
-                        </tr>
-                        <tr>
-                            <th>Localidad</th>
-                            <td><?php echo $patrocinador["LOCALIDAD"]; ?></td>
-                        </tr>
-                        <tr>
-                            <th>Provincia</th>
-                            <td><?php echo $patrocinador["PROVINCIA"]; ?></td>
-                        </tr>
-                        <tr>
-                            <th>Teléfono</th>
-                            <td><?php echo $patrocinador["TELEFONO"]; ?></td>
-                        </tr>
-                    <?php if (isset($patrocinador["EMAIL"])) { ?>
-                        <tr>
-                            <th>Email</th>
-                            <td><?php echo $patrocinador["EMAIL"]; ?></td>
-                        </tr>
-                    <?php } ?>
-                    </table>
+                    <div class="content-tab">
+                        <table class="tab vertical">
+                            <tr>
+                                <th>CIF</th>
+                                <td><?php echo $patrocinador["CIF"]; ?></td>
+                            </tr>
+                            <tr>
+                                <th>Tipo</th>
+                                <td><?php echo $patrocinador["TIPO"]; ?></td>
+                            </tr>
+                            <tr>
+                                <th>Dirección</th>
+                                <td><?php echo $patrocinador["DIRECCION"]; ?></td>
+                            </tr>
+                            <tr>
+                                <th>Código postal</th>
+                                <td><?php echo $patrocinador["CODIGOPOSTAL"]; ?></td>
+                            </tr>
+                            <tr>
+                                <th>Localidad</th>
+                                <td><?php echo $patrocinador["LOCALIDAD"]; ?></td>
+                            </tr>
+                            <tr>
+                                <th>Provincia</th>
+                                <td><?php echo $patrocinador["PROVINCIA"]; ?></td>
+                            </tr>
+                            <tr>
+                                <th>Teléfono</th>
+                                <td><?php echo $patrocinador["TELEFONO"]; ?></td>
+                            </tr>
+                        <?php if (isset($patrocinador["EMAIL"])) { ?>
+                            <tr>
+                                <th>Email</th>
+                                <td><?php echo $patrocinador["EMAIL"]; ?></td>
+                            </tr>
+                        <?php } ?>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div> <!--end module-->

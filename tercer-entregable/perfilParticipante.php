@@ -52,72 +52,76 @@ include_once("includes/head.php");
                     <div class="module-title">
                         <h2>Datos personales</h2>
                     </div>
-                    <table class="tab vertical">
-                        <tr>
-                            <th>DNI</th>
-                            <td><?php echo $participante["DNI"]; ?></td>
-                        </tr>
-                        <tr>
-                            <th>Fecha nacimiento</th>
-                            <td><?php echo $participante["FECHANACIMIENTO"] ?></td>
-                        </tr>
-                        <tr>
-                            <th>Discapacidad</th>
-                            <?php
-                            $gDiscapacidad = (0 + str_replace(",", ".", $participante["GRADODISCAPACIDAD"]));
-                            ?>
-                            <td><?php echo ($gDiscapacidad * 100) . "%"; ?></td>
-                        </tr>
-                        <tr>
-                            <th>Dirección</th>
-                            <td><?php echo $participante["DIRECCION"]; ?></td>
-                        </tr>
-                        <tr>
-                            <th>Código postal</th>
-                            <td><?php echo $participante["CODIGOPOSTAL"]; ?></td>
-                        </tr>
-                        <tr>
-                            <th>Localidad</th>
-                            <td><?php echo $participante["LOCALIDAD"]; ?></td>
-                        </tr>
-                        <tr>
-                            <th>Provincia</th>
-                            <td><?php echo $participante["PROVINCIA"]; ?></td>
-                        </tr>
-                        <tr>
-                            <th>Teléfono</th>
-                            <td><?php echo $participante["TELEFONO"]; ?></td>
-                        </tr>
-                    <?php if (isset($participante["EMAIL"])) { ?>
-                        <tr>
-                            <th>Email</th>
-                            <td><?php echo $participante["EMAIL"]; ?></td>
-                        </tr>
-                    <?php } ?>
-                    </table>
+                    <div class="content-tab">
+                        <table class="tab vertical">
+                            <tr>
+                                <th>DNI</th>
+                                <td><?php echo $participante["DNI"]; ?></td>
+                            </tr>
+                            <tr>
+                                <th>Fecha nacimiento</th>
+                                <td><?php echo $participante["FECHANACIMIENTO"] ?></td>
+                            </tr>
+                            <tr>
+                                <th>Discapacidad</th>
+                                <?php
+                                $gDiscapacidad = (0 + str_replace(",", ".", $participante["GRADODISCAPACIDAD"]));
+                                ?>
+                                <td><?php echo ($gDiscapacidad * 100) . "%"; ?></td>
+                            </tr>
+                            <tr>
+                                <th>Dirección</th>
+                                <td><?php echo $participante["DIRECCION"]; ?></td>
+                            </tr>
+                            <tr>
+                                <th>Código postal</th>
+                                <td><?php echo $participante["CODIGOPOSTAL"]; ?></td>
+                            </tr>
+                            <tr>
+                                <th>Localidad</th>
+                                <td><?php echo $participante["LOCALIDAD"]; ?></td>
+                            </tr>
+                            <tr>
+                                <th>Provincia</th>
+                                <td><?php echo $participante["PROVINCIA"]; ?></td>
+                            </tr>
+                            <tr>
+                                <th>Teléfono</th>
+                                <td><?php echo $participante["TELEFONO"]; ?></td>
+                            </tr>
+                        <?php if (isset($participante["EMAIL"])) { ?>
+                            <tr>
+                                <th>Email</th>
+                                <td><?php echo $participante["EMAIL"]; ?></td>
+                            </tr>
+                        <?php } ?>
+                        </table>
+                    </div>
                 </div>
                 <div class="col-6 col-tab-12">
                     <div class="module-title">
                         <h2>Tutor legal</h2>
                     </div>
-                    <table class="tab vertical">
-                        <tr>
-                            <th>DNI</th>
-                            <td><?php echo $tutor["DNI"]; ?></td>
-                        </tr>
-                        <tr>
-                            <th>Nombre</th>
-                            <td><?php echo $tutor["NOMBRE"] . " " . $tutor["APELLIDOS"]; ?></td>
-                        </tr>
-                        <tr>
-                            <th>Teléfono</th>
-                            <td><?php echo $tutor["TELEFONO"]; ?></td>
-                        </tr>
-                        <tr>
-                            <th>Email</th>
-                            <td><?php echo $tutor["EMAIL"]; ?></td>
-                        </tr>
-                    </table>
+                    <div class="content-tab">
+                        <table class="tab vertical">
+                            <tr>
+                                <th>DNI</th>
+                                <td><?php echo $tutor["DNI"]; ?></td>
+                            </tr>
+                            <tr>
+                                <th>Nombre</th>
+                                <td><?php echo $tutor["NOMBRE"] . " " . $tutor["APELLIDOS"]; ?></td>
+                            </tr>
+                            <tr>
+                                <th>Teléfono</th>
+                                <td><?php echo $tutor["TELEFONO"]; ?></td>
+                            </tr>
+                            <tr>
+                                <th>Email</th>
+                                <td><?php echo $tutor["EMAIL"]; ?></td>
+                            </tr>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div> <!--end module-->
@@ -129,25 +133,27 @@ include_once("includes/head.php");
                         <a class="btn primary" href="nuevoInforme.php?oid_part=<?php echo $participante["OID_PART"]; ?>">Nuevo informe</a>
                     </div>
                 <?php if (count($informes) > 0) { ?>
-                    <table class="tab horizontal">
-                        <tr>
-                            <th>ID</th>
-                            <th>Fecha</th>
-                            <th>Descripción</th>
-                        </tr>
-                    <?php foreach ($informes as $inf) { ?>
-                        <tr>
-                            <form>
-                                <td><?php echo $inf["OID_INF"] ?></td>
-                                <td><?php echo $inf["FECHA"] ?></td>
-                                <td><?php echo $inf["DESCRIPCION"] ?></td>
-                            </form>
-                        </tr>
-                    <?php } ?>
+                    <div class="content-tab">
+                        <table class="tab horizontal">
+                            <tr>
+                                <th>ID</th>
+                                <th>Fecha</th>
+                                <th>Descripción</th>
+                            </tr>
+                        <?php foreach ($informes as $inf) { ?>
+                            <tr>
+                                <form>
+                                    <td><?php echo $inf["OID_INF"] ?></td>
+                                    <td><?php echo $inf["FECHA"] ?></td>
+                                    <td><?php echo $inf["DESCRIPCION"] ?></td>
+                                </form>
+                            </tr>
+                        <?php } ?>
+                        </table>
+                    </div>
                 <?php } else { ?>
                     <p>Aún no hay informes médicos registrados en el sistema.</p>
                 <?php } ?>
-                    </table>
                 </div>
             </div>
         </div> <!--end module-->
@@ -158,26 +164,28 @@ include_once("includes/head.php");
                         <h2>Historial de participación</h2>
                     </div>
                 <?php if (count($actividades) > 0) { ?>
-                    <table class="tab horizontal">
-                        <tr>
-                            <th>Actividad</th>
-                            <th>Localización</th>
-                            <th>Fecha</th>
-                        </tr>
-                    <?php
-                    foreach ($actividades as $act) { ?>
-                        <tr>
-                            <form>
-                                <td><a href="perfilActividad.php?oid_act=<?php echo $act["OID_ACT"] ?>"><?php echo $act["ACT_NOMBRE"] ?></a></td>
-                                <td><?php echo $act["PROJ_LUGAR"] ?></td>
-                                <td><?php echo $act["ACT_FECHAINICIO"] ?></td>
-                            </form>
-                        </tr>
-                    <?php } ?>
+                    <div class="content-tab">
+                        <table class="tab horizontal">
+                            <tr>
+                                <th>Actividad</th>
+                                <th>Localización</th>
+                                <th>Fecha</th>
+                            </tr>
+                        <?php
+                        foreach ($actividades as $act) { ?>
+                            <tr>
+                                <form>
+                                    <td><a href="perfilActividad.php?oid_act=<?php echo $act["OID_ACT"] ?>"><?php echo $act["ACT_NOMBRE"] ?></a></td>
+                                    <td><?php echo $act["PROJ_LUGAR"] ?></td>
+                                    <td><?php echo $act["ACT_FECHAINICIO"] ?></td>
+                                </form>
+                            </tr>
+                        <?php } ?>
+                        </table>
+                    </div>
                 <?php } else { ?>
                     <p><?php echo $participante["NOMBRE"]; ?> no ha participado aún en actividades.</p>
                 <?php } ?>
-                    </table>
                 </div>
             </div>
         </div> <!--end module-->
@@ -188,28 +196,30 @@ include_once("includes/head.php");
                         <h2>Recibos</h2>
                     </div>
                 <?php if (count($recibos) > 0) { ?>
-                    <table class="tab horizontal">
-                        <tr>
-                            <th>Estado</th>
-                            <th>Emisión</th>
-                            <th>Vencimiento</th>
-                            <th>Importe</th>
-                            <th></th>
-                        </tr>
-                    <?php
-                    foreach ($recibos as $rec) { ?>
-                        <tr>
-                            <td><?php echo $rec["ESTADO"] ?></td>
-                            <td><?php echo $rec["FECHAEMISION"] ?></td>
-                            <td><?php echo $rec["FECHAVENCIMIENTO"] ?></td>
-                            <td><?php echo $rec["IMPORTE"] . "€"?></td>
-                            <td class="acciones"><a href="actualizarRecibo.php?oid_part=<?php echo $_GET["oid_part"] ?>&oid_rec=<?php echo $rec["OID_REC"] ?>" class="btn secondary">Editar</a></td>
-                        </tr>
-                    <?php } ?>
+                    <div class="content-tab">
+                        <table class="tab horizontal">
+                            <tr>
+                                <th>Estado</th>
+                                <th>Emisión</th>
+                                <th>Vencimiento</th>
+                                <th>Importe</th>
+                                <th></th>
+                            </tr>
+                        <?php
+                        foreach ($recibos as $rec) { ?>
+                            <tr>
+                                <td><?php echo $rec["ESTADO"] ?></td>
+                                <td><?php echo $rec["FECHAEMISION"] ?></td>
+                                <td><?php echo $rec["FECHAVENCIMIENTO"] ?></td>
+                                <td><?php echo $rec["IMPORTE"] . "€"?></td>
+                                <td class="acciones"><a href="actualizarRecibo.php?oid_part=<?php echo $_GET["oid_part"] ?>&oid_rec=<?php echo $rec["OID_REC"] ?>" class="btn secondary">Editar</a></td>
+                            </tr>
+                        <?php } ?>
+                        </table>
+                    </div>
                 <?php } else { ?>
                     <p>Aún no hay recibos registrados en el sistema.</p>
                 <?php } ?>
-                    </table>
                 </div>
             </div>
         </div>
