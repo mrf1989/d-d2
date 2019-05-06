@@ -79,7 +79,7 @@ include_once("includes/head.php");
                                 <div class="form-label">Fecha nacimiento:</div>
                                 <input type="date" name="fechaNacimiento" value="<?php if (isset($_GET["edit"])) echo getFechaForm($participante["FECHANACIMIENTO"]) ?>" placeholder="Fecha nacimiento" required/>
                                 <!-- falta por validar, añadir que acepte el 1 ^0[,]{0,1}[0-9]{0,2} -->
-                                <input type="text" name="discapacidad" value="<?php  echo "0" . $participante["GRADODISCAPACIDAD"] ?>" placeholder="Grado discapacidad"  <?php if (isset($_GET["edit"])) echo "readonly" ?> required/>
+                                <input type="text" name="discapacidad" value="<?php if (isset($_GET["edit"])) echo "0" . $participante["GRADODISCAPACIDAD"] ?>" placeholder="Grado discapacidad"  <?php if (isset($_GET["edit"])) echo "readonly" ?> required/>
                             </div>
                             <div class="form-row">
                                 <?php if ($participante["EMAIL"] != "") { ?>
