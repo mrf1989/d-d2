@@ -1,5 +1,7 @@
 <?php
 
+include_once("/gestionTutores.php");
+
 function getParticipantes($conexion) {
     try {
         $consulta = "SELECT * FROM PARTICIPANTES PART LEFT JOIN PERSONAS PER ON PART.DNI = PER.DNI";
@@ -37,6 +39,17 @@ function getParticipante($conexion, $oid_part) {
     } catch (PDOException $e) {
         $_SESSION["excepcion"] = $e->GetMessage();
         Header("Location: ../excepcion.php");
+    }
+}
+function validarOidPart($conexion, $oid_part){
+    try {
+        $consulta = "SELECT COUNT(*) FROM PARTICIPANTES WHERE OID_Part=:oid_part";
+        $stmt = $conexion->prepare($consulta);
+        $stmt->bindParam(':oid_part', $oid_part);
+        $stmt->execute();
+        return $stmt->fetchColumn();
+    } catch (PDOException $e) {
+        return 0;
     }
 }
 
@@ -178,13 +191,15 @@ function actualizarRecibo($conexion, $rec) {
     }
 }
 
-function validarAltaParticipante($participante){
+function validarAltaParticipante($participante, $conexion){
 	//validación del dni
-	if($participante["dni"]==""){
-		$errores[] = "<p>El DNI debe completarse</p>";
-	}else if(!preg_match("/^[0-9]{8}[A-Z]$/", $participante["dni"])){
-		$errores[] = "<p>El DNI debe contener 8 números y una letra mayúscula: " . $participante["dni"] . "</p>";
-	}
+    if (!$_REQUEST["submit"] == 'edit') {
+	   if($participante["dni"]==""){
+		  $errores[] = "<p>El DNI debe completarse</p>";
+	   }else if(!preg_match("/^[0-9]{8}[A-Z]$/", $participante["dni"])){
+		  $errores[] = "<p>El DNI debe contener 8 números y una letra mayúscula: " . $participante["dni"] . "</p>";
+	   }
+    }
 	//validación del nombre
 	if ($participante["nombre"]=="") {
 		$errores[] = "<p>El nombre debe completarse</p>";
@@ -214,6 +229,13 @@ function validarAltaParticipante($participante){
         if(!filter_var($participante["email"], FILTER_VALIDATE_EMAIL)){
 		$errores[] = "<p>El email es incorrecto: " . $participante["email"]. "</p>";
 	    }
+    }
+    //Validación tutor legal
+    if (!$_REQUEST["submit"] == 'edit') {
+        $consultaTutor= consultarTutor($conexion, $participante["tutor"]);
+        if($consultaTutor == 0){
+            $errores[]="<p>El tutor legal con DNI: ".$participante["tutor"]." no existe</p>";
+        }
     }
 	//validación del número de teléfono
 	if ($participante["telefono"]=="") {
@@ -248,5 +270,6 @@ function validarAltaRecibo($rec) {
     }
     return $errores;
 }
+
 
 ?>

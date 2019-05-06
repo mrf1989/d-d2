@@ -24,7 +24,7 @@ if ($_REQUEST["submit"] == "insert") {
     $nuevoParticipante["tutor"] = $_REQUEST["tutor"];
 
     $conexion = crearConexionBD();
-    $errores= validarAltaParticipante($nuevoParticipante);
+    $errores= validarAltaParticipante($nuevoParticipante, $conexion);
     if (count($errores)>0) {
         $_SESSION["errores"] = $errores;
         Header("Location: ../nuevoParticipante.php");
@@ -49,16 +49,24 @@ if ($_REQUEST["submit"] == "insert") {
     $participante["localidad"] = $_REQUEST["localidad"];
     $participante["provincia"] = $_REQUEST["provincia"];
     $participante["cp"] = $_REQUEST["cp"];
+    $participante["oid_part"]= $_REQUEST["oid_part"];
 
     $conexion = crearConexionBD();
-    $errores = validarAltaParticipante($participante);
-    if (count($errores)>0) {
-        $_SESSION["errores"]=$errores;
-        Header("Location: ../nuevoParticipante.php?edit=true&oid_part=" . $_REQUEST["oid_part"]);
+    $validaOidPart= validarOidPart($conexion, $participante["oid_part"]);
+    if ($validaOidPart==0) {
+        $_SESSION["excepcion"]="<p>El participante no existe, revise los datos insertados.</p>";
+        Header("Location:../excepcion.php");
     }else{
-        actualizarParticipante($conexion, $participante);
-        cerrarConexionBD($conexion);
-        Header("Location: ../perfilParticipante.php?oid_part=" . $_REQUEST["oid_part"]);
+        $errores = validarAltaParticipante($participante, $conexion);
+        if (count($errores)>0) {
+            $_SESSION["errores"]=$errores;
+            Header("Location: ../nuevoParticipante.php?edit=true&oid_part=" . 
+                $_REQUEST["oid_part"]);
+        }else{
+            actualizarParticipante($conexion, $participante);
+            cerrarConexionBD($conexion);
+            Header("Location: ../perfilParticipante.php?oid_part=" . $_REQUEST["oid_part"]);
+        }
     }
 } else if ($_REQUEST["submit"] == 'informe') {
     $inf["oid_part"] = $_REQUEST["oid_part"];

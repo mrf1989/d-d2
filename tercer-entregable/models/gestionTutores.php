@@ -41,6 +41,17 @@ function getPartTut($conexion, $oid_tut) {
         Header("Location: ../excepcion.php");
     }
 }
+function consultarTutor($conexion, $dni){
+    try {
+        $consulta = "SELECT COUNT(*) FROM TUTORESLEGALES WHERE DNI=:dni";
+        $stmt = $conexion->prepare($consulta);
+        $stmt->bindParam(':dni', $dni);
+        $stmt->execute();
+        return $stmt->fetchColumn();
+    } catch (PDOException $e) {
+        return 0;
+    }
+}
 
 function insertarTutor($conexion, $tut) {
     try {
