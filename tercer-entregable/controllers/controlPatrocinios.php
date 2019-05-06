@@ -13,8 +13,10 @@ if ($_REQUEST["submit"] == 'inscribir') {
     $patrocinio["oid_act"] = $_REQUEST["oid_act"];
 
     $conexion = crearConexionBD();
-    $patrocinadores = getPatrocinios($conexion, $patrocinio["oid_act"]);
-    $errores = validarPatrocinio($patrocinio, $patrocinadores);
+    $validaPat = validarPatrocinio($patrocinio, $conexion);
+    if ($validaPat==1) {
+        $errores[] = "<p>El patrocinador seleccionado ya estaba inscrito</p>";
+    } 
     if (count($errores)> 0) {
     	$_SESSION["errores"] = $errores;
     	Header("Location: ../formPatrocinio.php?oid_act=" . $patrocinio["oid_act"]);
