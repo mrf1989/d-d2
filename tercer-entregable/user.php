@@ -16,7 +16,7 @@ if (!isset($_SESSION["user"])) {
         $inscripciones = getProximasActPart($conexion, $oid_part["OID_PART"]);
     } else {
         $oid_vol = getOidVol($conexion, $_SESSION["login"]);
-        $inscripciones = getProximasActVol($conexion, $oid_part["OID_PART"]);
+        $inscripciones = getProximasActVol($conexion, $oid_vol["OID_VOL"]);
     }
     cerrarConexionBD($conexion);
 }
@@ -45,9 +45,9 @@ include_once("includes/head.php");
                                 </tr>
                             <?php foreach ($inscripciones as $ins) { ?>
                                 <tr>
-                                    <th><?php echo $ins["NOMBRE"] ?></th>
-                                    <th><?php echo $ins["UBICACION"] ?></th>
-                                    <th><?php echo $ins["FECHAINICIO"] ?></th>
+                                    <td><?php echo $ins["NOMBRE"] ?></td>
+                                    <td><?php echo $ins["UBICACION"] ?></td>
+                                    <td><?php echo $ins["FECHAINICIO"] ?></td>
                                 </tr>
                             <?php } ?>    
                             </table>
