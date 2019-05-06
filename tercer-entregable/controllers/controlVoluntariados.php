@@ -13,8 +13,10 @@ if ($_REQUEST["submit"] == 'inscribir') {
     $colaboracion["oid_act"] = $_REQUEST["oid_act"];
 
     $conexion = crearConexionBD();
-    $colaboradores = getColaboraciones($conexion, $colaboracion["oid_act"]);
-    $errores = validarVoluntariado($colaboracion, $colaboradores);
+    $validaVol = validarVoluntariado($colaboracion, $conexion);
+    if ($validaVol==1) {
+        $errores[] = "<p>El voluntario seleccionado ya estaba inscrito</p>";
+    }    
     if (count($errores)> 0) {
     	$_SESSION["errores"] = $errores;
     	Header("Location: ../formVoluntariado.php?oid_act=" . $colaboracion["oid_act"]);

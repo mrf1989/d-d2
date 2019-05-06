@@ -14,8 +14,10 @@ if ($_REQUEST["submit"] == 'inscribir') {
     $inscripcion["oid_act"] = $_REQUEST["oid_act"];
 
     $conexion = crearConexionBD();
-    $inscritos = getInscripciones($conexion, $inscripcion["oid_act"]);
-    $errores = validarInscripcion($inscripcion, $inscritos);
+    $validaIns = validarInscripcion($inscripcion, $conexion);
+    if ($validaIns==1) {
+        $errores[] = "<p>El participante seleccionado ya estaba inscrito</p>";
+    } 
     if (count($errores)> 0) {
     	$_SESSION["errores"] = $errores;
     	Header("Location: ../formInscripcion.php?oid_act=" . $inscripcion["oid_act"]);

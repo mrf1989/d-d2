@@ -156,40 +156,43 @@ function validarAltaActividad($actividad){
     return $errores;
 }
 
-function validarVoluntariado($colaboracion, $colaboradores){
-    if(count($colaboradores) > 0){
-        foreach ($colaboradores as $col) {
-            if($colaboracion["dni"] == $col["DNI"]){
-                $errores[] = "<p>El voluntario con dni " . $col["DNI"] ." ya está inscrito</p>";
-            }
-        }
+function validarInscripcion($inscripcion, $conexion){
+    try {
+        $consulta = "SELECT COUNT(*) FROM PARTICIPANTES PART JOIN INSCRIPCIONES INS ON PART.OID_Part=INS.OID_Part WHERE INS.OID_Act=:oid_act AND PART.DNI=:dni";
+        $stmt = $conexion->prepare($consulta);
+        $stmt->bindParam(':oid_act', $inscripcion["oid_act"]);
+        $stmt->bindParam(':dni', $inscripcion["dni"]);
+        $stmt->execute();
+        return $stmt->fetchColumn();
+    } catch (PDOException $e) {
+        return 0;
     }
-
-    return $errores;
 }
 
-function validarInscripcion($inscripcion, $inscritos){
-    if(count($inscritos) > 0){
-        foreach ($inscritos as $ins) {
-            if($inscripcion["dni"] == $ins["DNI"]){
-                $errores[] = "<p>El participante con dni " . $ins["DNI"] ." ya está inscrito</p>";
-            }
-        }
+function validarVoluntariado($colaboracion, $conexion){
+    try {
+        $consulta = "SELECT COUNT(*) FROM VOLUNTARIOS VOL JOIN COLABORACIONES COLAB ON VOL.OID_Vol=COLAB.OID_Vol WHERE COLAB.OID_Act=:oid_act AND VOL.DNI=:dni";
+        $stmt = $conexion->prepare($consulta);
+        $stmt->bindParam(':oid_act', $colaboracion["oid_act"]);
+        $stmt->bindParam(':dni', $colaboracion["dni"]);
+        $stmt->execute();
+        return $stmt->fetchColumn();
+    } catch (PDOException $e) {
+        return 0;
     }
-
-    return $errores;
 }
 
-function validarPatrocinio($patrocinio, $patrocinadores){
-    if(count($patrocinadores) > 0){
-        foreach ($patrocinadores as $pat) {
-            if($patrocinio["cif"] == $pat["CIF"]){
-                $errores[] = "<p>El patrocinador con cif " . $pat["CIF"] ." ya está inscrito</p>";
-            }
-        }
+function validarPatrocinio($patrocinio, $conexion){
+    try {
+        $consulta = "SELECT COUNT(*) FROM INSTITUCIONES INS JOIN PATROCINIOS PAT ON INS.cif=PAT.cif WHERE PAT.OID_Act=:oid_act AND PAT.CIF=:cif";
+        $stmt = $conexion->prepare($consulta);
+        $stmt->bindParam(':oid_act', $patrocinio["oid_act"]);
+        $stmt->bindParam(':cif', $patrocinio["cif"]);
+        $stmt->execute();
+        return $stmt->fetchColumn();
+    } catch (PDOException $e) {
+        return 0;
     }
-
-    return $errores;
 }
 
 
