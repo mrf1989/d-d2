@@ -3,7 +3,14 @@
         <div class="logo">
             <a href="/index.php"><img src="images/logo/logo-horizontal.jpg" alt="Logotipo Deporte y Desafío" width="300"></a>
         </div>
-        <div class="navbar">
+        <div id="menu-mobile" class="menu-mobile">
+            <div id="btn-nav" class="btn-nav">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        <div id="navbar" class="navbar navbar-mobile">
             <nav>
                 <ul class="nav-items">
                     <li><a href="/participantes.php">Participantes</a></li>
