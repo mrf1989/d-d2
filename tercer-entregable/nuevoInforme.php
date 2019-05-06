@@ -52,7 +52,7 @@ include_once("includes/head.php");
                             <div class="row">
                                 <div class="col-12 col-tab-12 acciones">
                                     <input type="hidden" name="oid_part" value="<?php echo $_GET["oid_part"] ?>">
-                                    <button type="reset" class="btn cancel">Cancelar</button>
+                                    <button type="reset" class="btn cancel">Reiniciar</button>
                                     <button type="submit" class="btn primary" name="submit" value="informe" placeholder="submit">Guardar</button>
                                 </div>
                             </div>
