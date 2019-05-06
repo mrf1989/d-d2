@@ -1,0 +1,55 @@
+.tab {
+    border-collapse: collapse;
+}
+.tab a {
+    color: #777;
+    text-decoration: none;
+}
+.tab.vertical th {
+    background: #95d2f8;
+    color: #333;
+    border-right: 2px solid #0098f7;
+}
+.tab-vertical tr:first-child,
+tr:nth-child(odd) {
+    background: #ddd;
+}
+tr:nth-child(even) {
+    background: #eee;
+}
+.tab.horizontal tr:first-child {
+    background: #95d2f8;
+    color: #333;
+}
+td, th {
+    text-align: left;
+    padding: 10px;
+}
+.tab.horizontal th {
+    border-bottom: 2px solid #0098f7;
+}
+td {
+    color: #555;
+}
+.acciones {
+    text-align: right;
+}
+
+table {
+    overflow-x: auto;
+}
+
+@media(max-width: 699px) {
+    table {
+        width: 1000px;
+    }
+    .content-tab {
+        overflow-x: scroll;
+    }
+}
+
+@media(min-width: 700px) {
+    table {
+        width: 100%;
+    }
+}

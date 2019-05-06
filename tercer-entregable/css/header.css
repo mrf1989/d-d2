@@ -16,6 +16,10 @@ header a:hover {
     align-items: center;
 }
 
+.logo img {
+    width: 100%;
+}
+
 .navbar {
     width: 85%;
     max-width: 750px;
