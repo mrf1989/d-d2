@@ -1,4 +1,9 @@
 <?php
-// TODO Otro tipo de usuario con otro árbol de vistas y otros permisos
-echo "Hola Mundo, soy un usuario sin permisos; nadie me quiere :(";
+    session_start();
+    echo "Hola Mundo! soy un ";
+    if ($_SESSION["user"] == 2) {
+        echo "participante!";
+    } else {
+        echo "voluntario!";
+    }
 ?>

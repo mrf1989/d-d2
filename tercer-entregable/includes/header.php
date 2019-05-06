@@ -19,7 +19,7 @@
                     <li><a href="/proyectos.php">Proyectos</a></li>
                     <li><a href="/patrocinadores.php">Patrocinadores</a></li>
                 <?php if (isset($_SESSION["login"])) { ?>
-                    <li><a href="logout.php">Cerrar sesión</a></li>
+                    <li><a class="logout" href="logout.php">Cerrar sesión</a></li>
                 <?php } ?>
                 </ul>
             </nav>

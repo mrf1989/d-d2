@@ -60,7 +60,7 @@ include_once("includes/head.php");
                                     </div>
                                     <div class="form-row">
                                         <button type="reset" class="btn cancel">Reiniciar</button>
-                                        <button type="submit" name="submit" value="inscribir" class="btn primary">Confirmar</button>
+                                        <button type="submit" name="submit" value="inscribir" class="btn primary">Guardar</button>
                                     </div>
                                 </div>
                                 <div class="col-6 col-tab-12">

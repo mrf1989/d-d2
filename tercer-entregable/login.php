@@ -11,21 +11,30 @@ if (isset($_POST["submit"])) {
     
     // consulta de credenciales
     $conexion = crearConexionBD();
-    $consulta = consultarUsuario($conexion, $dni, $pass);
+    $consulta = consultarCredenciales($conexion, $dni, $pass);
             
     if ($consulta != 0) {
         // Credenciales OK
         $_SESSION["login"] = $dni;
         $_SESSION["admin"] = 0;
         // consulta si es un administrador (coordinador deportivo)
-        //$conexion = crearConexionBD();
-        $consulta = consultarTipoUsuario($conexion, $dni);
+        $consulta = consultarPermisos($conexion, $dni);
         if ($consulta != 0) {
             // vista para coordinador
             $_SESSION["admin"] = 1;
+            cerrarConexionBD($conexion);
             Header("Location: admin.php");
         } else {
             // vista para usuarios
+            $consulta = consultarUserTipoPart($conexion, $dni);
+            if ($consulta != 0) {
+                // user participante
+                $_SESSION["user"] = 2;
+            } else {
+                // user voluntario
+                $_SESSION["user"] = 3;
+            }
+            cerrarConexionBD($conexion);
             Header("Location: user.php");
         }
     } else {
