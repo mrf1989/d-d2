@@ -1,9 +1,95 @@
 <?php
-    session_start();
-    echo "Hola Mundo! soy un ";
+session_start();
+
+include_once("models/gestionBD.php");
+include_once("models/gestionUsuarios.php");
+include_once("models/gestionActividades.php");
+include_once("models/gestionParticipantes.php");
+include_once("models/gestionVoluntarios.php");
+
+if (!isset($_SESSION["user"])) {
+    Header("Location: index.php");
+} else {
+    $conexion = crearConexionBD();
     if ($_SESSION["user"] == 2) {
-        echo "participante!";
+        $oid_part = getOidPart($conexion, $_SESSION["login"]);
+        $inscripciones = getProximasActPart($conexion, $oid_part);
     } else {
-        echo "voluntario!";
+        $oid_vol = getOidVol($conexion, $_SESSION["login"]);
+        $inscripciones = getProximasActVol($conexion, $oid_vol);
     }
+    cerrarConexionBD($conexion);
+}
+
+$page_title = "Página principal";
+include_once("includes/head.php");
 ?>
+
+<body>
+    <?php include_once("includes/header.php"); ?>
+    <div class="container">
+        <div class="content">
+            <div class="row">
+                <div class="col-6 col-tab-12">
+                    <div class="content__module">
+                        <div class="module-title">
+                            <h2>Mis inscripciones</h2>
+                        </div>
+                        <div class="content-tab">
+                        <?php if ($inscripciones > 0) { ?>
+                            <table class="tab horizontal">
+                                <tr>
+                                    <th>Actividad</th>
+                                    <th>Localización</th>
+                                    <th>Fecha</th>
+                                </tr>
+                            <?php foreach ($inscripciones as $ins) { ?>
+                                <tr>
+                                    <th><?php echo $ins["NOMBRE"] ?></th>
+                                    <th><?php echo $ins["UBICACION"] ?></th>
+                                    <th><?php echo $ins["FECHAINICIO"] ?></th>
+                                </tr>
+                            <?php } ?>    
+                            </table>
+                        <?php } else { ?>
+                            <p>El usuario no está inscrito en ninguna actividad próxima.</p>
+                        <?php } ?>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-tab-12">
+                    <div class="content__module">
+                        <div class="module-title">    
+                            <h2>Próximas actividades</h2>
+                        </div>
+                        <div class="content-tab">
+                            <table class="tab horizontal">
+                                <tr>
+                                    <th>Actividad</th>
+                                    <th>Localización</th>
+                                    <th>Fecha</th>
+                                </tr>
+                        <?php
+                        // consulta las próximas actividades
+                        $conexion = crearConexionBD();
+                        $actividades = getProximasActividades($conexion);
+                        cerrarConexionBD($conexion);
+                        foreach ($actividades as $act) {
+                            $oid_act = $act["OID_ACT"];
+                            echo "<tr>";
+                                echo "<td>" . $act["NOMBRE"] . "</td>";
+                                echo "<td>" . $act["PROJ_LUGAR"] . "</td>";
+                                echo "<td>" . $act["FECHAINICIO"] . "</td>";
+                            echo "</tr>";
+                        }
+                        ?>
+                            </table>
+                        </div>
+                    </div>
+                </div><!--end col-->
+            </div><!--end row-->
+        </div>
+    </div>
+    <?php include_once("includes/footer.php"); ?>
+</body>
+</html>

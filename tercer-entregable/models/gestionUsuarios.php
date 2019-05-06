@@ -37,4 +37,28 @@ function consultarUserTipoPart($conexion, $dni) {
     }
 }
 
+function getOidPart($conexion, $dni) {
+    try {
+        $consulta = "SELECT OID_PART FROM PARTICIPANTES WHERE DNI=:dni";
+        $stmt = $conexion->prepare($consulta);
+        $stmt->bindParam(':dni', $dni);
+        $stmt->execute();
+        return $stmt->fetch();
+    } catch (PDOException $e) {
+        return 0;
+    }
+}
+
+function getOidVol($conexion, $dni) {
+    try {
+        $consulta = "SELECT OID_PART FROM VOLUNTARIOS WHERE DNI=:dni";
+        $stmt = $conexion->prepare($consulta);
+        $stmt->bindParam(':dni', $dni);
+        $stmt->execute();
+        return $stmt->fetch();
+    } catch (PDOException $e) {
+        return 0;
+    }
+}
+
 ?>
