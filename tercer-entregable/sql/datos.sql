@@ -66,6 +66,7 @@ EXEC Add_Patrocinio('L47528229', 18, 350);
 EXEC Add_Patrocinio('U43259146', 19, 1000);
 EXEC Add_Patrocinio('L47528229', 20, 2500);
 -- Voluntarios
+EXEC Registrar_Voluntario('12121212A', 'Ana', 'Luna Domínguez', '14/08/1991', 'C/ Plácido Domingo, 34, 2ºA', 'Madrid', 'Madrid', '28015', 'analudo@gmail.com', '688132231', 'Uservol123');
 EXEC Registrar_Voluntario('54786321L', 'Pedro', 'Castaño Moreno', '23/11/1990', 'C/ Lorenzo, 57, 1ºA', 'Madrid', 'Madrid', '28015', 'petercamo@gmail.com', '688132231', 'Pcmoreno23');
 EXEC Registrar_Voluntario('19358915E', 'Sergio', 'Serrano Rascón', '19/04/1989', 'C/ Carrer Cadena, 14, 21ºA', 'Madrid', 'Madrid', '28034', 'ser2r@gmail.com', '625647435', 'Ssrascon19');
 EXEC Registrar_Voluntario('44919799V', 'Inés', 'Lozano Martínez', '05/05/2000', 'C/ Eras, 34', 'Sevilla', 'Sevilla', '41017', 'inesloma@gmail.com', '647432073', 'Ilmartinez05');
@@ -148,6 +149,7 @@ EXEC Registrar_TutorLegal('35698685V','Aurora','Gerrero Preciado', '06/01/1974',
 EXEC Registrar_TutorLegal('58426770P','Carlos','Benítez Cortés', '22/09/1986','C/ Jardín Virgen De La Roca, 4, 2ºB','Madrid', 'Madrid','28027', 'carlos_benitez86@gmail.com', '638838791', 'BojqVwdaR9');
 EXEC Registrar_TutorLegal('27362011S','Carmen','González López', '17/02/1977','C/ Virgen Del Castañar, 45, 6ºA', 'Madrid', 'Madrid','28027', 'carmengon77@hotmail.com', '677731768', '1KdYPIFEA0');
 -- Participantes
+EXEC Registrar_Participante('13131313B', 'Patricio', 'Jaén Pruna', '05/07/1997', 'C/ Donaires, 10, 5ºB', 'Madrid', 'Madrid', '28039', null, '638766986', 'Userpart123', '0,35', null, null);
 EXEC Registrar_Participante('54124312B', 'Manuel Jesús', 'Bellido Pruna', '01/02/2010', 'C/ Adela De Balboa, 10, 5ºB', 'Madrid', 'Madrid', '28039', null, '638766986', 'M1abc2M', '0,4', null, '24241646Z');
 EXEC Registrar_Participante('76334562C', 'María José', 'León Perón', '02/03/2009', 'C/ Fagot, 1, 9ºC','Madrid', 'Madrid', '28054', null, '691638704', 'M1abc2M', '0,45', null, '48907294W');
 EXEC Registrar_Participante('98451234D', 'Patricia', 'Muñoz Jiménez', '03/04/2008', 'C/ Julio Palacios, 40','Madrid', 'Madrid', '28029', null, '638505109', 'M1abc2M', '0,38', null, '70888333X');

@@ -7,6 +7,10 @@ header a:hover {
     color: #0098f7;
 }
 
+.logout {
+    color: #d67a7a;
+}
+
 .content-header {
     padding: 45px 60px;
     display: flex;
