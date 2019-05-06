@@ -9,6 +9,10 @@ body {
     height: 100vh;
 }
 
+button {
+    cursor: pointer;
+}
+
 .content__logo,
 .content__copy,
 .content__error {
@@ -130,6 +134,7 @@ fieldset {
 /*BOTON*/
 button {
     font-size: 1rem;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 .btn {
     padding: 10px;
@@ -164,6 +169,11 @@ input:focus {
 .tab a {
     color: #777;
     text-decoration: none;
+}
+
+a:hover.btn.secondary,
+a:hover.btn.primary {
+    color: whitesmoke;
 }
 
 .tab.vertical th {
