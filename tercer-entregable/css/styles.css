@@ -1,6 +1,7 @@
 @import 'header.css';
 @import 'footer.css';
 @import 'layout.css';
+@import 'tables.css';
 
 body {
     margin: 0;
@@ -47,7 +48,6 @@ fieldset {
 }
 
 .content__module {
-    margin-top: 2em;
     width: 100%;
 }
 .content__module a:hover {
@@ -58,10 +58,6 @@ fieldset {
     display: flex;
     align-items: center;
     justify-content: space-between;
-}
-
-.logo img {
-    width: 100%;
 }
 
 .form-login {
@@ -131,7 +127,7 @@ fieldset {
     border: 1px solid #777;
     padding: 5px;
 }
-/*BOTON*/
+
 button {
     font-size: 1rem;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -162,57 +158,12 @@ input:focus {
     outline: none;
 }
 
-.tab {
-    width: 100%;
-    border-collapse: collapse;
-}
-.tab a {
-    color: #777;
-    text-decoration: none;
-}
-
 a:hover.btn.secondary,
 a:hover.btn.primary {
     color: whitesmoke;
 }
 
-.tab.vertical th {
-    background: #95d2f8;
-    color: #333;
-    border-right: 2px solid #0098f7;
-}
-
-.tab-vertical tr:first-child,
-tr:nth-child(odd) {
-    background: #ddd;
-}
-tr:nth-child(even) {
-    background: #eee;
-}
-.tab.horizontal tr:first-child {
-    background: #95d2f8;
-    color: #333;
-}
-td, th {
-    text-align: left;
-    padding: 10px;
-}
-.tab.horizontal th {
-    border-bottom: 2px solid #0098f7;
-}
-td {
-    color: #555;
-}
-
-.acciones {
-    text-align: right;
-}
-
 @media(max-width: 500px) {
-    .container {
-        width: 85%;
-    }
-
     .content__logo img {
         width: 85%;
     }
@@ -236,10 +187,6 @@ td {
 }
 
 @media(min-width: 501px) {
-    .container {
-        width: 70%;
-    }
-
     .logo {
         width: 75%;
         max-width: 280px;
@@ -247,11 +194,6 @@ td {
 }
 
 @media(min-width: 1200px) {
-    .container {
-        width: 80%;
-        max-width: 1000px;
-    }
-
     .logo {
         max-width: 300px;
     }

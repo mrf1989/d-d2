@@ -3,6 +3,28 @@
 }
 
 .content {
-    padding-left: 14px;
-    padding-right: 14px;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+@media(max-width: 699px) {
+    .container {
+        width: 100%;
+    }
+
+    .content__module {
+        margin-top: 0;
+    }
+}
+
+@media(min-width: 700px) {
+    .container {
+        width: 80%;
+    }
+}
+
+@media(min-width: 1700px) {
+    .container {
+        max-width: 1330px;
+    }
 }

@@ -14,28 +14,30 @@ include_once("includes/head.php");
                 <div class="module-title">    
                     <h1>Próximas actividades</h1>
                 </div>
-                <table class="tab horizontal">
-                    <tr>
-                        <th>Actividad</th>
-                        <th>Localización</th>
-                        <th>Fecha</th>
-                    </tr>
-            <?php
-            // consulta las próximas actividades
-            $conexion = crearConexionBD();
-            $actividades = getProximasActividades($conexion);
-            cerrarConexionBD($conexion);
-            foreach ($actividades as $act) {
-                $oid_act = $act["OID_ACT"];
-                // esta forma de insertar HTML es válida, pero NO RECOMENDABLE
-                echo "<tr>";
-                    echo "<td><a href=\"actividad.php?oid_act=$oid_act\">" . $act["NOMBRE"] . "</a></td>";
-                    echo "<td>" . $act["PROJ_LUGAR"] . "</td>";
-                    echo "<td>" . $act["FECHAINICIO"] . "</td>";
-                echo "</tr>";
-            }
-            ?>
-                </table>
+                <div class="content-tab">
+                    <table class="tab horizontal">
+                        <tr>
+                            <th>Actividad</th>
+                            <th>Localización</th>
+                            <th>Fecha</th>
+                        </tr>
+                <?php
+                // consulta las próximas actividades
+                $conexion = crearConexionBD();
+                $actividades = getProximasActividades($conexion);
+                cerrarConexionBD($conexion);
+                foreach ($actividades as $act) {
+                    $oid_act = $act["OID_ACT"];
+                    // esta forma de insertar HTML es válida, pero NO RECOMENDABLE
+                    echo "<tr>";
+                        echo "<td><a href=\"actividad.php?oid_act=$oid_act\">" . $act["NOMBRE"] . "</a></td>";
+                        echo "<td>" . $act["PROJ_LUGAR"] . "</td>";
+                        echo "<td>" . $act["FECHAINICIO"] . "</td>";
+                    echo "</tr>";
+                }
+                ?>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
