@@ -13,10 +13,10 @@ if (!isset($_SESSION["user"])) {
     $conexion = crearConexionBD();
     if ($_SESSION["user"] == 2) {
         $oid_part = getOidPart($conexion, $_SESSION["login"]);
-        $inscripciones = getProximasActPart($conexion, $oid_part);
+        $inscripciones = getProximasActPart($conexion, $oid_part["OID_PART"]);
     } else {
         $oid_vol = getOidVol($conexion, $_SESSION["login"]);
-        $inscripciones = getProximasActVol($conexion, $oid_vol);
+        $inscripciones = getProximasActVol($conexion, $oid_part["OID_PART"]);
     }
     cerrarConexionBD($conexion);
 }
@@ -36,7 +36,7 @@ include_once("includes/head.php");
                             <h2>Mis inscripciones</h2>
                         </div>
                         <div class="content-tab">
-                        <?php if ($inscripciones > 0) { ?>
+                        <?php if (count($inscripciones) > 0) { ?>
                             <table class="tab horizontal">
                                 <tr>
                                     <th>Actividad</th>

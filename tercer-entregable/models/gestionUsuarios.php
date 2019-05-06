@@ -51,7 +51,7 @@ function getOidPart($conexion, $dni) {
 
 function getOidVol($conexion, $dni) {
     try {
-        $consulta = "SELECT OID_PART FROM VOLUNTARIOS WHERE DNI=:dni";
+        $consulta = "SELECT OID_VOL FROM VOLUNTARIOS WHERE DNI=:dni";
         $stmt = $conexion->prepare($consulta);
         $stmt->bindParam(':dni', $dni);
         $stmt->execute();
