@@ -13,10 +13,11 @@ header a:hover {
     flex-direction: row;
     justify-content: space-between;
     border-bottom: 1px solid #ddd;
+    align-items: center;
 }
 
 .navbar {
-    width: 50%;
+    width: 85%;
     max-width: 750px;
 }
 
@@ -26,4 +27,56 @@ header a:hover {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+}
+
+.menu-mobile {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    right: 0;
+    margin-top: .5rem;
+    margin-right: 3rem;
+}
+
+.btn-nav {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+    height: 20px;
+}
+
+.btn-nav span {
+    background: #0098f7;
+    width: 20px;
+    height: 4px;
+ }
+
+@media(max-width: 749px) {
+    .navbar ul {
+        display: flex;
+        flex-direction: column;
+    }
+    .navbar li {
+        padding: 10px;
+        margin: 5px 0;
+    }
+}
+
+@media(max-width: 999px) {
+    .navbar-mobile {
+        display: none;
+    }
+    .content-header {
+        padding: 15px 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+@media(min-width: 1000px) {
+    .menu-mobile {
+        display: none;
+    }
 }
