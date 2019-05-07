@@ -20,7 +20,7 @@
                     <li><a href="/proyectos.php">Proyectos</a></li>
                     <li><a href="/patrocinadores.php">Patrocinadores</a></li>
                 <?php } else { ?>
-                    <li><a href="perfilUsuario.php">Mi perfil</a></li>
+                    <li><a href="/perfilUsuario.php<?php echo $_SESSION["user"] == 2 ? "?oid_part=" . $_SESSION["oid_part"] : "?oid_vol="  . $_SESSION["oid_vol"]?>">Mi perfil</a></li>
                     <li><a href="formIntereses.php">Actividades</a></li>
                 <?php } ?>
                 <?php if (isset($_SESSION["login"])) { ?>

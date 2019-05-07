@@ -9,7 +9,7 @@ if(!$_SESSION["admin"]){
 	header("Location: index.php");
 }
 if (!isset($_GET["oid_vol"])) {
-	header("Location:voluntario.php");
+	header("Location:voluntarios.php");
 }
 $conexion= crearConexionBD();
 //para llegar al perfil del voluntario hemos pasado el oid como parámetro en la petición 
@@ -19,7 +19,7 @@ $voluntario= getVoluntario($conexion, $_GET["oid_vol"]);
 $actividades= getHistorialColaboracion($conexion, $voluntario["OID_VOL"]);
 cerrarConexionBD($conexion);
 
-$page_title= "Voluntarios". $voluntario["NOMBRE"]. " " . $voluntario["APELLIDOS"];
+$page_title= "Voluntario: ". $voluntario["NOMBRE"]. " " . $voluntario["APELLIDOS"];
 include_once("includes/head.php");
 ?>
 <body>
@@ -31,7 +31,7 @@ include_once("includes/head.php");
                     <div class="module-title">
                         <h1><?php echo $voluntario["NOMBRE"] . " " . $voluntario["APELLIDOS"]; ?></h1>
                         <form action="controllers/controlVoluntarios.php" method="POST">
-                            <input type="hidden" name="dni" value="<?php echo $voluntario["DNI"] ?>">
+                            <input type="hidden" name="dni" value="<?php echo $voluntario["DNI"]; ?>">
                             <a class="btn primary" href="nuevoVoluntario.php?edit=true&oid_vol=<?php echo $voluntario["OID_VOL"]; ?>">Editar</a>
                             <button class="btn cancel" type="submit" name="submit" value="delete">Eliminar</button>
                         </form>
