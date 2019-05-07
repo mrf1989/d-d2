@@ -54,6 +54,7 @@ table {
 @media(max-width: 999px) {
     table {
         width: 100%;
+        min-width: 800px;
     }
     .content-tab {
         overflow-x: scroll;
@@ -63,5 +64,6 @@ table {
 @media(min-width: 1000px) {
     table {
         width: 100%;
+        min-width: 800px;
     }
 }
