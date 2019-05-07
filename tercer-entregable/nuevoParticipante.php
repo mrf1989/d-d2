@@ -83,7 +83,7 @@ include_once("includes/head.php");
                             </div>
                             <div class="form-row">
                                 <?php if ($participante["EMAIL"] != "") { ?>
-                                    <input type="email" name="email" value="<?php echo $participante["EMAIL"] ?>" placeholder="Email" required/>
+                                    <input type="email" name="email" value="<?php echo $participante["EMAIL"] ?>" placeholder="Email"/>
                                 <?php } else { ?>
                                     <input type="email" name="email" placeholder="Email"/>
                                 <?php } ?>
