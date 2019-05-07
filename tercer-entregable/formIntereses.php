@@ -14,10 +14,8 @@ if (!isset($_SESSION["user"])) {
     $conexion = crearConexionBD();
     if ($_SESSION["user"] == 2) {
         $actividades = getInteresesPart($conexion, $_SESSION["oid_part"]);
-        $controlador = "";
     } else {
         $actividades = getInteresesVol($conexion, $_SESSION["oid_vol"]);
-        $controlador = "";
     }
     cerrarConexionBD($conexion);
 }
@@ -58,7 +56,8 @@ include_once("includes/head.php");
                                 <td>
                                     <form action="controllers/controlIntereses.php" method="get" id="<?php echo $act["OID_ACT"] ?>">
                                         <input type="hidden" name="oid_act" value="<?php echo $act["OID_ACT"] ?>">
-                                        <input type="checkbox" onchange="$('#<?php echo $act['OID_ACT'] ?>').submit()" name="estado" value="<?php echo $act["ESTADO"] ? 0 : 1 ?>" <?php echo $act["ESTADO"] ? "checked" : "" ?>>
+                                        <input type="hidden" name="estado_hidden" value="0" <?php echo ($act["ESTADO"] == 0) ? "disabled" : "" ?>>
+                                        <input type="checkbox" onchange="$('#<?php echo $act['OID_ACT'] ?>').submit()" name="estado" value="<?php echo ($act["ESTADO"] == 1) ? 0 : 1 ?>" <?php echo ($act["ESTADO"] == 1) ? "checked" : "" ?>>
                                     </form>
                                 </td>
                             </tr>
