@@ -52,8 +52,7 @@ include_once("includes/head.php");
                         <h1><?php echo $usuario["NOMBRE"] . " " . $usuario["APELLIDOS"]; ?></h1>
                         <form action="controllers/<?php echo $_SESSION["user"] == 2 ? "controlParticipantes.php" : "controlVoluntarios.php" ?>" method="POST">
                             <input type="hidden" name="dni" value="<?php echo $usuario["DNI"] ?>">
-                            <a class="btn primary" href="<?php echo $_SESSION["user"] == 2 ? "nuevoParticipante.php?edit=true&oid_part=" : "nuevoVoluntario.php?edit=true&oid_vol=" ?><?php echo $oid ?>">Editar</a>
-                            <button class="btn cancel" type="submit" name="submit" value="delete">Eliminar</button>
+                            <a class="btn primary" href="formUsuario.php">Editar</a>
                         </form>
                     </div>
                 </div>
