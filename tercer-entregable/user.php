@@ -13,9 +13,11 @@ if (!isset($_SESSION["user"])) {
     $conexion = crearConexionBD();
     if ($_SESSION["user"] == 2) {
         $oid_part = getOidPart($conexion, $_SESSION["login"]);
+        $_SESSION["oid_part"] = $oid_part["OID_PART"];
         $inscripciones = getProximasActPart($conexion, $oid_part["OID_PART"]);
     } else {
         $oid_vol = getOidVol($conexion, $_SESSION["login"]);
+        $_SESSION["oid_vol"] = $oid_vol["OID_VOL"];
         $inscripciones = getProximasActVol($conexion, $oid_vol["OID_VOL"]);
     }
     cerrarConexionBD($conexion);
@@ -86,8 +88,8 @@ include_once("includes/head.php");
                             </table>
                         </div>
                     </div>
-                </div><!--end col-->
-            </div><!--end row-->
+                </div>
+            </div>
         </div>
     </div>
     <?php include_once("includes/footer.php"); ?>
