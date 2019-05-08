@@ -37,8 +37,8 @@ include_once("includes/head.php");
                         <div class="module-title">
                             <h2>Mis inscripciones</h2>
                         </div>
+                    <?php if (count($inscripciones) > 0) { ?>
                         <div class="content-tab">
-                        <?php if (count($inscripciones) > 0) { ?>
                             <table class="tab horizontal">
                                 <tr>
                                     <th>Actividad</th>
@@ -53,10 +53,10 @@ include_once("includes/head.php");
                                 </tr>
                             <?php } ?>    
                             </table>
-                        <?php } else { ?>
-                            <p>El usuario no está inscrito en ninguna actividad próxima.</p>
-                        <?php } ?>
                         </div>
+                    <?php } else { ?>
+                        <p>El usuario no está inscrito en ninguna actividad próxima.</p>
+                    <?php } ?>
                     </div>
                 </div>
                 <div class="col-6 col-tab-12">
