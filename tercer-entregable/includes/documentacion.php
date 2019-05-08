@@ -57,6 +57,10 @@
 				</div>
 			</div>
 		</div>
-	</div>	
+	</div>
+	<div class="footer">
+		<p>&copy; 2019, Deporte y Desafío, IISSI-2</p>
+	</div>
+		
 </body>
 </html>
