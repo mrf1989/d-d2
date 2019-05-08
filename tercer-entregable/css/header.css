@@ -71,7 +71,7 @@ header a:hover {
     }
 }
 
-@media(max-width: 999px) {
+@media(max-width: 1049px) {
     .navbar-mobile {
         display: none;
     }
@@ -83,11 +83,17 @@ header a:hover {
     }
 }
 
-@media(min-width: 1000px) {
+@media(min-width: 1050px) {
     .menu-mobile {
         display: none;
     }
     .logo {
         margin-right: 1rem;
+    }
+    .nav-items {
+        justify-content: flex-end;
+    }
+    .nav-items li {
+        margin-left: 1.5rem;
     }
 }
