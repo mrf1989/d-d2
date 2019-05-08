@@ -77,7 +77,7 @@ include_once("includes/head.php");
 		                                <div class="form-label">Fecha nacimiento:</div>
 		                                <input type="date" name="fechaNacimiento" value="<?php echo isset($oid_vol) ? getFechaForm($voluntario["FECHANACIMIENTO"]) : getFechaForm($participante["FECHANACIMIENTO"]) ?>" placeholder="Fecha nacimiento" required/>
 
-		                                <input type="email" name="email" value="<?php echo isset($oid_vol) ? $voluntario["EMAIL"] : $participante["EMAIL"]?>" placeholder="Email" required/>
+		                                <input type="email" name="email" value="<?php echo isset($oid_vol) ? $voluntario["EMAIL"] : $participante["EMAIL"]?>" placeholder="Email"/>
 
 		                                <input type="text" name="telefono" value="<?php echo isset($oid_vol) ? $voluntario["TELEFONO"] : $participante["TELEFONO"] ?>" placeholder="Teléfono" pattern="^[0-9]{9}" required/>
 									</div>
@@ -94,12 +94,12 @@ include_once("includes/head.php");
 										<div class="form-row">
 											<input type="text" name="discapacidad" value="<?php echo "0".$participante["GRADODISCAPACIDAD"] ?>" placeholder="Grado discapacidad"  <?php echo "readonly" ?> required/>
 
-											<select name="tutor" id="tutor" <? echo "disabled" ?> required>
-                                    			<option value="" >-- Seleccionar un tutor legal --</option>
-                                				<?php foreach ($tutores as $tut) { ?>
-                                    			<option value="<?php echo $tut["DNI"]; ?>" <?php echo isset($participante["OID_TUT"]) && ($tut["OID_TUT"] == $participante["OID_TUT"]) ? "selected=\"selected\"" : "" ?>><?php echo $tut["DNI"] . " - " . $tut["NOMBRE"] . " " . $tut["APELLIDOS"]; ?></option>
-                                				<?php } ?>
-                                			</select>
+											<select name="tutor" id="tutor" disabled required>
+			                                    <option value="" >-- Seleccionar un tutor legal --</option>
+			                                	<?php foreach ($tutores as $tut) { ?>
+			                                    <option value="<?php echo $tut["DNI"]; ?>" <?php echo isset($participante["OID_TUT"]) && ($tut["OID_TUT"] == $participante["OID_TUT"]) ? "selected=\"selected\"" : "" ?>><?php echo $tut["DNI"] . " - " . $tut["NOMBRE"] . " " . $tut["APELLIDOS"]; ?></option>
+			                                	<?php } ?>
+			                                </select>
                                 		</div>										
 		                            <?php } ?>
 		                            <div class="form-row right">
