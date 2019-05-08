@@ -43,15 +43,15 @@ table {
     table {
         min-width: 570px;
     }
-    .tab.vertical {
-        max-width: 100%;
+    .content-tab {
+        overflow-x: scroll;
     } 
     .tab.vertical th {
-        max-width: 100px;
+        max-width: 90px;
     }   
 }
 
-@media(max-width: 999px) {
+@media(min-width: 600px) and (max-width: 999px) {
     table {
         width: 100%;
         min-width: 800px;
@@ -59,11 +59,13 @@ table {
     .content-tab {
         overflow-x: scroll;
     }
+    .tab.vertical th {
+        max-width: 90px;
+    }
 }
 
 @media(min-width: 1000px) {
     table {
         width: 100%;
-        min-width: 800px;
     }
 }
