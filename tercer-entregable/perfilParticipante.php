@@ -60,7 +60,7 @@ include_once("includes/head.php");
                             </tr>
                             <tr>
                                 <th>Fecha nacimiento</th>
-                                <td><?php echo $participante["FECHANACIMIENTO"] ?></td>
+                                <td><?php echo getFechaFormatView($participante["FECHANACIMIENTO"]) ?></td>
                             </tr>
                             <tr>
                                 <th>Discapacidad</th>
@@ -148,7 +148,7 @@ include_once("includes/head.php");
                             <tr>
                                 <form>
                                     <td><?php echo $inf["OID_INF"] ?></td>
-                                    <td><?php echo $inf["FECHA"] ?></td>
+                                    <td><?php echo getFechaFormatView($inf["FECHA"]) ?></td>
                                     <td><?php echo $inf["DESCRIPCION"] ?></td>
                                 </form>
                             </tr>
@@ -181,7 +181,7 @@ include_once("includes/head.php");
                                 <form>
                                     <td><a href="perfilActividad.php?oid_act=<?php echo $act["OID_ACT"] ?>"><?php echo $act["ACT_NOMBRE"] ?></a></td>
                                     <td><?php echo $act["PROJ_LUGAR"] ?></td>
-                                    <td><?php echo $act["ACT_FECHAINICIO"] ?></td>
+                                    <td><?php echo getFechaFormatView($act["ACT_FECHAINICIO"]) ?></td>
                                 </form>
                             </tr>
                         <?php } ?>
@@ -213,8 +213,8 @@ include_once("includes/head.php");
                         foreach ($recibos as $rec) { ?>
                             <tr>
                                 <td><?php echo $rec["ESTADO"] ?></td>
-                                <td><?php echo $rec["FECHAEMISION"] ?></td>
-                                <td><?php echo $rec["FECHAVENCIMIENTO"] ?></td>
+                                <td><?php echo getFechaFormatView($rec["FECHAEMISION"]) ?></td>
+                                <td><?php echo getFechaFormatView($rec["FECHAVENCIMIENTO"]) ?></td>
                                 <td><?php echo $rec["IMPORTE"] . "€"?></td>
                                 <td class="acciones"><a href="actualizarRecibo.php?oid_part=<?php echo $_GET["oid_part"] ?>&oid_rec=<?php echo $rec["OID_REC"] ?>" class="btn secondary">Editar</a></td>
                             </tr>
