@@ -55,7 +55,7 @@ function validarOidPart($conexion, $oid_part){
 
 function getInformesMedicos($conexion, $oid_part) {
     try {
-        $consulta = "SELECT * FROM INFORMESMEDICOS WHERE OID_PART =:oid_part";
+        $consulta = "SELECT * FROM INFORMESMEDICOS WHERE OID_PART =:oid_part ORDER BY FECHA";
         $stmt = $conexion->prepare($consulta);
         $stmt->bindParam(':oid_part', $oid_part);
         $stmt->execute();
