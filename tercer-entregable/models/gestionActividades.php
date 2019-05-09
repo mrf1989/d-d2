@@ -121,9 +121,9 @@ function validarAltaActividad($actividad){
 
    
 
-    $fechaActual = strtotime("now");
-    $fechaInicio = strtotime($actividad["fechainicio"]);
-    $fechaFin = strtotime($actividad["fechafin"]);
+    $fechaActual = date("d/m/Y", strtotime("now"));
+    $fechaInicio = $actividad["fechainicio"];
+    $fechaFin = $actividad["fechafin"];
 
     //validar fecha inicio
     if ($actividad["fechainicio"]=="") {
