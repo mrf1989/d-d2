@@ -102,6 +102,7 @@ include_once("includes/head.php");
                     <div class="module-title">
                         <h2>Tutor legal</h2>
                     </div>
+                <?php if (count($tutor) > 0) { ?>
                     <div class="content-tab">
                         <table class="tab vertical">
                             <tr>
@@ -122,6 +123,9 @@ include_once("includes/head.php");
                             </tr>
                         </table>
                     </div>
+                <?php } else { ?>
+                    <p>No hay tutor legal asignado al participante.</p>
+                <?php } ?>
                 </div>
             </div>
         </div> <!--end module-->
