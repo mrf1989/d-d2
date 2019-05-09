@@ -11,12 +11,10 @@ include_once("../models/gestionActividades.php");
 if ($_REQUEST["submit"] == 'inscribir') {
     $patrocinio["cif"] = $_REQUEST["cif"];
     $patrocinio["oid_act"] = $_REQUEST["oid_act"];
+    $patrocinio["cantidad"] = $_REQUEST["cantidad"];
 
     $conexion = crearConexionBD();
-    $validaPat = validarPatrocinio($patrocinio, $conexion);
-    if ($validaPat==1) {
-        $errores[] = "<p>El patrocinador seleccionado ya estaba inscrito</p>";
-    } 
+    $errores = validarPatrocinio($patrocinio);
     if (count($errores)> 0) {
     	$_SESSION["errores"] = $errores;
     	Header("Location: ../formPatrocinio.php?oid_act=" . $patrocinio["oid_act"]);

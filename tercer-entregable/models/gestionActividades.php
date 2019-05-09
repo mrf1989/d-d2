@@ -182,17 +182,11 @@ function validarVoluntariado($colaboracion, $conexion){
     }
 }
 
-function validarPatrocinio($patrocinio, $conexion){
-    try {
-        $consulta = "SELECT COUNT(*) FROM INSTITUCIONES INS JOIN PATROCINIOS PAT ON INS.cif=PAT.cif WHERE PAT.OID_Act=:oid_act AND PAT.CIF=:cif";
-        $stmt = $conexion->prepare($consulta);
-        $stmt->bindParam(':oid_act', $patrocinio["oid_act"]);
-        $stmt->bindParam(':cif', $patrocinio["cif"]);
-        $stmt->execute();
-        return $stmt->fetchColumn();
-    } catch (PDOException $e) {
-        return 0;
+function validarPatrocinio($patrocinio){
+    if ($patrocinio["cantidad"] < 0) {
+        $errores[] = "<p>La cantidad " . $patrocinio["cantidad"] . " debe ser mayor que 0</p>";
     }
+    return $errores;
 }
 
 
