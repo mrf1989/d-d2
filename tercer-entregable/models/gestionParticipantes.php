@@ -230,8 +230,8 @@ function validarAltaParticipante($participante, $conexion){
 	    }
     }
     //validación de la fecha de nacimiento
-    $fechaMin = strtotime("now -5 year");
-    $fechaNac = strtotime($participante["fechaNacimiento"]);
+    $fechaMin = date("d/m/Y", strtotime("now -5 year"));
+    $fechaNac = $participante["fechaNacimiento"];
 	if ($participante["fechaNacimiento"]=="") {
 		$errores[] = "<p>La fecha de nacimiento debe completarse</p>";
 	}elseif ($fechaNac > $fechaMin) {
