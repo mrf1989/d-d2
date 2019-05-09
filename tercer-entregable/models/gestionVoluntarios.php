@@ -136,8 +136,8 @@ function validarAltaVoluntario($voluntario){
 		$errores[] = "<p>Los apellidos deben completarse</p>";
 	}
 	//validación de la fecha de nacimiento
-	$fechaMin = strtotime("now -18 year");
-    $fechaNac = strtotime($voluntario["fechaNacimiento"]);
+	$fechaMin = date("d/m/Y", strtotime("now -18 year"));
+    $fechaNac = $voluntario["fechaNacimiento"];
 	if ($voluntario["fechaNacimiento"]=="") {
 		$errores[] = "<p>La fecha de nacimiento debe completarse</p>";
 	}elseif ($fechaNac > $fechaMin) {
