@@ -57,8 +57,8 @@ include_once("includes/head.php");
                             </tr>
                             <tr>
                                 <td><?php echo $actividad["TIPO"] ?></td>
-                                <td><?php echo $actividad["FECHAINICIO"] ?></td>
-                                <td><?php echo $actividad["FECHAFIN"] ?></td>
+                                <td><?php echo getFechaFormatView($actividad["FECHAINICIO"]) ?></td>
+                                <td><?php echo getFechaFormatView($actividad["FECHAFIN"]) ?></td>
                                 <td><?php echo $actividad["NUMEROPLAZAS"] ?></td>
                                 <td><?php echo $actividad["COSTEINSCRIPCION"] ?> €</td>
                                 <td><?php echo $actividad["COSTETOTAL"] ?> €</td>

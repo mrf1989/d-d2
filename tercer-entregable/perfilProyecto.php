@@ -67,8 +67,8 @@ include_once("includes/head.php");
                                     <input type="hidden" name="oid_proj" value="<?php echo $proyecto["OID_PROJ"] ?>">
                                     <input type="hidden" name="oid_act" value="<?php echo $act["OID_ACT"] ?>">
                                     <td><a href="perfilActividad.php?oid_act=<?php echo $act["OID_ACT"] ?>"><?php echo $act["NOMBRE"] ?></a></td>
-                                    <td><?php echo $act["FECHAINICIO"] ?></td>
-                                    <td><?php echo $act["FECHAFIN"] ?></td>
+                                    <td><?php echo getFechaFormatView($act["FECHAINICIO"]) ?></td>
+                                    <td><?php echo getFechaFormatView($act["FECHAFIN"]) ?></td>
                                     <td><?php echo $act["NUMEROPLAZAS"] ?></td>
                                     <td><?php echo $act["COSTETOTAL"] ?> €</td>
                                     <td><?php echo $act["COSTEINSCRIPCION"] ?> €</td>

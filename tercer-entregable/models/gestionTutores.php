@@ -124,8 +124,8 @@ function validarAltaTutor($tutor){
         $errores[] = "<p>Los apellidos deben completarse</p>";
     }
     //validación de la fecha de nacimiento
-    $fechaMin = strtotime("now -18 year");
-    $fechaNac = strtotime($tutor["fechaNacimiento"]);
+    $fechaMin = date("Y/m/d", strtotime("now -18 year"));
+    $fechaNac = formatFecha($tutor["fechaNacimiento"]);
 	if ($tutor["fechaNacimiento"]=="") {
 		$errores[] = "<p>La fecha de nacimiento debe completarse</p>";
 	}elseif ($fechaNac > $fechaMin) {

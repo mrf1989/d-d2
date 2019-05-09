@@ -52,7 +52,7 @@ include_once("includes/head.php");
                             </tr>
                             <tr>
                                 <th>Fecha nacimiento</th>
-                                <td><?php echo $tutor["FECHANACIMIENTO"] ?></td>
+                                <td><?php echo getFechaFormatView($tutor["FECHANACIMIENTO"]) ?></td>
                             </tr>
                         <tr>
                                 <th>Dirección</th>
@@ -102,10 +102,12 @@ include_once("includes/head.php");
                                 <th>Teléfono</th>
                                 <td><?php echo $participante["TELEFONO"]; ?></td>
                             </tr>
+                            <?php if (isset($participante["EMAIL"])) { ?>
                             <tr>
                                 <th>Email</th>
                                 <td><?php echo $participante["EMAIL"]; ?></td>
                             </tr>
+                        <?php }?>
                         </table>
                     </div>
                 </div>

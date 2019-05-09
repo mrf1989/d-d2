@@ -51,7 +51,7 @@ include_once("includes/head.php");
                             </tr>
                             <tr>
                                 <th>Fecha nacimiento</th>
-                                <td><?php echo $voluntario["FECHANACIMIENTO"] ?></td>
+                                <td><?php echo getFechaFormatView($voluntario["FECHANACIMIENTO"]) ?></td>
                             </tr>
                             <tr>
                                 <th>Dirección</th>
@@ -100,7 +100,7 @@ include_once("includes/head.php");
                                 <form>
                                     <td><a href="perfilActividad.php?oid_act=<?php echo $act["OID_ACT"] ?>"><?php echo $act["ACT_NOMBRE"] ?></a></td>
                                     <td><?php echo $act["PROJ_LUGAR"] ?></td>
-                                    <td><?php echo $act["ACT_FECHAINICIO"] ?></td>
+                                    <td><?php echo getFechaFormatView($act["ACT_FECHAINICIO"]) ?></td>
                                 </form>
                             </tr>
                         <?php } ?>
