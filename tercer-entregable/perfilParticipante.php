@@ -102,7 +102,7 @@ include_once("includes/head.php");
                     <div class="module-title">
                         <h2>Tutor legal</h2>
                     </div>
-                <?php if (count($tutor) > 0) { ?>
+                <?php if ($tutor) { ?>
                     <div class="content-tab">
                         <table class="tab vertical">
                             <tr>
