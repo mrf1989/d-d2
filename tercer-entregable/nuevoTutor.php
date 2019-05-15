@@ -63,31 +63,31 @@ include_once("includes/head.php");
                             <input type="hidden" name="oid_tut" value="<?php echo $tutor["OID_TUT"] ?>">
                         <?php } ?>
                             <div class="form-row">
-                                <input type="text" name="nombre" value="<?php echo $tutor["NOMBRE"] ?>" placeholder="Nombre" autofocus="autofocus" required />
-                                <input type="text" name="apellidos" value="<?php echo $tutor["APELLIDOS"] ?>" placeholder="Apellidos" required/>
-                                <input type="text" name="dni" value="<?php echo $tutor["DNI"] ?>" placeholder="DNI" pattern="^[0-9]{8}[A-Z]" <?php if (isset($_GET["edit"])) echo "readonly" ?> required>
+                                <input id="nombre" type="text" name="nombre" value="<?php echo $tutor["NOMBRE"] ?>" placeholder="Nombre" autofocus="autofocus" required />
+                                <input id="apellidos" type="text" name="apellidos" value="<?php echo $tutor["APELLIDOS"] ?>" placeholder="Apellidos" required/>
+                                <input id="dni" type="text" name="dni" value="<?php echo $tutor["DNI"] ?>" placeholder="DNI" pattern="^[0-9]{8}[A-Z]" <?php if (isset($_GET["edit"])) echo "readonly" ?> required>
                             </div>
                             <div class="form-row">
                                 <div class="form-label">Fecha nacimiento:</div>
-                                <input type="date" name="fechaNacimiento" value="<?php if (isset($_GET["edit"])) echo getFechaForm($tutor["FECHANACIMIENTO"]) ?>" placeholder="Fecha nacimiento" required />
+                                <input id="fechaNacimiento" type="date" name="fechaNacimiento" value="<?php if (isset($_GET["edit"])) echo getFechaForm($tutor["FECHANACIMIENTO"]) ?>" placeholder="Fecha nacimiento" required />
                                 <?php if ($tutor["EMAIL"] != "") { ?>
-                                    <input type="email" name="email" value="<?php echo $tutor["EMAIL"] ?>" placeholder="Email" required/>
+                                    <input id="email" type="email" name="email" value="<?php echo $tutor["EMAIL"] ?>" placeholder="Email" required/>
                                 <?php } else { ?>
-                                    <input type="email" name="email" placeholder="Email" required/>
+                                    <input id="email" type="email" name="email" placeholder="Email" required/>
                                 <?php } ?>
-                                <input type="text" name="telefono" value="<?php echo $tutor["TELEFONO"] ?>" placeholder="Teléfono" pattern="^[0-9]{9}" required/>
+                                <input id="telefono" type="text" name="telefono" value="<?php echo $tutor["TELEFONO"] ?>" placeholder="Teléfono" pattern="^[0-9]{9}" required/>
                             </div>
                             <div class="form-row">
                                 <input type="text" name="direccion" value="<?php echo $tutor["DIRECCION"] ?>" placeholder="Dirección" />
                                 <input type="text" name="localidad" value="<?php echo $tutor["LOCALIDAD"] ?>" placeholder="Localidad" />
                                 <input type="text" name="provincia" value="<?php echo $tutor["PROVINCIA"] ?>" placeholder="Provincia" />
-                                <input type="text" name="cp" value="<?php echo $tutor["CODIGOPOSTAL"] ?>" placeholder="Código postal" pattern="^[0-9]{5}"/>
+                                <input id="cp" type="text" name="cp" value="<?php echo $tutor["CODIGOPOSTAL"] ?>" placeholder="Código postal" pattern="^[0-9]{5}"/>
                             </div>
                             <div class="form-row right">
                             <?php if (!isset($_GET["edit"])) { ?>
                                 <button type="reset" class="btn cancel">Reiniciar</button>
                             <?php } ?>
-                                <button type="submit" class="btn primary" name="submit" value="<?php echo isset($_GET["edit"]) ? "edit" : "insert";?>">Guardar</button>
+                                <button id="guardar" class="guardar" type="submit" class="btn primary" name="submit" value="<?php echo isset($_GET["edit"]) ? "edit" : "insert";?>">Guardar</button>
                             </div>
                         </form>
                     </fieldset>

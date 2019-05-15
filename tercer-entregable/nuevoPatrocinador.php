@@ -59,30 +59,30 @@ include_once("includes/head.php");
                         <!-- TODO mostrar errores de validación -->
                         <form action="controllers/controlPatrocinadores.php" method="POST">
                             <!-- input hidden para el cif que identifica al patrocinador a editar -->
-                            <input type="hidden" name="cif" value="<?php echo $patrocinador["CIF"] ?>">
+                            <input id="cif" type="hidden" name="cif" value="<?php echo $patrocinador["CIF"] ?>">
                             <div class="form-row">
-                                <input type="text" name="nombre" value="<?php echo $patrocinador["NOMBRE"] ?>" placeholder="Nombre" autofocus="autofocus" required/>
+                                <input id="nombre" type="text" name="nombre" value="<?php echo $patrocinador["NOMBRE"] ?>" placeholder="Nombre" autofocus="autofocus" required/>
                                 <input type="text" name="cif" value="<?php echo $patrocinador["CIF"] ?>" placeholder="CIF" <?php if (isset($_GET["edit"])) echo "readonly" ?> pattern="^[A-Z][0-9]{8}" required/>
                             </div>
                             <div class="form-row">
                                 <?php if ($patrocinador["EMAIL"] != "") { ?>
-                                    <input type="email" name="email" value="<?php echo $patrocinador["EMAIL"] ?>" placeholder="Email" required/>
+                                    <input id="email" type="email" name="email" value="<?php echo $patrocinador["EMAIL"] ?>" placeholder="Email" required/>
                                 <?php } else { ?>
-                                    <input type="email" name="email" placeholder="Email" required />
+                                    <input id="email" type="email" name="email" placeholder="Email" required />
                                 <?php } ?>
-                                <input type="text" name="telefono" value="<?php echo $patrocinador["TELEFONO"] ?>" placeholder="Teléfono" pattern="^[0-9]{9}" required />
+                                <input id="telefono" type="text" name="telefono" value="<?php echo $patrocinador["TELEFONO"] ?>" placeholder="Teléfono" pattern="^[0-9]{9}" required />
                             </div>
                             <div class="form-row">
                                 <input type="text" name="direccion" value="<?php echo $patrocinador["DIRECCION"] ?>" placeholder="Dirección" />
                                 <input type="text" name="localidad" value="<?php echo $patrocinador["LOCALIDAD"] ?>" placeholder="Localidad" />
                                 <input type="text" name="provincia" value="<?php echo $patrocinador["PROVINCIA"] ?>" placeholder="Provincia" />
-                                <input type="text" name="cp" value="<?php echo $patrocinador["CODIGOPOSTAL"] ?>" placeholder="Código postal" pattern="^[0-9]{5}" />
+                                <input id="cp" type="text" name="cp" value="<?php echo $patrocinador["CODIGOPOSTAL"] ?>" placeholder="Código postal" pattern="^[0-9]{5}" />
                             </div>
                             <div class="form-row right">
                             <?php if (!isset($_GET["edit"])) { ?>
                                 <button type="reset" class="btn cancel">Reiniciar</button>
                             <?php } ?>
-                                <button type="submit" class="btn primary" name="submit" value="<?php echo isset($_GET["edit"]) ? "edit" : "insert";?>">Guardar</button>
+                                <button id="guardar" type="submit" class="btn primary" name="submit" value="<?php echo isset($_GET["edit"]) ? "edit" : "insert";?>">Guardar</button>
                             </div>
                         </form>
                     </fieldset>
