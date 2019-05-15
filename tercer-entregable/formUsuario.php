@@ -67,19 +67,19 @@ include_once("includes/head.php");
 		                            <input type="hidden" name="oid_vol" value="<?php echo $voluntario["OID_VOL"] ?>">
 		                            <input type="hidden" name="oid_part" value="<?php echo $participante["OID_PART"] ?>">
 		                            <div class="form-row"> 
-		                                <input type="text" name="nombre" value="<?php echo isset($oid_vol) ? $voluntario["NOMBRE"] : $participante["NOMBRE"] ?>" placeholder="Nombre" autofocus="autofocus" required />
+		                                <input id="nombre" type="text" name="nombre" value="<?php echo isset($oid_vol) ? $voluntario["NOMBRE"] : $participante["NOMBRE"] ?>" placeholder="Nombre" autofocus="autofocus" required />
 		                                
-		                                <input type="text" name="apellidos" value="<?php echo isset($oid_vol) ? $voluntario["APELLIDOS"] : $participante["APELLIDOS"] ?>" placeholder="Apellidos" required />
+		                                <input id="apellidos" type="text" name="apellidos" value="<?php echo isset($oid_vol) ? $voluntario["APELLIDOS"] : $participante["APELLIDOS"] ?>" placeholder="Apellidos" required />
 		                                
-		                                <input type="text" name="dni" value="<?php echo isset($oid_vol) ? $voluntario["DNI"] : $participante["DNI"] ?>" placeholder="DNI" pattern="^[0-9]{8}[A-Z]" <?php echo "readonly" ?> required/>
+		                                <input id="dni" type="text" name="dni" value="<?php echo isset($oid_vol) ? $voluntario["DNI"] : $participante["DNI"] ?>" placeholder="DNI" pattern="^[0-9]{8}[A-Z]" <?php echo "readonly" ?> required/>
 		                            </div>
 		                            <div class="form-row">
 		                                <div class="form-label">Fecha nacimiento:</div>
-		                                <input type="date" name="fechaNacimiento" value="<?php echo isset($oid_vol) ? getFechaForm($voluntario["FECHANACIMIENTO"]) : getFechaForm($participante["FECHANACIMIENTO"]) ?>" placeholder="Fecha nacimiento" required/>
+		                                <input id="fechaNacimiento" type="date" name="fechaNacimiento" value="<?php echo isset($oid_vol) ? getFechaForm($voluntario["FECHANACIMIENTO"]) : getFechaForm($participante["FECHANACIMIENTO"]) ?>" placeholder="Fecha nacimiento" required/>
 
-		                                <input type="email" name="email" value="<?php echo isset($oid_vol) ? $voluntario["EMAIL"] : $participante["EMAIL"]?>" placeholder="Email"/>
+		                                <input id="email" type="email" name="email" value="<?php echo isset($oid_vol) ? $voluntario["EMAIL"] : $participante["EMAIL"]?>" placeholder="Email"/>
 
-		                                <input type="text" name="telefono" value="<?php echo isset($oid_vol) ? $voluntario["TELEFONO"] : $participante["TELEFONO"] ?>" placeholder="Teléfono" pattern="^[0-9]{9}" required/>
+		                                <input id="telefono" type="text" name="telefono" value="<?php echo isset($oid_vol) ? $voluntario["TELEFONO"] : $participante["TELEFONO"] ?>" placeholder="Teléfono" pattern="^[0-9]{9}" required/>
 									</div>
 									<div class="form-row">
 		                                <input type="text" name="direccion" value="<?php echo isset($oid_vol) ? $voluntario["DIRECCION"] : $participante["DIRECCION"] ?>" placeholder="Dirección" />
@@ -88,7 +88,7 @@ include_once("includes/head.php");
 
 		                                <input type="text" name="provincia" value="<?php echo isset($oid_vol) ? $voluntario["PROVINCIA"] : $participante["PROVINCIA"] ?>" placeholder="Provincia" />
 
-		                                <input type="text" name="cp" value="<?php echo isset($oid_vol) ? $voluntario["CODIGOPOSTAL"] : $participante["CODIGOPOSTAL"] ?>" placeholder="Código postal" pattern="^[0-9]{5}" />
+		                                <input id="cp" type="text" name="cp" value="<?php echo isset($oid_vol) ? $voluntario["CODIGOPOSTAL"] : $participante["CODIGOPOSTAL"] ?>" placeholder="Código postal" pattern="^[0-9]{5}" />
 		                            </div>
 		                            <?php if (isset($oid_part)) { ?>
 										<div class="form-row">
@@ -103,7 +103,7 @@ include_once("includes/head.php");
                                 		</div>										
 		                            <?php } ?>
 		                            <div class="form-row right">
-		                                <button type="submit" class="btn primary" name="submit" value="edit">Guardar</button>
+		                                <button id="guardar" type="submit" class="btn primary" name="submit" value="edit">Guardar</button>
 		                            </div>
 		                        </form>
 		                    </fieldset>
