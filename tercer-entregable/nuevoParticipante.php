@@ -73,7 +73,7 @@ include_once("includes/head.php");
                             <div class="form-row">
                                 <input id="nombre" type="text" name="nombre" value="<?php echo $participante["NOMBRE"] ?>" placeholder="Nombre" autofocus="autofocus" required/>
                                 <input id="apellidos" type="text" name="apellidos" value="<?php echo $participante["APELLIDOS"] ?>" placeholder="Apellidos" required/>
-                                <input type="text" name="dni" value="<?php echo $participante["DNI"] ?>" placeholder="DNI" pattern="^[0-9]{8}[A-Z]" <?php if (isset($_GET["edit"])) echo "readonly" ?> required/>
+                                <input id="dni" type="text" name="dni" value="<?php echo $participante["DNI"] ?>" placeholder="DNI" pattern="^[0-9]{8}[A-Z]" <?php if (isset($_GET["edit"])) echo "readonly" ?> required/>
                             </div>
                             <div class="form-row">
                                 <div class="form-label">Fecha nacimiento:</div>
@@ -83,7 +83,7 @@ include_once("includes/head.php");
                             </div>
                             <div class="form-row">
                                 <?php if ($participante["EMAIL"] != "") { ?>
-                                    <input type="email" name="email" value="<?php echo $participante["EMAIL"] ?>" placeholder="Email"/>
+                                    <input id="email" type="email" name="email" value="<?php echo $participante["EMAIL"] ?>" placeholder="Email"/>
                                 <?php } else { ?>
                                     <input id="email" type="email" name="email" placeholder="Email"/>
                                 <?php } ?>
@@ -107,7 +107,7 @@ include_once("includes/head.php");
                             <?php if (!isset($_GET["edit"])) { ?>
                                 <button type="reset" class="btn cancel">Reiniciar</button>
                             <?php } ?>
-                                <button id="guardar" type="submit" class="btn primary guardar" name="submit" value="<?php echo isset($_GET["edit"]) ? "edit" : "insert";?>">Guardar</button>
+                                <button id="guardar" type="submit" class="btn primary guardar" name="submit" value="<?php echo isset($_GET["edit"]) ? "edit" : "insert";?>" onclick="validarParticipante()">Guardar</button>
                             </div>
                         </form>
                     </fieldset>

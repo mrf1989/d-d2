@@ -57,7 +57,7 @@ include_once("includes/head.php");
                             <input type="hidden" name="oid_vol" value="<?php echo $voluntario["OID_VOL"] ?>">
                             <div class="form-row">
                                 <input id="nombre" type="text" name="nombre" value="<?php echo $voluntario["NOMBRE"] ?>" placeholder="Nombre" autofocus="autofocus" required />
-                                <input id="apellidostype=" text" name="apellidos" value="<?php echo $voluntario["APELLIDOS"] ?>" placeholder="Apellidos" required />
+                                <input id="apellidos" type="text" name="apellidos" value="<?php echo $voluntario["APELLIDOS"] ?>" placeholder="Apellidos" required />
                                 <input id="dni" type="text" name="dni" value="<?php echo $voluntario["DNI"] ?>" placeholder="DNI" pattern="^[0-9]{8}[A-Z]" <?php if (isset($_GET["edit"])) echo "readonly" ?> required/>
                             </div>
                             <div class="form-row">
