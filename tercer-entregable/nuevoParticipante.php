@@ -71,29 +71,29 @@ include_once("includes/head.php");
                             <!-- input hidden para el oid_part que identifica al participante a editar -->
                             <input type="hidden" name="oid_part" value="<?php echo $participante["OID_PART"] ?>">
                             <div class="form-row">
-                                <input type="text" name="nombre" value="<?php echo $participante["NOMBRE"] ?>" placeholder="Nombre" autofocus="autofocus" required/>
-                                <input type="text" name="apellidos" value="<?php echo $participante["APELLIDOS"] ?>" placeholder="Apellidos" required/>
+                                <input id="nombre" type="text" name="nombre" value="<?php echo $participante["NOMBRE"] ?>" placeholder="Nombre" autofocus="autofocus" required/>
+                                <input id="apellidos" type="text" name="apellidos" value="<?php echo $participante["APELLIDOS"] ?>" placeholder="Apellidos" required/>
                                 <input type="text" name="dni" value="<?php echo $participante["DNI"] ?>" placeholder="DNI" pattern="^[0-9]{8}[A-Z]" <?php if (isset($_GET["edit"])) echo "readonly" ?> required/>
                             </div>
                             <div class="form-row">
                                 <div class="form-label">Fecha nacimiento:</div>
-                                <input type="date" name="fechaNacimiento" value="<?php if (isset($_GET["edit"])) echo getFechaForm($participante["FECHANACIMIENTO"]) ?>" placeholder="Fecha nacimiento" required/>
+                                <input id="fechaNacimiento" input="fechaNacimiento" type="date" name="fechaNacimiento" value="<?php if (isset($_GET["edit"])) echo getFechaForm($participante["FECHANACIMIENTO"]) ?>" placeholder="Fecha nacimiento" required/>
                                 <!-- falta por validar, añadir que acepte el 1 ^0[,]{0,1}[0-9]{0,2} -->
-                                <input type="text" name="discapacidad" value="<?php if (isset($_GET["edit"])) echo "0" . $participante["GRADODISCAPACIDAD"] ?>" placeholder="Grado discapacidad"  <?php if (isset($_GET["edit"])) echo "readonly" ?> required/>
+                                <input id="discapacidad" type="text" name="discapacidad" value="<?php if (isset($_GET["edit"])) echo "0" . $participante["GRADODISCAPACIDAD"] ?>" placeholder="Grado discapacidad"  <?php if (isset($_GET["edit"])) echo "readonly" ?> required/>
                             </div>
                             <div class="form-row">
                                 <?php if ($participante["EMAIL"] != "") { ?>
                                     <input type="email" name="email" value="<?php echo $participante["EMAIL"] ?>" placeholder="Email"/>
                                 <?php } else { ?>
-                                    <input type="email" name="email" placeholder="Email"/>
+                                    <input id="email" type="email" name="email" placeholder="Email"/>
                                 <?php } ?>
-                                <input type="text" name="telefono" value="<?php echo $participante["TELEFONO"] ?>" placeholder="Teléfono" pattern="^[0-9]{9}" required/>
+                                <input id="telefono" type="text" name="telefono" value="<?php echo $participante["TELEFONO"] ?>" placeholder="Teléfono" pattern="^[0-9]{9}" required/>
                             </div>
                             <div class="form-row">
                                 <input type="text" name="direccion" value="<?php echo $participante["DIRECCION"] ?>" placeholder="Dirección" />
                                 <input type="text" name="localidad" value="<?php echo $participante["LOCALIDAD"] ?>" placeholder="Localidad" />
                                 <input type="text" name="provincia" value="<?php echo $participante["PROVINCIA"] ?>" placeholder="Provincia" />
-                                <input type="text" name="cp" value="<?php echo $participante["CODIGOPOSTAL"] ?>" placeholder="Código postal" pattern="^[0-9]{5}"/>
+                                <input id="cp" type="text" name="cp" value="<?php echo $participante["CODIGOPOSTAL"] ?>" placeholder="Código postal" pattern="^[0-9]{5}"/>
                             </div>
                             <div class="form-row">
                                 <select name="tutor" id="tutor" <?php if (isset($_GET["edit"])) echo "disabled" ?> required>
@@ -107,7 +107,7 @@ include_once("includes/head.php");
                             <?php if (!isset($_GET["edit"])) { ?>
                                 <button type="reset" class="btn cancel">Reiniciar</button>
                             <?php } ?>
-                                <button type="submit" class="btn primary" name="submit" value="<?php echo isset($_GET["edit"]) ? "edit" : "insert";?>">Guardar</button>
+                                <button id="guardar" type="submit" class="btn primary guardar" name="submit" value="<?php echo isset($_GET["edit"]) ? "edit" : "insert";?>">Guardar</button>
                             </div>
                         </form>
                     </fieldset>
