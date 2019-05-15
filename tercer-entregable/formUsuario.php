@@ -103,7 +103,7 @@ include_once("includes/head.php");
                                 		</div>										
 		                            <?php } ?>
 		                            <div class="form-row right">
-		                                <button id="guardar" type="submit" class="btn primary" name="submit" value="edit">Guardar</button>
+		                                <button id="guardar" type="submit" class="btn primary guardar" name="submit" value="edit">Guardar</button>
 		                            </div>
 		                        </form>
 		                    </fieldset>
