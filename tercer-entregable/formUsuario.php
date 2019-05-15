@@ -92,7 +92,7 @@ include_once("includes/head.php");
 		                            </div>
 		                            <?php if (isset($oid_part)) { ?>
 										<div class="form-row">
-											<input type="text" name="discapacidad" value="<?php echo "0".$participante["GRADODISCAPACIDAD"] ?>" placeholder="Grado discapacidad"  <?php echo "readonly" ?> required/>
+											<input id="discapacidad" type="text" name="discapacidad" value="<?php echo "0".$participante["GRADODISCAPACIDAD"] ?>" placeholder="Grado discapacidad"  <?php echo "readonly" ?> required/>
 
 											<select name="tutor" id="tutor" disabled required>
 			                                    <option value="" >-- Seleccionar un tutor legal --</option>
