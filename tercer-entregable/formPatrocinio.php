@@ -56,12 +56,12 @@ include_once("includes/head.php");
                                 <div class="col-6 col-tab-12">
                                     <div class="form-row">
                                         <input type="text" name="search" id="search" placeholder="Nombre..." autofocus="autofocus" autocomplete="off">
-                                        <input type="number" name="cantidad" autocomplete="off" placeholder="Cantidad">
+                                        <input id="cantidad" type="number" name="cantidad" autocomplete="off" placeholder="Cantidad">
                                         <input type="hidden" name="oid_act" value="<?php echo $_GET["oid_act"] ?>">
                                     </div>
                                     <div class="form-row">
                                         <button type="reset" class="btn cancel">Reiniciar</button>
-                                        <button type="submit" name="submit" value="inscribir" class="btn primary">Guardar</button>
+                                        <button id="guardar" type="submit" name="submit" value="inscribir" class="btn primary guardar" onclick="validarPatrocinio()">Guardar</button>
                                     </div>
                                 </div>
                                 <div class="col-6 col-tab-12">
