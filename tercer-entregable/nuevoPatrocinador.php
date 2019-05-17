@@ -59,10 +59,10 @@ include_once("includes/head.php");
                         <!-- TODO mostrar errores de validación -->
                         <form action="controllers/controlPatrocinadores.php" method="POST">
                             <!-- input hidden para el cif que identifica al patrocinador a editar -->
-                            <input id="cif" type="hidden" name="cif" value="<?php echo $patrocinador["CIF"] ?>">
+                            <input type="hidden" name="cif" value="<?php echo $patrocinador["CIF"] ?>">
                             <div class="form-row">
                                 <input id="nombre" type="text" name="nombre" value="<?php echo $patrocinador["NOMBRE"] ?>" placeholder="Nombre" autofocus="autofocus" required/>
-                                <input type="text" name="cif" value="<?php echo $patrocinador["CIF"] ?>" placeholder="CIF" <?php if (isset($_GET["edit"])) echo "readonly" ?> pattern="^[A-Z][0-9]{8}" required/>
+                                <input id="cif" type="text" name="cif" value="<?php echo $patrocinador["CIF"] ?>" placeholder="CIF" <?php if (isset($_GET["edit"])) echo "readonly" ?> pattern="^[A-Z][0-9]{8}" required/>
                             </div>
                             <div class="form-row">
                                 <?php if ($patrocinador["EMAIL"] != "") { ?>
@@ -82,7 +82,7 @@ include_once("includes/head.php");
                             <?php if (!isset($_GET["edit"])) { ?>
                                 <button type="reset" class="btn cancel">Reiniciar</button>
                             <?php } ?>
-                                <button id="guardar" type="submit" class="btn primary guardar" name="submit" value="<?php echo isset($_GET["edit"]) ? "edit" : "insert";?>">Guardar</button>
+                                <button id="guardar" type="submit" class="btn primary guardar" name="submit" value="<?php echo isset($_GET["edit"]) ? "edit" : "insert";?>" onclick="validarPatrocinador()">Guardar</button>
                             </div>
                         </form>
                     </fieldset>

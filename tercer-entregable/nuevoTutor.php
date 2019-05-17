@@ -87,7 +87,7 @@ include_once("includes/head.php");
                             <?php if (!isset($_GET["edit"])) { ?>
                                 <button type="reset" class="btn cancel">Reiniciar</button>
                             <?php } ?>
-                                <button id="guardar" type="submit" class="btn primary guardar" name="submit" value="<?php echo isset($_GET["edit"]) ? "edit" : "insert";?>" onclick="validarPersona();">Guardar</button>
+                                <button id="guardar" type="submit" class="btn primary guardar" name="submit" value="<?php echo isset($_GET["edit"]) ? "edit" : "insert";?>" onclick="validarUsuario()">Guardar</button>
                             </div>
                         </form>
                     </fieldset>
