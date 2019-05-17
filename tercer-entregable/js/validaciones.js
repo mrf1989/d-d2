@@ -123,7 +123,8 @@ function validarParticipante() {
     		}else if (parseInt(fechNam[1]) == hoy.getMonth()+1) {
     				if(parseInt(fechNam[2]) > hoy.getDate()){
     					fechaNacimiento.setCustomValidity("El participante debe tener al menos 5 años");
-    				}else{
+    				    res=false;
+                    }else{
     					fechaNacimiento.setCustomValidity("");
     				}
     		}else{
@@ -276,17 +277,18 @@ function validarActividades() {
     var fechFin = $('#fechaFin').val().split('-');
 
     //Validación fecha inicio posterior a actual
-    if(parseInt(fechIni[0]) > hoy.getFullYear()){
+    if(parseInt(fechIni[0]) < hoy.getFullYear()){
     	fechaInicio.setCustomValidity("La fecha de inicio no puede ser anterior a hoy");
     	res = false;
     }else if (parseInt(fechIni[0]) == hoy.getFullYear()) {
-    		if (parseInt(fechIni[1]) > hoy.getMonth()+1) {
+    		if (parseInt(fechIni[1]) < hoy.getMonth()+1) {
     			fechaInicio.setCustomValidity("La fecha de inicio no puede ser anterior a hoy");
     			res = false;
     		}else if (parseInt(fechIni[1]) == hoy.getMonth()+1) {
-    				if(parseInt(fechIni[2]) > hoy.getDate()){
+    				if(parseInt(fechIni[2]) < hoy.getDate()){
     					fechaInicio.setCustomValidity("La fecha de inicio no puede ser anterior a hoy");
-    				}else{
+    				    res = false;
+                    }else{
     					fechaInicio.setCustomValidity("");
     				}
     		}else{
@@ -307,7 +309,8 @@ function validarActividades() {
     		}else if (parseInt(fechIni[1]) == parseInt(fechFin[1])) {
     				if(parseInt(fechIni[2]) > parseInt(fechFin[2])){
     					fechaInicio.setCustomValidity("La fecha de inicio no puede ser posterior a la fecha de fin");
-    				}else{
+    				    res=false;
+                    }else{
     					fechaInicio.setCustomValidity("");
     				}
     		}else{
@@ -369,7 +372,8 @@ function validarUsuario() {
     		}else if (parseInt(fechNam[1]) == hoy.getMonth()+1) {
     				if(parseInt(fechNam[2]) > hoy.getDate()){
     					fechaNacimiento.setCustomValidity("El usuario debe tener al menos 18 años");
-    				}else{
+    				    res=false;
+                    }else{
     					fechaNacimiento.setCustomValidity("");
     				}
     		}else{

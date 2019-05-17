@@ -65,10 +65,31 @@ include_once("includes/head.php");
                                 Nº plazas:
                                 <input id="numeroPlazas" type="number" name="numeroplazas" value="<?php echo $actividad["NUMEROPLAZAS"] ?>" placeholder="Nº plazas" required/>
                                 <select name="tipo" required>
+                                	<?php if(isset($_GET["edit"])){
+                                			if($actividad["TIPO"]=="deportiva"){ ?>
+                                				<option value="deportiva">Deportiva</option>
+                                				<option value="formativa">Formativa</option>
+                                    			<option value="social">Social</option>
+                                			<?php
+                                			}else if($actividad["TIPO"]== "formativa"){
+                                			?>
+                                				<option value="formativa">Formativa</option>
+                                				<option value="deportiva">Deportiva</option>
+                                    			<option value="social">Social</option>
+                                			<?php
+                                			}else{
+                                			?>	
+                                				<option value="social">Social</option>
+                                				<option value="deportiva">Deportiva</option>
+                                    			<option value="formativa">Formativa</option>
+                                			<?php
+                                			}
+                                		}else{?>
                                     <option value="">Tipo de actividad</option>
                                     <option value="deportiva">Deportiva</option>
                                     <option value="formativa">Formativa</option>
                                     <option value="social">Social</option>
+                                	<?php } ?>
                                 </select>
                             </div>
                             <div class="form-row">
@@ -86,7 +107,7 @@ include_once("includes/head.php");
                             <?php if (!isset($_GET["edit"])) { ?>
                                 <button type="reset" class="btn cancel">Reiniciar</button>
                             <?php } ?>
-                                <button id="guardar" type="submit" class="btn primary guardar" name="submit" value="<?php echo isset($_GET["edit"]) ? "edit" : "insert";?>" onclick="validarActividades()">Guardar</button>
+                                <button id="guardar" type="submit" class="btn primary guardar" name="submit" value="<?php echo isset($_GET["edit"]) ? "edit" : "insert";?>"onclick="validarActividades()">Guardar</button>
                             </div>
                         </form>
                     </fieldset>
