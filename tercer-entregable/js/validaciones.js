@@ -206,7 +206,7 @@ function validarPatrocinador() {
 }
 
 function validarActividades() {
-	var rxNombre = /[^a-zñáéíóúA-ZÑÁÉÍÓÚ\s]/;
+	var rxNombre = /[^a-zñáéíóúüA-ZÑÁÉÍÓÚ\s]/;
 	var rxNumPlazas = /^[1-9]{1}\d{0,2}$/;
 	var rxCosteTotal = /^[1-9]{1}\d*$/;
 	var rxFecha = /^((19|20)?[0-9]{2})[-](0?[1-9]|1[0-2])[-](0?[1-9]|[12][0-9]|3[01])$/;
@@ -250,75 +250,92 @@ function validarActividades() {
     } else {
         costeTotal.setCustomValidity("");
     }
-    //Validación fecha inicio
+
+    
+    var hoy = new Date();
+    var fechIni = $('#fechaInicio').val().split('-');
+    var fechFin = $('#fechaFin').val().split('-');
+
+    //Validación fecha inicio y fecha fin
     if ($('#fechaInicio').val().trim() == "") {
         fechaInicio.setCustomValidity("Introduzca una fecha");
         res = false;
     } else if (!rxFecha.test($('#fechaInicio').val().trim())) {
         fechaInicio.setCustomValidity("Introduzca un formato de fecha correcto");
         res = false;
-    } else {
-        fechaInicio.setCustomValidity("");
-    }
-    //Validación fecha fin
-    if ($('#fechaFin').val().trim() == "") {
+    } else if ($('#fechaFin').val().trim() == "") {
         fechaFin.setCustomValidity("Introduzca una fecha");
         res = false;
     } else if (!rxFecha.test($('#fechaFin').val().trim())) {
         fechaFin.setCustomValidity("Introduzca un formato de fecha correcto");
         res = false;
     } else {
+        fechaInicio.setCustomValidity("");
         fechaFin.setCustomValidity("");
-    }
-
-    var hoy = new Date();
-
-    var fechIni = $('#fechaInicio').val().split('-');
-    var fechFin = $('#fechaFin').val().split('-');
-
-    //Validación fecha inicio posterior a actual
-    if(parseInt(fechIni[0]) < hoy.getFullYear()){
-    	fechaInicio.setCustomValidity("La fecha de inicio no puede ser anterior a hoy");
-    	res = false;
-    }else if (parseInt(fechIni[0]) == hoy.getFullYear()) {
-    		if (parseInt(fechIni[1]) < hoy.getMonth()+1) {
-    			fechaInicio.setCustomValidity("La fecha de inicio no puede ser anterior a hoy");
-    			res = false;
-    		}else if (parseInt(fechIni[1]) == hoy.getMonth()+1) {
-    				if(parseInt(fechIni[2]) < hoy.getDate()){
-    					fechaInicio.setCustomValidity("La fecha de inicio no puede ser anterior a hoy");
-    				    res = false;
-                    }else{
-    					fechaInicio.setCustomValidity("");
-    				}
-    		}else{
-    			fechaInicio.setCustomValidity("");
-    		}
-    }else{
-    	fechaInicio.setCustomValidity("");
+        fechaInicioPosteriorAHoy();
     }
 
     //Validación fecha inicio anterior a fecha fin
-    if(parseInt(fechIni[0]) > parseInt(fechFin[0])){
-    	fechaInicio.setCustomValidity("La fecha de inicio no puede ser posterior a la fecha de fin");
-    	res = false;
-    }else if (parseInt(fechIni[0]) == parseInt(fechFin[0])) {
-    		if (parseInt(fechIni[1]) > parseInt(fechFin[1])) {
-    			fechaInicio.setCustomValidity("La fecha de inicio no puede ser posterior a la fecha de fin");
-    			res = false;
-    		}else if (parseInt(fechIni[1]) == parseInt(fechFin[1])) {
-    				if(parseInt(fechIni[2]) > parseInt(fechFin[2])){
-    					fechaInicio.setCustomValidity("La fecha de inicio no puede ser posterior a la fecha de fin");
-    				    res=false;
-                    }else{
-    					fechaInicio.setCustomValidity("");
-    				}
-    		}else{
-    			fechaInicio.setCustomValidity("");
-    		}
-    }else{
-    	fechaInicio.setCustomValidity("");
+    function fechasCorrectas() {
+        if(parseInt(fechIni[0]) > parseInt(fechFin[0])){
+            fechaInicio.setCustomValidity("La fecha de inicio no puede ser posterior a la fecha de fin");
+            res = false;
+        }else if (parseInt(fechIni[0]) == parseInt(fechFin[0])) {
+                if (parseInt(fechIni[1]) > parseInt(fechFin[1])) {
+                    fechaInicio.setCustomValidity("La fecha de inicio no puede ser posterior a la fecha de fin");
+                    res = false;
+                }else if (parseInt(fechIni[1]) == parseInt(fechFin[1])) {
+                        if(parseInt(fechIni[2]) > parseInt(fechFin[2])){
+                            fechaInicio.setCustomValidity("La fecha de inicio no puede ser posterior a la fecha de fin");
+                            res=false;
+                        }else{
+                            fechaInicio.setCustomValidity("");
+                        }
+                }else{
+                    fechaInicio.setCustomValidity("");
+                }
+        }else{
+            fechaInicio.setCustomValidity("");
+        }
     }
+
+    //Validación fecha inicio posterior a actual
+    function fechaInicioPosteriorAHoy() {
+        console.log("Comparando año: " + parseInt(fechIni[0]) < hoy.getFullYear());
+        if(parseInt(fechIni[0]) < hoy.getFullYear()){
+            fechaInicio.setCustomValidity("La fecha de inicio no puede ser anterior a hoy");
+            res = false;
+        }else if (parseInt(fechIni[0]) == hoy.getFullYear()) {
+                console.log("El año es el mismo.");
+                console.log("Comparando mes:");
+                console.log(parseInt(fechIni[1]) < hoy.getMonth()+1);
+                if (parseInt(fechIni[1]) < hoy.getMonth()+1) {
+                    fechaInicio.setCustomValidity("La fecha de inicio no puede ser anterior a hoy");
+                    res = false;
+                }else if (parseInt(fechIni[1]) == hoy.getMonth()+1) {
+                        console.log("El mes es el mismo.");
+                        console.log("Comparando día: ");
+                        console.log(parseInt(fechIni[2]) < hoy.getDate());
+                        if(parseInt(fechIni[2]) < hoy.getDate()){
+                            fechaInicio.setCustomValidity("La fecha de inicio no puede ser anterior a hoy");
+                            res = false;
+                        }else{
+                            console.log("Fecha correcta.");
+                            fechaInicio.setCustomValidity("");
+                            fechasCorrectas();
+                        }
+                }else{
+                    console.log("Fecha correcta.");
+                    fechaInicio.setCustomValidity("");
+                    fechasCorrectas();
+                }
+        }else{
+            console.log("Fecha correcta.");
+            fechaInicio.setCustomValidity("");
+            fechasCorrectas();
+        }
+    }
+
 }
 
 function validarPatrocinio() {
