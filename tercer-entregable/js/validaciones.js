@@ -301,40 +301,32 @@ function validarActividades() {
 
     //Validación fecha inicio posterior a actual
     function fechaInicioPosteriorAHoy() {
-        console.log("Comparando año: " + parseInt(fechIni[0]) < hoy.getFullYear());
         if(parseInt(fechIni[0]) < hoy.getFullYear()){
             fechaInicio.setCustomValidity("La fecha de inicio no puede ser anterior a hoy");
             res = false;
         }else if (parseInt(fechIni[0]) == hoy.getFullYear()) {
-                console.log("El año es el mismo.");
-                console.log("Comparando mes:");
-                console.log(parseInt(fechIni[1]) < hoy.getMonth()+1);
                 if (parseInt(fechIni[1]) < hoy.getMonth()+1) {
                     fechaInicio.setCustomValidity("La fecha de inicio no puede ser anterior a hoy");
                     res = false;
                 }else if (parseInt(fechIni[1]) == hoy.getMonth()+1) {
-                        console.log("El mes es el mismo.");
-                        console.log("Comparando día: ");
-                        console.log(parseInt(fechIni[2]) < hoy.getDate());
                         if(parseInt(fechIni[2]) < hoy.getDate()){
                             fechaInicio.setCustomValidity("La fecha de inicio no puede ser anterior a hoy");
                             res = false;
                         }else{
-                            console.log("Fecha correcta.");
                             fechaInicio.setCustomValidity("");
                             fechasCorrectas();
                         }
                 }else{
-                    console.log("Fecha correcta.");
                     fechaInicio.setCustomValidity("");
                     fechasCorrectas();
                 }
         }else{
-            console.log("Fecha correcta.");
             fechaInicio.setCustomValidity("");
             fechasCorrectas();
         }
     }
+
+    return res;
 
 }
 
@@ -354,6 +346,8 @@ function validarPatrocinio() {
     } else {
         cantidad.setCustomValidity("");
     }
+
+    return res;
 
 }
 
@@ -399,5 +393,7 @@ function validarUsuario() {
     }else{
     	fechaNacimiento.setCustomValidity("");
     }
+
+    return res;
 
 }
