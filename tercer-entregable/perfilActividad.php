@@ -34,6 +34,7 @@ include_once("includes/head.php");
                         <h1><?php echo $actividad["NOMBRE"] ?></h1>
                         <form action="controllers/controlActividad.php" method="POST">
                             <input type="hidden" name="oid_act" value="<?php echo $actividad["OID_ACT"] ?>">
+                            <input type="hidden" name="oid_proj" value="<?php echo $actividad["OID_PROJ"] ?>">
                             <a class="btn primary" href="formActividad.php?edit=true&oid_act=<?php echo $actividad["OID_ACT"]; ?>">Editar</a>
                             <button class="btn cancel" type="submit" name="submit" value="delete">Eliminar</button>
                         </form>
