@@ -48,7 +48,7 @@ include_once("includes/head.php");
             <div class="content__module">
                 <div class="module-title">
                     <h1>Patrocinadores</h1>
-                    <a href="nuevoPatrocinador.php" class="btn primary">Nuevo patrocinador</a>
+                    <a href="formPatrocinador.php" class="btn primary">Nuevo patrocinador</a>
                 </div>
                 <nav>
                     <div id="enlaces">
@@ -83,7 +83,7 @@ include_once("includes/head.php");
                                 <td><a href="perfilPatrocinador.php?cif=<?php echo $pat["CIF"]; ?>"><?php echo $pat["NOMBRE"] ?></a></td>
                                 <td><?php echo $pat["TIPO"] ?></td>
                                 <td class="acciones">
-                                    <a href="nuevoPatrocinador.php?edit=true&cif=<?php echo $pat["CIF"]; ?>" class="btn secondary">Editar</a>
+                                    <a href="formPatrocinador.php?edit=true&cif=<?php echo $pat["CIF"]; ?>" class="btn secondary">Editar</a>
                                     <button class="btn secondary" type="submit" name="submit" value="delete">Borrar</button>
                                 </td>
                             </form>

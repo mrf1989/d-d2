@@ -27,7 +27,7 @@ if ($_REQUEST["submit"] == "insert") {
     $errores= validarAltaParticipante($nuevoParticipante, $conexion);
     if (count($errores)>0) {
         $_SESSION["errores"] = $errores;
-        Header("Location: ../nuevoParticipante.php");
+        Header("Location: ../formParticipante.php");
     }else{
         insertarParticipante($conexion, $nuevoParticipante);
         cerrarConexionBD($conexion);
@@ -60,7 +60,7 @@ if ($_REQUEST["submit"] == "insert") {
         $errores = validarAltaParticipante($participante, $conexion);
         if (count($errores)>0) {
             $_SESSION["errores"]=$errores;
-            Header("Location: ../nuevoParticipante.php?edit=true&oid_part=" . 
+            Header("Location: ../formParticipante.php?edit=true&oid_part=" . 
                 $_REQUEST["oid_part"]);
         }else{
             actualizarParticipante($conexion, $participante);
@@ -76,7 +76,7 @@ if ($_REQUEST["submit"] == "insert") {
     $errores = validarAltaInforme($inf);
     if (count($errores)>0) {
         $_SESSION["errores"]=$errores;
-        Header("Location: ../nuevoInforme.php?oid_part=" . $_REQUEST["oid_part"]);
+        Header("Location: ../formInforme.php?oid_part=" . $_REQUEST["oid_part"]);
     }else{
         insertarInforme($conexion, $inf);
         cerrarConexionBD($conexion);

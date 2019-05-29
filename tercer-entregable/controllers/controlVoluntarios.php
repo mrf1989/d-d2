@@ -31,7 +31,7 @@ elseif ($_REQUEST["submit"]=="insert") {
     $errores = validarAltaVoluntario($nuevoVoluntario);
     if (count($errores) > 0) {
         $_SESSION["errores"] = $errores;
-        Header("Location: ../nuevoVoluntario.php");
+        Header("Location: ../formVoluntario.php");
     } else {
         getInsertarVoluntario($conexion, $nuevoVoluntario);
         cerrarConexionBD($conexion);
@@ -55,7 +55,7 @@ elseif ($_REQUEST["submit"]=="edit") {
     $errores = validarAltaVoluntario($voluntario);
     if (count($errores) > 0) {
         $_SESSION["errores"] = $errores;
-        Header("Location: ../nuevoVoluntario.php?edit=true&oid_vol=" . $_REQUEST["oid_vol"]);
+        Header("Location: ../formVoluntario.php?edit=true&oid_vol=" . $_REQUEST["oid_vol"]);
     } else {
         getActualizarVoluntario($conexion, $voluntario);
         cerrarConexionBD($conexion);

@@ -25,7 +25,7 @@ if ($_REQUEST["submit"] == "insert") {
     $errores = validarAltaTutor($nuevoTutor);
     if (count($errores) > 0) {
         $_SESSION["errores"] = $errores;
-        Header("Location: ../nuevoTutor.php");
+        Header("Location: ../formTutor.php");
     } else {
         insertarTutor($conexion, $nuevoTutor);
         cerrarConexionBD($conexion);
@@ -52,7 +52,7 @@ if ($_REQUEST["submit"] == "insert") {
     $errores = validarAltaTutor($tutor);
     if (count($errores) > 0) {
         $_SESSION["errores"] = $errores;
-        Header("Location: ../nuevoTutor.php?edit=true&oid_tut=" . $_REQUEST["oid_tut"]);
+        Header("Location: ../formTutor.php?edit=true&oid_tut=" . $_REQUEST["oid_tut"]);
     } else {
         actualizarTutor($conexion, $tutor);
         cerrarConexionBD($conexion);

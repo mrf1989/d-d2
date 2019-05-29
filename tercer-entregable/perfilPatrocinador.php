@@ -33,7 +33,7 @@ include_once("includes/head.php");
                         <h1><?php echo $patrocinador["NOMBRE"]; ?></h1>
                         <form action="controllers/controlPatrocinadores.php" method="POST">
                             <input type="hidden" name="cif" value="<?php echo $patrocinador["CIF"] ?>">
-                            <a class="btn primary" href="nuevoPatrocinador.php?edit=true&cif=<?php echo $patrocinador["CIF"]; ?>">Editar</a>
+                            <a class="btn primary" href="formPatrocinador.php?edit=true&cif=<?php echo $patrocinador["CIF"]; ?>">Editar</a>
                             <button class="btn cancel" type="submit" name="submit" value="delete">Eliminar</button>
                         </form>
                     </div>

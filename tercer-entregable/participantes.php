@@ -48,7 +48,7 @@ include_once("includes/head.php");
             <div class="content__module">
                 <div class="module-title">
                     <h1>Participantes</h1>
-                    <a href="nuevoParticipante.php" class="btn primary">Nuevo participante</a>
+                    <a href="formParticipante.php" class="btn primary">Nuevo participante</a>
                 </div>
                 <nav>
                     <div id="enlaces">
@@ -83,7 +83,7 @@ include_once("includes/head.php");
                                 <td><a href="perfilParticipante.php?oid_part=<?php echo $part["OID_PART"]; ?>"><?php echo $part["NOMBRE"] . " " . $part["APELLIDOS"] ?></a></td>
                                 <td><?php echo getFechaFormatView($part["FECHANACIMIENTO"])?></td>
                                 <td class="acciones">
-                                    <a href="nuevoParticipante.php?edit=true&oid_part=<?php echo $part["OID_PART"]; ?>" class="btn secondary">Editar</a>
+                                    <a href="formParticipante.php?edit=true&oid_part=<?php echo $part["OID_PART"]; ?>" class="btn secondary">Editar</a>
                                     <button class="btn secondary" type="submit" name="submit" value="delete">Borrar</button>
                                 </td>
                             </form>

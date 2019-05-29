@@ -23,7 +23,7 @@ if ($_REQUEST["submit"] == "insert") {
     $errores= validarAltaPatrocinador($nuevoPatrocinador);
     if (count($errores) > 0) {
         $_SESSION["errores"] = $errores;
-        Header("Location: ../nuevoPatrocinador.php");
+        Header("Location: ../formPatrocinador.php");
     }else{
         insertarPatrocinador($conexion, $nuevoPatrocinador);
         cerrarConexionBD($conexion);
@@ -48,7 +48,7 @@ if ($_REQUEST["submit"] == "insert") {
     $errores= validarAltaPatrocinador($patrocinador);
     if (count($errores) > 0) {
         $_SESSION["errores"] = $errores;
-        Header("Location: ../nuevoPatrocinador.php");
+        Header("Location: ../formPatrocinador.php");
     }else{
         actualizarPatrocinador($conexion, $patrocinador);
         cerrarConexionBD($conexion);
