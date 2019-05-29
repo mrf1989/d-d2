@@ -41,7 +41,7 @@ include_once("includes/head.php");
                         <h1><?php echo $participante["NOMBRE"] . " " . $participante["APELLIDOS"]; ?></h1>
                         <form action="controllers/controlParticipantes.php" method="POST">
                             <input type="hidden" name="dni" value="<?php echo $participante["DNI"] ?>">
-                            <a class="btn primary" href="nuevoParticipante.php?edit=true&oid_part=<?php echo $participante["OID_PART"]; ?>">Editar</a>
+                            <a class="btn primary" href="formParticipante.php?edit=true&oid_part=<?php echo $participante["OID_PART"]; ?>">Editar</a>
                             <button class="btn cancel" type="submit" name="submit" value="delete">Eliminar</button>
                         </form>
                     </div>
@@ -134,7 +134,7 @@ include_once("includes/head.php");
                 <div class="col-12 col-tab-12">
                     <div class="module-title">
                         <h2>Informes médicos</h2>
-                        <a class="btn primary" href="nuevoInforme.php?oid_part=<?php echo $participante["OID_PART"]; ?>">Nuevo informe</a>
+                        <a class="btn primary" href="formInforme.php?oid_part=<?php echo $participante["OID_PART"]; ?>">Nuevo informe</a>
                     </div>
                 <?php if (count($informes) > 0) { ?>
                     <div class="content-tab">

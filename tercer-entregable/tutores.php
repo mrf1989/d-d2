@@ -48,7 +48,7 @@ include_once("includes/head.php");
             <div class="content__module">
                 <div class="module-title">
                     <h1>Tutores</h1>
-                    <a href="nuevoTutor.php" class="btn primary">Nuevo tutor</a>
+                    <a href="formTutor.php" class="btn primary">Nuevo tutor</a>
                 </div>
                 <nav>
                     <div id="enlaces">
@@ -83,7 +83,7 @@ include_once("includes/head.php");
                                 <td><a href="perfilTutor.php?oid_tut=<?php echo $tut["OID_TUT"]; ?>"><?php echo $tut["NOMBRE"] . " " . $tut["APELLIDOS"] ?></a></td>
                                 <td><?php echo $tut["EMAIL"] ?></td>
                                 <td class="acciones">
-                                    <a href="nuevoTutor.php?edit=true&oid_tut=<?php echo $tut["OID_TUT"]; ?>" class="btn secondary">Editar</a>
+                                    <a href="formTutor.php?edit=true&oid_tut=<?php echo $tut["OID_TUT"]; ?>" class="btn secondary">Editar</a>
                                     <button class="btn secondary" type="submit" name="submit" value="delete">Borrar</button>
                                 </td>
                             </form>

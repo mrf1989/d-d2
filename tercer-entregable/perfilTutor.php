@@ -33,7 +33,7 @@ include_once("includes/head.php");
                         <h1><?php echo $tutor["NOMBRE"] . " " . $tutor["APELLIDOS"]; ?></h1>
                         <form action="controllers/controlTutores.php" method="POST">
                             <input type="hidden" name="dni" value="<?php echo $tutor["DNI"] ?>">
-                            <a class="btn primary" href="nuevoTutor.php?edit=true&oid_tut=<?php echo $tutor["OID_TUT"]; ?>">Editar</a>
+                            <a class="btn primary" href="formTutor.php?edit=true&oid_tut=<?php echo $tutor["OID_TUT"]; ?>">Editar</a>
                             <button class="btn cancel" type="submit" name="submit" value="delete">Eliminar</button>
                         </form>
                     </div>
